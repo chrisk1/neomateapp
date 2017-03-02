@@ -1,0 +1,2000 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>NeoMate</title>
+<meta name="description" content="Drug Calculations for Neonatal Emergencies.">
+        <!-- iPhone -->
+        <link href="iPhone-icon-57x57.png"
+              sizes="57x57"
+              rel="apple-touch-icon">
+        <!-- iPhone (Retina) -->
+        <link href="icons/ios/iPhone-icon-114x114.png"
+              sizes="114x114"
+              rel="apple-touch-icon">
+        <!-- iPhone -->
+        <link href="splash/ios/Default.png"
+              media="(device-width: 320px)"
+              rel="apple-touch-startup-image">
+        <!-- iPhone (Retina) -->
+        <link href="splash/ios/Default_at_2x.png"
+              media="(device-width: 320px)
+                 and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<link href="css/jquery.mobile.squareui.css" rel="stylesheet" type="text/css" />
+<link href="css/neomate.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+   <div data-role="page" id="main" style="background: url(images/nts-horizontal-bg2.png); ebackground-position: bottom right">
+ 	<a name="maintop">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+ 
+        <div data-role="content" style="top: 50px; position: absolute" id="maincontentarea">
+				<div style="padding-left: 8px; padding-right: 8px;"><input type="number" id="babyweight" data-theme="b" pattern="\d*" placeholder="Enter baby weight" data-clear-btn="true" tabindex=1  /><div class="units" id="inputunits"><a href="#weightinfobox" style="text-decoration: none" data-corners="false">grams <div id="estimatelabel">gestation</div></a></div><input type='text' tabindex=2 style="opacity:0; display: block; font-size:1px; height: 0px; width: 1px; border: 0px; padding: 0px !important; clear:both" id="decoy1" onfocus="javascript:$(this).blur();" data-role="none"></div>
+
+				<div data-role="collapsible-set" class="ui-collapsible-set" data-theme="b" data-content-theme="b" data-inset="false">
+
+				<div data-role="collapsible" class="animateMe" data-collapsed-icon="flat-lungs" data-expanded-icon="back">
+					<h3>Intubation <span class="maintitle-weight"></span></h3>
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr><td><span class="drugname">Endotracheal tube size</span></td><td><span id="ettsize" class="outputvalue">Enter weight</span><a href="#popett" data-corners="false"><img src="images/question50px.png" class="infobtn" /></a></td></tr>
+							<tr><td><span class="drugname">Tube length at lips</span></td><td><span id="ettlength" class="outputvalue">Enter weight</span><a href="#popett" data-corners="false"><img src="images/question50px.png" class="infobtn" /></a></td></tr>
+						</table><br style="height:8px">
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr><td><span class="drugname">Fentanyl bolus</span><br><span class="drugdose">(5mcg/kg)</span></td><td><span id="fentanylbolus" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Morphine bolus</span><br><span class="drugdose">If fentanyl not available<br>(100mcg/kg)</span></td><td><span id="morphinebolus" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Atropine</span><br><span class="drugdose">(20 mcg/kg)</span></td><td><span id="atropinebolus" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Suxamethonium</span><br><span class="drugdose">(2 mg/kg)</span></td><td><span id="suxbolus" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td valign="top"><span class="drugname">Poractant Alfa (Curosurf&reg;)</span> <br><span class="drugdose">(200mg/kg 1st dose, <br>100mg/kg 2nd dose)<br>via ET tube</span></td><td><span id="curosurf" class="outputvalue">Enter weight</span></td></tr>							
+						</table>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="blood" data-expanded-icon="back">
+					<h3>Central Lines <span class="maintitle-weight"></span></h3>
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Central Lines</td></tr>
+							<tr><td><span class="drugname">UVC</span><br><span class="drugdose">Umbilical Venous Catheter</span></td><td><a href="#popuacuvc" data-corners="false"><img src="images/question50px.png" class="infobtn" /></a><span id="uvcdetails" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">UAC</span><br><span class="drugdose">Umbilical Arterial Catheter</span></td><td><a href="#popuacuvc" data-corners="false"><img src="images/question50px.png" class="infobtn" /></a><span id="uacdetails" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Heparin</span><br><span class="drugdose">Infusion for UAC</span></td><td>Add 50 units heparin to 50 ml sodium chloride 0.45%. Infuse at 0.5 ml/hr.</td></tr>
+							<tr><td><span class="drugname">Heparin bicarbonate</span><br><span class="drugdose">Infusion for UAC, if required due to acidosis or hyperchloraemia</span></td><td>Add 3 ml (=1.5 mmol) of sodium bicarbonate <span class="highlightdrug">4.2%</span> to 17 ml with water for injection, and add 20 units of heparin to the 20ml volume.<br>Infuse at 0.5 ml/hr.<br><span class="greytext">0.5 ml/hr = Na 0.9 mmol/day (same as 0.45% saline)</span></td></tr>
+						</table>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="flat-heart" data-expanded-icon="back">
+					<h3>Cardiac Drugs <span class="maintitle-weight"></span></h3>
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr><td><span class="drugname">0.9% NaCl Bolus</span><br><span class="drugdose">(10 ml/kg)</span></td><td><span id="naclbolus" class="outputvalue">Enter weight</span></td></tr>
+						</table><br style="height:8px">
+
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Infusions</td></tr>
+							<tr><td><span class="drugname">Dopamine</span><br><span class="drugdose">(Usual dose 5-20 mcg/kg/min)</span></td><td style="min-width: 130px"><span class="infusion-data" data-infusion-drugname="dopamine"><a class="infusion-detail"><img src="images/penpaper.png" class="infobtn drugcalc" /></a><span id="dopamineinfusion" class="outputvalue">Enter weight</span></span></td></tr>
+							<tr><td><span class="drugname">Dobutamine</span><br><span class="drugdose">(Usual dose 5-20 mcg/kg/min)</span></td><td><span class="infusion-data" data-infusion-drugname="dobutamine"><a class="infusion-detail"><img src="images/penpaper.png" class="infobtn drugcalc" /></a><span id="dobutamineinfusion" class="outputvalue">Enter weight</span></span></td></tr>
+							<tr><td><span class="drugname">Adrenaline</span><br><span class="drugdose">(Usual dose 50-500 nanograms/kg/min)</span></td><td><span class="infusion-data" data-infusion-drugname="adrenaline"><a class="infusion-detail"><img src="images/penpaper.png" class="infobtn drugcalc" /></a><span id="adrenalineinfusion" class="outputvalue">Enter weight</span></span></td></tr>
+							<tr><td><span class="drugname">Noradrenaline</span><br><span class="drugdose">(Usual dose 50-500 nanograms/kg/min)</span></td><td><span class="infusion-data" data-infusion-drugname="noradrenaline"><a class="infusion-detail"><img src="images/penpaper.png" class="infobtn drugcalc" /></a><span id="noradrenalineinfusion" class="outputvalue">Enter weight</span></span></td></tr>
+							<tr><td><span class="drugname">Dinoprostone (Prostaglandin E2)</span><br><span class="drugdose">(Usual dose 5-10 nanograms/kg/min, though higher doses may be used in consultation with cardiology)</span></td><td><span class="infusion-data" data-infusion-drugname="dinoprostone"><a class="infusion-detail"><img src="images/penpaper.png" class="infobtn drugcalc" /></a><span id="protine2" class="outputvalue">Enter weight</span></span></td></tr>
+						</table><br style="height:8px">
+
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Central Lines</td></tr>
+							<tr><td><span class="drugname">UVC</span><br><span class="drugdose">Umbilical Venous Catheter</span></td><td><span id="uvcdetails2" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">UAC</span><br><span class="drugdose">Umbilical Arterial Catheter</span></td><td><span id="uacdetails2" class="outputvalue">Enter weight</span></td></tr>
+						</table>
+
+				</div>
+				<div data-role="collapsible" data-collapsed-icon="flat-closedeye" data-expanded-icon="back">
+					<h3>Sedative Drugs <span class="maintitle-weight"></span></h3>
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr><td><span class="drugname">Fentanyl bolus</span><br><span class="drugdose">(5mcg/kg)</span></td><td><span id="fentanylbolus2" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Morphine bolus</span><br><span class="drugdose">alternative to fentanyl<br>(100mcg/kg)</span></td><td><span id="morphinebolus2" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Pancuronium bolus</span><br><span class="drugdose">(100mcg/kg)</span></td><td><span id="pancuroniumbolus" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Vecuronium bolus</span><br><span class="drugdose">alternative to pancuronium<br>(100mcg/kg)</span></td><td><span id="vecuroniumbolus" class="outputvalue">Enter weight</span></td></tr>
+						</table><br style="height:8px">
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Infusions</td></tr>
+							<tr><td><span class="drugname">Morphine</span><br><span class="drugdose">(Usual dose 5-20 mcg/kg/hr, but higher doses may be used. Max dose 40 mcg/kg/hr.)</span></td><td><span class="infusion-data" data-infusion-drugname="morphine"><a class="infusion-detail"><img src="images/penpaper.png" class="infobtn drugcalc" /></a><span id="morphinesedativeinfusion" class="outputvalue">Enter weight</span></span></td></tr>
+							<tr><td><span class="drugname">Vecuronium</span><br><span class="drugdose">(Usual dose 50-200 mcg/kg/hr)</span></td><td><span class="infusion-data" data-infusion-drugname="vecuronium"><a class="infusion-detail"><img src="images/penpaper.png" class="infobtn drugcalc" /></a><span id="vecuroniumsedativeinfusion" class="outputvalue">Enter weight</span></span></td></tr>
+						</table>
+				</div>
+				<div data-role="collapsible" data-collapsed-icon="flat-brain" data-expanded-icon="back">
+					<h3>Neurology <span class="maintitle-weight"></span></h3>
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr><td><span class="drugname">Phenobarbitone</span><br><span class="drugdose">(<span class="highlightdrug">Loading dose</span> = 20 mg/kg)</span></td><td><span id="phenobarbitoneloading" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Phenytoin</span><br><span class="drugdose">(Loading dose = 18 mg/kg)</span></td><td><span id="phenytoinloading" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Diazepam</span><br><span class="drugdose">(300 mcg/kg)</span></td><td><span id="diazepam" class="outputvalue">Enter weight</span></td></tr>
+						</table><br style="height:8px">
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Infusions</td></tr>
+							<tr><td valign="top"><span class="drugname">Midazolam</span><br><span class="drugdose">Usual dose is 30-300 mcg/kg/hr</span></td><td><span class="infusion-data" data-infusion-drugname="midazolam"><a class="infusion-detail"><img src="images/penpaper.png" class="infobtn drugcalc" /></a><span id="midazolaminfusion" class="outputvalue">Enter weight</span></span></td></tr>
+						</table>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="flat-alert" data-expanded-icon="back">
+					<h3>Emergency Drugs <span class="maintitle-weight"></span></h3>
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr><td valign="top"><span class="drugname">Adrenaline 1:10,000</span><br></td><td><span id="adrenalineemergency" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Dextrose 10% Bolus</span><br><span class="drugdose">(2.5 ml/kg)</span></td><td><span id="dextrosebolus" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Sodium bicarbonate 4.2%</span><br><span class="drugdose">(2 ml/kg)</span></td><td><span id="sodiumbicarb" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Sodium bicarbonate</span><br><span class="drugdose">(full correction)</span></td><td><a href="#halfcorrection" data-corners="false"><img src="images/question50px.png" class="infobtn" /></a><span id="sodiumbicarbhalfcorrection" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Adenosine</span><br><span class="drugdose">(150 mcg/kg)</span></td><td><span id="adenosine" class="outputvalue">Enter weight</span></td></tr>
+						</table><br style="height:8px">
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Infusions</td></tr>
+							<tr><td><span class="drugname">Insulin</span><br><span class="drugdose">Usual dose of insulin starts at 0.01 units/kg/hr, and is increased/decreased according to response</span></td><td><span id="insulin" class="outputvalue">Enter weight</span></td></tr>
+						</table>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="flat-cooling" data-expanded-icon="back">
+					<h3>Cooling Criteria</h3>
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr><td><h3>&nbsp;&nbsp;When to consider treatment with cooling</h3></td></tr>
+							<tr><td><p>The following information comes from the UK TOBY Clinician's Handbook found <a href="https://www.npeu.ox.ac.uk/downloads/files/tobyregister/Register-Clinicans-Handbook1-v4-07-06-10.pdf" class="external">here</a>.</p>
+
+									<p><b>A. Infants ≥ 36 completed weeks gestation admitted to the neonatal unit
+							with at least one of the following:</b> 
+
+							<ul><li>Apgar score of ≤5 at 10 minutes after birth</li>
+							<li>Continued need for resuscitation, including endotracheal or mask ventilation, at 
+							10 minutes after birth</li>
+							<li>Acidosis within 60 minutes of birth (defined as any occurrence of umbilical cord, 
+							arterial or capillary pH <7.00)</li>
+							<li>Base Deficit ≥ 16 mmol/L in umbilical cord or any blood sample (arterial, venous 
+							or capillary) within 60 minutes of birth </li></ul>
+							<p>Infants that meet criteria A should be assessed for whether they meet the 
+							neurological abnormality entry criteria (B):</p>
+
+								<p><b>B. seizures or moderate to severe encephalopathy, consisting of:</b>
+							<ul><li>Altered state of consciousness (reduced response to stimulation or absent 
+							response to stimulation) and</li>
+							<li>Abnormal tone (focal or general hypotonia, or flaccid) and</li>
+							<li>Abnormal primitive reflexes (weak or absent suck or Moro response).</li></ul>
+
+							<p>Infants who meet criteria A and B may be considered for treatment with cooling.
+							</td></tr>
+						</table>
+				</div>
+
+
+				<div data-role="collapsible" data-collapsed-icon="flat-new" data-expanded-icon="back">
+					<h3>Admission to Unit <span class="maintitle-weight"></span></h3>
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Common Antibiotics</td></tr>
+							<tr><td><span class="drugname">Benzylpenicillin</span><br><span class="drugdose">&lt; 7 days: 50 mg/kg BD<br>7-28 days: 50mg/kg TDS</span></td><td><span id="benpen" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Gentamicin</span><br><span class="drugdose">&lt; 32 wks: 5 mg/kg 36 hrly<br>32 wks+: 5mg/kg 24 hrly</span></td><td><span id="gentamicin" class="outputvalue">Enter weight</span></td></tr>
+						</table><br style="height:8px">
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Fluids</td></tr>
+							<tr><td valign="top"><span class="drugname">10% Dextrose</span><br><span class="drugdose">Initial maintenance: at 60 ml/kg/day<br>for newborn neonate</span></td><td><span id="fluids" class="outputvalue">Enter weight</span></td></tr>
+						</table><br style="height:8px">
+						<table width="100%" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Other</td></tr>
+							<tr><td valign="top"><span class="drugname">Vitamin K</span><br><span class="drugdose">(400 mcg/kg, max 1 mg)</span></td><td><span id="vitk" class="outputvalue">Enter weight</span></td></tr>
+						</table>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="flat-fluids" data-expanded-icon="back" id="ivfluidspanel">
+					<h3>Intravenous Fluids <span class="maintitle-weight"></span></h3>
+
+						<table width="100%" style="margin-top: 10px;" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Bolus fluids</td></tr>
+							<tr><td><span class="drugname">0.9% NaCl Bolus</span><br><span class="drugdose">(10 ml/kg)</span></td><td><span id="naclbolus2" class="outputvalue">Enter weight</span></td></tr>
+							<tr><td><span class="drugname">Dextrose 10% Bolus</span><br><span class="drugdose">(2.5 ml/kg)</span></td><td><span id="dextrosebolus2" class="outputvalue">Enter weight</span></td></tr>
+						</table>
+						<br style="height:8px">
+						<table width="100%" style="margin-top: 10px;" cellspacing="0" cellpadding="0" class="drugtable">
+							<tr class="infusionheader"><td colspan="2">Maintenance fluids</td></tr>
+						</table>
+
+<div style="padding: 15px; padding-bottom: 0px; padding-top: 0px">
+									
+<input type="text" id="fluidsvalue" data-theme="e" pattern="\d*" placeholder="Enter total fluids" tabindex=3 data-inset="false" /><div class="fluidunits" id="inputunits">ml/kg/day</div><input type="text" style="opacity:0; display: block; font-size:1px; margin: 0px; padding: 0px; height: 0px; width: 1px; border: 0px solid #fff !important; padding: 0px !important;" id="decoy2" tabindex=4 onfocus="javascript:$(this).blur();" data-role="none">
+</div>
+
+<!-- <div class="ui-grid-a">
+	<div class="ui-block-a">
+		<div data-role="fieldcontain">
+		<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+					<legend>Sodium: <span style="font-size: 10px">(mmol/kg/d)</span></legend>
+				<input type="radio" name="tisodium" id="tisodium-0" value="0"/>
+				<label for="tisodium-0">0</label>
+				<input type="radio" name="tisodium" id="tisodium-1" value="1" />
+				<label for="tisodium-1">1</label>
+				<input type="radio" name="tisodium" id="tisodium-2" value="2" />
+				<label for="tisodium-2">2</label>	
+				<input type="radio" name="tisodium" id="tisodium-3" value="3" />
+				<label for="tisodium-3">3</label>
+				<input type="radio" name="tisodium" id="tisodium-4" value="4" />
+				<label for="tisodium-4">4</label>	
+		</fieldset>
+		</div>
+	</div>
+	<div class="ui-block-b">
+		<div data-role="fieldcontain">
+		<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+					<legend>Potassium: <span style="font-size: 10px">(mmol/kg/d)</span></legend>
+				<input type="radio" name="tipotassium" id="tipotassium-0" value="0"/>
+				<label for="tipotassium-0">0</label>
+				<input type="radio" name="tipotassium" id="tipotassium-1" value="1"/>
+				<label for="tipotassium-1">1</label>
+				<input type="radio" name="tipotassium" id="tipotassium-2" value="2" />
+				<label for="tipotassium-2">2</label>	
+				<input type="radio" name="tipotassium" id="tipotassium-3" value="3"  />
+				<label for="tipotassium-3">3</label>
+				<input type="radio" name="tipotassium" id="tipotassium-4" value="4"  />
+				<label for="tipotassium-4">4</label>
+		</fieldset>
+		</div>
+	</div>
+</div>
+-->
+
+<label for="dextrosefluid">Dextrose: (%)</label>
+<input type="range" name="dextrosefluid" id="dextrosefluid" value="10" min="5" max="30" step="2.5" />
+
+<label for="tisodium">Sodium: (mmol/kg/day)</label>
+<input type="range" name="tisodium" id="tisodium" data-theme="c" value="0" min="0" max="10" step="0.5" />
+
+<label for="tipotassium">Potassium: (mmol/kg/day)</label>
+<input type="range" name="tipotassium" id="tipotassium" data-theme="c" value="0" min="0" max="8" step="0.5" />
+
+<div data-role="content" style="padding: 10px; border: 2px solid #457b87; margin-top: 20px; margin-bottom: 20px; display: none" id="fluidcontainer">
+
+<span id="fluidoutput">
+
+</span>
+
+</div>
+</div>
+
+
+		<div data-role="collapsible" data-collapsed-icon="flat-lungs" data-expanded-icon="back">
+			<h3>Oxygenation Index</h3>
+
+		<div class="calcinfopanel">The oxygenation index (OI) measures the fraction of inspired oxygen and its usage within the body. A lower OI is better - as oxygenation improves, a baby will be able to achieve a higher PaO2 at a lower FiO2.<br><br>
+		OI > 25: indicates severe respiratory failure<br>
+		OI > 40: consider ECMO</div>
+		<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+		<div style="float:left; font-size: 13px">Oxygenation index =&nbsp;</div></td>
+		 <td> <div style="float:left">
+		    <div style="font-size: 11px; border-bottom:1px solid;text-align:center;">MAP (cmH<sub>2</sub>O) * FiO<sub>2</sub> (%)</div>
+		    <div style="font-size:11px;text-align:center;">PaO<sub>2</sub> (mmHg)</div>
+		  </div></td>
+		</tr>
+		</tbody></table><br>
+
+		Inspired oxygen percentage (%):<br>
+		<input type="range" name="oifio2" id="oifio2" value="21" min="21" max="100" step="1" />
+		<br>
+
+		Mean airway pressure (MAP): <a href="#popmap" data-corners="false"><img src="images/question50px.png" class="infobtnsimple" /></a><br>
+		<div style="padding: 15px; padding-bottom: 0px; padding-top: 0px">									
+		<input type="text" id="oimap" data-theme="e" pattern="\d*" placeholder="Enter MAP" tabindex=3 data-inset="false" /><div class="oiunitstext" id="oimapunits">cmH<sub>2</sub>O <img src="images/penpaper.png" class="infobtn" /></div><input type="text" style="opacity:0; display: block; font-size:1px; margin: 0px; padding: 0px; height: 0px; width: 1px; border: 0px solid #fff !important; padding: 0px !important;" id="oidecoy2" tabindex=4 onfocus="javascript:$(this).blur();" data-role="none">
+		</div>
+
+		Partial pressure of oxygen (PaO<sub>2</sub>):
+		<div style="padding: 15px; padding-bottom: 0px; padding-top: 0px">
+		<input type="text" id="oippo2" data-theme="e" pattern="\d*" placeholder="Enter PaO2" tabindex=5 data-inset="false" /><div class="oiunitstext" id="oippo2units">kPa <img src="images/penpaper.png" class="infobtn" /></div><input type="text" style="opacity:0; display: block; font-size:1px; margin: 0px; padding: 0px; height: 0px; width: 1px; border: 0px solid #fff !important; padding: 0px !important;" id="oidecoy3" tabindex=6 onfocus="javascript:$(this).blur();" data-role="none">
+		</div>
+
+		<div data-role="content" style="padding: 10px; border: 2px solid #457b87; margin-top: 20px; margin-bottom: 20px; display: none" id="oicontainer">
+			<span id="oioutput">
+			</span>
+		</div>
+
+	<div data-role="fieldcontain">
+	    <fieldset data-role="controlgroup" data-type="horizontal">
+	     	<legend>Mean airway pressure (MAP) units:</legend>
+	         	<input type="radio" checked name="oimapunits" id="oimapunits-a" value="cmH2O"  />
+	         	<label for="oimapunits-a">cmH2O</label>
+	         	<input type="radio" name="oimapunits" id="oimapunits-b" value="mmHg"  />
+	         	<label for="oimapunits-b">mmHg</label>
+	    </fieldset>
+	</div>
+	
+	<div data-role="fieldcontain">
+	    <fieldset data-role="controlgroup" data-type="horizontal">
+	     	<legend>Partial pressure of oxygen (PaO<sub>2</sub>) units:</legend>
+	         	<input type="radio" checked name="oipao2units" id="oipao2units-a" value="kPa"  />
+	         	<label for="oipao2units-a">kPa</label>
+	         	<input type="radio" name="oipao2units" id="oipao2units-b" value="mmHg"  />
+	         	<label for="oipao2units-b">mmHg</label>
+	    </fieldset>
+	</div>
+
+	<br class="clearbr" />
+
+	</div>
+
+
+
+		<div data-role="collapsible" data-collapsed-icon="spanner" data-expanded-icon="back" id="othercalculators">
+					<h3>Other Infusions <span class="maintitle-weight"></span></h3>
+
+			<ul class="checklistul othertools" data-theme="c" data-role="listview">
+	            <li data-icon="false" class="infusion-detail" data-infusion-drugname="generic"><a href="#genericinfusion">Drug Infusion Calculator</a><p>Check your infusion prescriptions here. Remember there are specific calculators for common drugs above.</p></li>
+	            <li data-icon="false" class="infusion-detail" data-infusion-drugname="daily"><a href="#genericinfusion">24hr Drug Infusion Calculator</a><p>Quickly calculate and check 24 hour IV infusions (e.g. vancomycin continuous infusion).</p></li>
+	            <!--<li data-icon="false"><a href="#">Something else!</a></p></li>-->
+	        </ul>
+
+	        <br class="clearbr" />
+
+				</div>
+
+</div>
+
+		<div id="footernote" style="padding-top: 6px; margin-bottom: 55px; font-size: 8pt">Remember to always double check calculations. Please note that this app does not replace your local drug formulary.</div>
+    </div><!-- /content -->
+ 
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" class="ui-btn-active ui-state-persist" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+
+</div>
+
+<div data-role="page" id="splashscreen">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <img src="images/headertitle8-neomate.gif" width="171" height="33">
+        </div><!-- /header -->
+
+<!-- CONTENT -->
+		<div data-role="content" style="background: url(images/nts-colour-horizontal-750px.png); background-position: right top; background-size: 180px; background-repeat: no-repeat; position: absolute;">
+			<h2 style="margin-top: 95px; margin-bottom: 40px">Important Notice</h2>
+
+			NeoMate is an app to help qualified neonatal staff in emergency situations. Guidance is based upon established UK national standards and the London Neonatal Transfer Service (NTS) drug formulary.<br><br>
+
+			<table border="0" cellpadding="0" cellspacing="0">
+			<tr style="background: #ecf1f3 !important;"><td style="padding: 7px">
+			   <img src="images/logo_CE.gif" style="width:50px;height:35px">
+			   </td>
+			 	<td style="padding: 7px">
+			   	NeoMate is regulated as a medical device by MHRA in the UK.
+			   	</td>
+			   	</tr>
+			 </table>
+			 <br>
+
+			Please read the following information carefully before using the app for the first time. <br><br>Information contained within this app is sourced from:<br>
+
+			<div style="background-color: #FFFFFF; padding: 15px; margin-top: 10px">
+			<b style="color: #000000">Intubation and central line insertion</b><br>"Neonatal Life Support", <br>Resuscitation Council (UK), 2013 <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="http://www.resus.org.uk/pages/nlsgen.htm" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a></div><br><br>
+
+			<b style="color: #000000">Admission to NICU</b><br>"Antibiotics for early-onset neonatal infection (CG149)",</a><br>National Institude of Health and Care Excellence (UK), August 2012. <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="http://www.nice.org.uk/CG149" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a></div><br><br>
+
+			<b>Resuscitation drug reference</b><br><a href="http://www.medicinescomplete.com/mc/bnfc/current/PHP16254-table-of-drugs-given-by-continuous-intravenous-infusion-to-neonates.htm" class="external">Appendix 4: Intravenous infusions for neonatal intensive care</a><br>British National Formulary for Children (BNFc), August 2013. The BNF is a joint publication of the BMJ Group Ltd, the Royal Pharmaceutical Society of Great Britain, the Royal College of Paediatrics and Child Health, and the Neonatal and Paediatric Pharmacists Group, BNF for Children ('BNFC') is published under the authority of a Paediatric Formulary Committee. <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="http://www.medicinescomplete.com/mc/bnfc/current/PHP16254-table-of-drugs-given-by-continuous-intravenous-infusion-to-neonates.htm" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a></div><br><br>
+
+			<b>Preparation of intravenous infusions</b><br><a href="http://www.london-nts.nhs.uk" class="external">London Neonatal Transfer Service (NTS) Guidelines</a><br>London, June 2014. <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="http://www.london-nts.nhs.uk" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a></div><br><br>
+
+			<strong>Endotracheal tube length for neonatal intubation</strong><br>
+			Kempley, S.T., Moreiras, J.W., Petrone, F.L., 2008. Resuscitation, 77, pp.369–373.<br>
+			Available at: <a href="http://dx.doi.org/10.1016/j.resuscitation.2008.02.002" class="external">ScienceDirect</a> | <a href="http://www.ncbi.nlm.nih.gov/pubmed/18372092" class="external">Pubmed</a><br><br>
+
+			<b>Neonatal cooling criteria</b><br><a href="https://www.npeu.ox.ac.uk/downloads/files/tobyregister/Register-Clinicans-Handbook1-v4-07-06-10.pdf" class="external">TOBY Clinician's Handbook</a><br>National Perinatal Epidemiology Unit (NPEU). <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="https://www.npeu.ox.ac.uk/files/downloads/tobyregister/TOBY-Register-Handbook.pdf" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a><br><br></div>
+
+			<b>Paediatric Formulary 9th Edition</b>, Guy’s &amp; St Thomas’ NHS Foundation Trust<br><br>
+
+			A variety of other sources, which are referenced on the appropriate page.
+
+			</div>
+
+			<h2 style="padding-left: 0px">About NeoMate</h2>
+
+			<b>App created</b> by Dr Chris Kelly &nbsp;<a href="http://www.twitter.com/chrisck" class="external" style="text-decoration: none"><img src="images/twitter.png" width="15">@chrisck</a> (Paediatrics trainee at the Evelina Children's Hospital, London). Please do <a href="mailto:chris@paediatrics.co.uk">contact me</a> with any suggestions or ideas for improvement.<br><br>
+
+			<b>Clinical Lead:</b> Dr Syed Mohinuddin (Consultant Neonatologist, London NTS and Royal London Hospital).<br><br>
+
+			<b>Pharmacists:</b> Rachel Bowman and Veronica Chorro-Mari<br><br>
+
+			<b>Checklists Group:</b> Dr Syed Mohinuddin, Dr Chris Kelly, Dr Gin Thian Peh, Dr Lee Collier, Dr Neha Khanna, Dr Farah Sheikh and Kate Convery.<br><br>
+
+			Thank you to everyone who has offered feedback and suggestions for improvement, and to those who have helped test early versions of the app before release.<br><br>
+
+			Thank you to the nurses at Whipps Cross Hospital for helping pick the app's name.<br><br>
+
+			NeoMate is dedicated to the late Dr Andrew Kapetanakis - an inspirational neonatologist, and strong supporter of the London Neonatal Transfer Service.<br><br>
+
+			Published by London Neonatal Transfer Service, 8D Central Tower, Royal London Hospital, Whitechapel Road, London E1 1BB.<br><br> 
+
+			Version 2.3.1, released 20 October 2015.<br>
+			Formulary for review in June 2016.<br><br>
+
+			<h2 style="padding-left: 0px">Usage Statistics</h2>
+			NeoMate collects basic usage statistics for the purposes of improving this app. All stats are fully anonymised.<br><br>
+			<h2 style="padding-left: 0px">Legal Disclaimer</h2>
+			By continuing to use NeoMate (‘the App’), you acknowledge that you have read and agree to be bound by the terms of the disclaimer described below (‘the Disclaimer’). Please exit this application now if you do not wish to accept the terms of this disclaimer.<br><br>
+
+			NeoMate complies with the Medical Devices Directive (93/42/EEC).<br><br>
+
+			The London Neonatal Transfer Service confirms that the App is designed and manufactured to comply with the relevant Essential Requirements set out in the Medical Devices Directive (93/42/EEC). When used under the conditions and for the purposes intended, the App will not compromise the clinical condition or the safety of patients, or the safety and health of users or, where applicable, other persons.<br><br>
+
+			The information contained within the App is provided on an "as is" basis without any representations or warranties, express or implied.<br><br>
+
+			You acknowledge, and understand that the App is for use by professional neonatal staff only, and that it is intended to be used as a tool and guide to help treat babies more safely. The App is designed with safety functions in order to eliminate or reduce risks as far as possible. However, nothing in the App should be considered to be a substitution for medical expertise, experience and judgment.<br><br>
+
+			The team behind NeoMate will endeavour to maintain the app to represent the latest guidelines and advice from London NTS. However, London NTS does not warrant that the operation of the app is free from errors, and that the information contained within the app is accurate, complete, true and/or up-to-date.<br><br>
+
+			London NTS and its associated organisations will not be liable to you or to any other person for any indirect, special, incidental, exemplary, consequential or other damages arising out of any use or misuse of the App, under any circumstances whatsoever.<br><br>
+
+			London NTS shall have no liability arising out of any use of the App for any loss or injury caused by errors, omissions or inaccuracies in the App. This includes any decision made as a result of reliance on the App or the information within it.<br><br>
+
+			You agree to indemnify and hold London NTS harmless from any claim or demand, including costs and expenses, made by any third party as a result of your use or misuse of the App which is not in accordance with the instructions for use and/or under the conditions and/or for the purposes intended and any action you take which is or may be based on the information contained within the App.<br><br>
+
+			This disclaimer shall be governed by the laws of England and Wales, and any dispute will be submitted to the English courts.
+
+			<h2 style="padding-left: 0px">Acknowledgements</h2>
+
+			<b>JQuery</b>, <b>JQuery UI</b> and <b>JQuery Mobile</b><br>Copyright 2013 jQuery Foundation and other contributors
+			<br>http://jquery.com/<br><br>
+
+			Permission is hereby granted, free of charge, to any person obtaining
+			a copy of this software and associated documentation files (the
+			"Software"), to deal in the Software without restriction, including
+			without limitation the rights to use, copy, modify, merge, publish,
+			distribute, sublicense, and/or sell copies of the Software, and to
+			permit persons to whom the Software is furnished to do so, subject to
+			the following conditions:<br><br>
+
+			The above copyright notice and this permission notice shall be
+			included in all copies or substantial portions of the Software.<br><br>
+
+			THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+			EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+			MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+			NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+			LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+			OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+			WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br><br><br>
+
+			<a href="#whatsnew" data-theme="b" data-role="button">Accept</a>
+
+		</div>
+<!-- CONTENT END -->
+
+	</div>
+
+
+
+
+	<div data-role="page" id="about">
+
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <img src="images/headertitle8-neomate.gif" width="171" height="33">
+        </div><!-- /header -->
+
+        <!-- CONTENT -->
+
+		<div data-role="content" style="background: url(images/nts-colour-horizontal-750px.png); background-position: right top; background-size: 180px; background-repeat: no-repeat; position: absolute;">
+			<h2 style="margin-top: 95px; margin-bottom: 40px">Important Notice</h2>
+
+			NeoMate is an app to help qualified neonatal staff in emergency situations. Guidance is based upon established UK national standards and the London Neonatal Transfer Service (NTS) drug formulary.<br><br>
+
+			<table border="0" cellpadding="0" cellspacing="0">
+			<tr style="background: #ecf1f3 !important;"><td style="padding: 7px">
+			   <img src="images/logo_CE.gif" style="width:50px;height:35px">
+			   </td>
+			 	<td style="padding: 7px">
+			   	NeoMate is regulated as a medical device by MHRA in the UK.
+			   	</td>
+			   	</tr>
+			 </table>
+			 <br>
+			<div class="aboutsubpanel">If you find NeoMate useful, please do consider <a href="Javascript:AppRate.promptForRating(true);">writing a review</a> on the app store.</div>
+
+			Please read the following information carefully before using the app for the first time. <br><br>Information contained within this app is sourced from:<br>
+
+			<div style="background-color: #FFFFFF; padding: 15px; margin-top: 10px">
+			<b style="color: #000000">Intubation and central line insertion</b><br>"Neonatal Life Support", <br>Resuscitation Council (UK), 2013 <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="http://www.resus.org.uk/pages/nlsgen.htm" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a></div><br><br>
+
+			<b style="color: #000000">Admission to NICU</b><br>"Antibiotics for early-onset neonatal infection (CG149)",</a><br>National Institude of Health and Care Excellence (UK), August 2012. <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="http://www.nice.org.uk/CG149" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a></div><br><br>
+
+			<b>Resuscitation drug reference</b><br><a href="http://www.medicinescomplete.com/mc/bnfc/current/PHP16254-table-of-drugs-given-by-continuous-intravenous-infusion-to-neonates.htm" class="external">Appendix 4: Intravenous infusions for neonatal intensive care</a><br>British National Formulary for Children (BNFc), August 2013. The BNF is a joint publication of the BMJ Group Ltd, the Royal Pharmaceutical Society of Great Britain, the Royal College of Paediatrics and Child Health, and the Neonatal and Paediatric Pharmacists Group, BNF for Children ('BNFC') is published under the authority of a Paediatric Formulary Committee. <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="http://www.medicinescomplete.com/mc/bnfc/current/PHP16254-table-of-drugs-given-by-continuous-intravenous-infusion-to-neonates.htm" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a></div><br><br>
+
+			<b>Preparation of intravenous infusions</b><br><a href="http://www.london-nts.nhs.uk" class="external">London Neonatal Transfer Service (NTS) Guidelines</a><br>London, June 2014. <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="http://www.london-nts.nhs.uk" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a></div><br><br>
+
+			<strong>Endotracheal tube length for neonatal intubation</strong><br>
+			Kempley, S.T., Moreiras, J.W., Petrone, F.L., 2008. Resuscitation, 77, pp.369–373.<br>
+			Available at: <a href="http://dx.doi.org/10.1016/j.resuscitation.2008.02.002" class="external">ScienceDirect</a> | <a href="http://www.ncbi.nlm.nih.gov/pubmed/18372092" class="external">Pubmed</a><br><br>
+
+			<b>Neonatal cooling criteria</b><br><a href="https://www.npeu.ox.ac.uk/downloads/files/tobyregister/Register-Clinicans-Handbook1-v4-07-06-10.pdf" class="external">TOBY Clinician's Handbook</a><br>National Perinatal Epidemiology Unit (NPEU). <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="https://www.npeu.ox.ac.uk/files/downloads/tobyregister/TOBY-Register-Handbook.pdf" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a></div><br><br>
+
+			<b>Paediatric Formulary 9th Edition</b>, Guy’s &amp; St Thomas’ NHS Foundation Trust<br><br>
+
+			A variety of other sources, which are referenced on the appropriate page.
+
+			</div>
+
+			<h2 style="padding-left: 0px">About NeoMate</h2>
+
+			<b>App created</b> by Dr Chris Kelly &nbsp;<a href="http://www.twitter.com/chrisck" class="external" style="text-decoration: none"><img src="images/twitter.png" width="15">@chrisck</a> (Paediatrics trainee at the Evelina Children's Hospital, London). Please do <a href="mailto:chris@paediatrics.co.uk">contact me</a> with any suggestions or ideas for improvement.<br><br>
+
+			<b>Clinical Lead:</b> Dr Syed Mohinuddin (Consultant Neonatologist, London NTS and Royal London Hospital).<br><br>
+
+			<b>Pharmacists:</b> Rachel Bowman and Veronica Chorro-Mari<br><br>
+
+			<b>Checklists Group:</b> Dr Syed Mohinuddin, Dr Chris Kelly, Dr Gin Thian Peh, Dr Lee Collier, Dr Neha Khanna, Dr Farah Sheikh and Kate Convery.<br><br>
+
+			Thank you to everyone who has offered feedback and suggestions for improvement, and to those who have helped test early versions of the app before release.<br><br>
+
+			Thank you to the nurses at Whipps Cross Hospital for helping pick the app's name.<br><br>
+
+			NeoMate is dedicated to the late Dr Andrew Kapetanakis - an inspirational neonatologist, and strong supporter of the London Neonatal Transfer Service.<br><br>
+
+			Published by London Neonatal Transfer Service, 8D Central Tower, Royal London Hospital, Whitechapel Road, London E1 1BB.<br><br>
+
+			Version 2.3.1, released 20 October 2015.<br>
+			Formulary for review in June 2016.<br><br>
+
+			<h2 style="padding-left: 0px">Usage Statistics</h2>
+			NeoMate collects basic usage statistics for the purposes of improving this app. All stats are fully anonymised.<br><br>
+
+			<h2 style="padding-left: 0px">Legal Disclaimer</h2>
+			By continuing to use NeoMate (‘the App’), you acknowledge that you have read and agree to be bound by the terms of the disclaimer described below (‘the Disclaimer’). Please exit this application now if you do not wish to accept the terms of this disclaimer.<br><br>
+
+			NeoMate complies with the Medical Devices Directive (93/42/EEC).<br><br>
+
+			The London Neonatal Transfer Service confirms that the App is designed and manufactured to comply with the relevant Essential Requirements set out in the Medical Devices Directive (93/42/EEC). When used under the conditions and for the purposes intended, the App will not compromise the clinical condition or the safety of patients, or the safety and health of users or, where applicable, other persons.<br><br>
+
+			The information contained within the App is provided on an "as is" basis without any representations or warranties, express or implied.<br><br>
+
+			You acknowledge, and understand that the App is for use by professional neonatal staff only, and that it is intended to be used as a tool and guide to help treat babies more safely. The App is designed with safety functions in order to eliminate or reduce risks as far as possible. However, nothing in the App should be considered to be a substitution for medical expertise, experience and judgment.<br><br>
+
+			The team behind NeoMate will endeavour to maintain the app to represent the latest guidelines and advice from London NTS. However, London NTS does not warrant that the operation of the app is free from errors, and that the information contained within the app is accurate, complete, true and/or up-to-date.<br><br>
+
+			London NTS and its associated organisations will not be liable to you or to any other person for any indirect, special, incidental, exemplary, consequential or other damages arising out of any use or misuse of the App, under any circumstances whatsoever.<br><br>
+
+			London NTS shall have no liability arising out of any use of the App for any loss or injury caused by errors, omissions or inaccuracies in the App. This includes any decision made as a result of reliance on the App or the information within it.<br><br>
+
+			You agree to indemnify and hold London NTS harmless from any claim or demand, including costs and expenses, made by any third party as a result of your use or misuse of the App which is not in accordance with the instructions for use and/or under the conditions and/or for the purposes intended and any action you take which is or may be based on the information contained within the App.<br><br>
+
+			This disclaimer shall be governed by the laws of England and Wales, and any dispute will be submitted to the English courts.
+
+			<h2 style="padding-left: 0px">Acknowledgements</h2>
+
+			<b>JQuery</b>, <b>JQuery UI</b> and <b>JQuery Mobile</b><br>Copyright 2013 jQuery Foundation and other contributors
+			<br>http://jquery.com/<br><br>
+
+			Permission is hereby granted, free of charge, to any person obtaining
+			a copy of this software and associated documentation files (the
+			"Software"), to deal in the Software without restriction, including
+			without limitation the rights to use, copy, modify, merge, publish,
+			distribute, sublicense, and/or sell copies of the Software, and to
+			permit persons to whom the Software is furnished to do so, subject to
+			the following conditions:<br><br>
+
+			The above copyright notice and this permission notice shall be
+			included in all copies or substantial portions of the Software.<br><br>
+
+			THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+			EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+			MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+			<span id="diagnostics">NONINFRINGEMENT</span>. IN NO EVENT SHALL THE <span id="resetcookie">AUTHORS</span> OR COPYRIGHT HOLDERS BE
+			LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+			OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+			WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br><br><br>
+
+			<br><br>
+
+		</div>
+	<!-- END CONTENT -->
+
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" class="ui-btn-active ui-state-persist" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+
+</div>
+
+
+<div data-role="page" id="whatsnew">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+<!-- CONTENT -->
+		<div data-role="content">
+			<h2 style="margin-top: 95px; margin-bottom: 40px">What's New (v2.3)</h2>
+
+			<h3>Infusion Calculations</h3>
+
+			<p>You can now calculate any infusion in any concentration for fluid restricted babies. Just click on the pencil icon to get started.</p>
+			<p><img src="images/v2-1/new-infusions.png" class="whatsnewimg100"></p>
+
+			<h3>New Reference Tab</h3>
+			<p>We have split out concise reference information into a quick access "Reference" tab at the bottom. This area will grow over the coming months.</p>
+			<p><img src="images/v2-1/newmenubar.png" class="whatsnewimg100"></p>
+
+			<h3>Other things</h3>
+			<p>93 small tweaks and improvements to make the app experience smoother, plus fixes for iOS 9. Please let us know if you find any problems, or have any ideas/suggestions for the future.</p>
+
+			<a href="#main" data-theme="b" data-role="button">Get started!</a>
+
+		</div>
+<!-- CONTENT END -->
+
+</div>
+
+
+
+
+
+<div data-role="page" id="checklists">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<h2 class="checklist-header">Neonatal Checklists</h2>
+
+			<p class="checklist-text">These checklists are concise and simple tools, aimed to support the skills of expert neonatal staff. They are not intended to replace local guidelines.<br><br>We recommend reading the principles of <a href="#popcrm" class="checkbox-link" data-transition="none" data-corners="false">Crisis Resource Management</a> to help manage difficult situations on NICU.</p>
+			<ul class="checklistul checklistulclick" data-theme="e" data-role="listview">
+	            <li data-icon="false"><a href="#checklist-ntsreferral">Referral for Neonatal Transport</a><p>Information required to make a good referral to your neonatal transport service.</p></li>
+	            <li data-icon="false"><a href="#checklist-respdistress">Term Newborn in Respiratory Distress</a><p>Key things to consider when assessing a baby in respiratory distress.</p></li>	
+	            <li data-icon="false"><a href="#checklist-preterm">Extreme Preterm Delivery</a><p>Key things to remember when attending a preterm delivery.</p></li>
+	            <li data-icon="false"><a href="#checklist-termcollapse">Term Baby Collapse on the Postnatal Ward</a><p>Checklist for early assessment and management of a term baby collapse of unknown cause.</p></li>
+	            <li data-icon="false"><a href="#checklist-hie">Term Baby with Encephalopathy</a><p>Starting care for a term baby with a suspected hypoxic insult at birth.</p></li>
+	            <li data-icon="false"><a href="#checklist-termbadcondition">Term Baby Born in Unexpectedly Poor Condition</a><p>Arrival at the birth of a baby born in poor condition for unknown reasons.</p></li>
+	            <li data-icon="false"><a href="#checklist-suspectednec">Suspected Necrotising Enterocolitis (NEC)</a><p>Checklist for initial management of a baby with suspected NEC.</p></li>
+	            <li data-icon="false"><a href="#checklist-underventilated">The Underventilated Baby</a><p>Checklist to help optimise a baby with suboptimal blood gases or oxygen saturations.</p></li>
+	            <li data-icon="false"><a href="#checklist-dope">Acute Deterioration of Ventilated Baby</a><p>Using the DOPE approach to assess a sudden deterioration.</p></li>
+	        </ul>
+
+	     <p class="checklist-footer-text"><b>Checklists</b> created by Dr Syed Mohinuddin, Dr Chris Kelly, Dr Gin Thian Peh, Dr Lee Collier, Dr Neha Khanna, Dr Farah Sheikh and Kate Convery.<br><br>
+	     If you would like to help with future editions, or if you have any ideas or suggestions, please do <a href="mailto:chris@paediatrics.co.uk">contact us</a>.</p>
+
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+
+<!-- ################### CHECKLISTS PAGES START #################### -->
+
+<!-- START CHECKLIST -->
+<div data-role="page" id="checklist-ntsreferral">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<div class="ui-bar ui-bar-b checklist-secondary-bar">
+				<a href="#checklists" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+			</div>
+
+			<h2 class="checklisth2">Referral for Transport</h2>
+
+			<div class="checklistabstract">Try to have the following information available before you call the transport team. For London NTS contact details, please <a href="http://london-nts.nhs.uk/professionals/make-a-referral/" class="external">click here</a>.</div>
+
+			<h3 class="checklisth3">1. Is this a time critical transfer?</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">1. Unstable respiratory or cardiovascular failure not responding to appropriate management, including:<br>
+						<ul class="checklist-bullet"><li>requiring FiO2 100%</li>
+						<li>pH &lt; 7.1 and pCO2 &gt; 9kPa</li>
+						<li>arterial oxygen &lt; 5kPa on 2 consecutive gas measurements</li>
+						<li>persistent unstable pneumothorax despite chest drain</li>
+						<li>persistent mean blood pressure below corrected gestational age, measured on arterial line; if measured with cuff only, there should be acidosis (pH &lt;7.1).</li></ul></label>
+
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">2. Intestinal perforation</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">3. Suspected duct-dependent cardiac lesion not responding to prostin</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">4. Ventilated infant with tracheo-oesophageal fistula +/- atresia</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">5. Gastroschisis</label>
+
+			<h3 class="checklisth3">2. Background Information:</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Brief antenatal, delivery and resuscitation history, Apgar scores.</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Ventilation: <span class="cl-plain">mode, pressures, rate, Ti, FiO2, SpO2, ETT size/length, latest gas results. Is the ET tube tip between T1-T2 on CXR?</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Sedation and paralysis?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Fluids: <span class="cl-plain">infusions running, blood sugars</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Inotropes required?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Lines inserted</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Temperature</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Antibiotics given?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Any other information: <span class="cl-plain">e.g. congenital abnormalities</span></label>
+
+
+
+			<a href="#checklists" class="checklist-back" data-role="button" style="margin-bottom: 55px; padding-top: 15px; padding-bottom: 15px" data-icon="arrow-l" data-transition="none" data-iconpos="left" data-theme="d">Back to Index</a>
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+<!-- END CHECKLIST -->
+
+<!-- START CHECKLIST -->
+<div data-role="page" id="checklist-respdistress">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<div class="ui-bar ui-bar-b checklist-secondary-bar">
+				<a href="#checklists" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+			</div>
+
+			<h2 class="checklisth2">Term Newborn in Respiratory Distress</h2>
+
+			<div class="checklistabstract">While most babies will improve (e.g. transient tachypnoea of the newborn), it is very important to flag worsening respiratory distress, as it can be the only presenting sign of many underlying pathologies.</div>
+
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">1. Have you assessed work of breathing, pulse oximetry (be concerned if SpO2 &lt; 95%) and blood gas (including glucose)? <span class="cl-plain">Consider an early CXR.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">2. If you are suspecting sepsis, have you ensured that antibiotics have been prescribed and given?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">3. Have you ruled out pneumothorax, diaphragmatic hernia and congenital anomalies?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">4. Could this be an evolving meconium aspiration syndrome? <span class="cl-plain">(Carefully recheck the birth history, and have a low threshold for intubation)</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">5. Stop and think before using CPAP in term babies. Consider intubation early if:<br>
+				<ul class="checklist-bullet">
+				<li>FiO2 > 40%</li>
+				<li>increasing respiratory distress</li>
+				<li>evidence of poor oxygenation or high pCO2</li>
+				</ul></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">6. Have you made a clear plan for review and escalation? <span class="cl-plain">(if in doubt, discuss with your tertiary neonatal intensive care unit, or neonatal transport service.)</span></label>
+
+			<a href="#checklists" class="checklist-back" data-role="button" style="margin-bottom: 55px; padding-top: 15px; padding-bottom: 15px" data-icon="arrow-l" data-transition="none" data-iconpos="left" data-theme="d">Back to Index</a>
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+<!-- END CHECKLIST -->
+
+<!-- START CHECKLIST -->
+<div data-role="page" id="checklist-termcollapse">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<div class="ui-bar ui-bar-b checklist-secondary-bar">
+				<a href="#checklists" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+			</div>
+
+			<h2 class="checklisth2">Term Baby Collapse on Postnatal Ward</h2>
+
+			<div class="checklistabstract">After stabilisation with a systematic newborn life support approach, please use this checklist to help remember the critical steps in this situation.</div>
+
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">1. Have you checked a blood sugar and blood gas (with lactate if possible)? <span class="cl-plain">Consider metabolic or hypoglycaemic causes</span></label>
+
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">2. Could this be sepsis? <span class="cl-plain">Also think viral causes. Have you started antibiotics?</span></label>
+
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">3. Have you considered a cardiac condition? <span class="cl-plain">Consider strongly if:</span>
+				<ul class="checklist-bullet">
+					<li>SpO2 &lt; 95% in the absence of respiratory distress, not responding to supplementary oxygen. (Check for a pre/post saturation difference).</li>
+					<li>Femoral pulses are not palpable.</li>
+					<li>A murmur is heard on auscultation.</li>
+				</ul>
+			If any of the above are true, have you considered starting a prostaglandin E1 or E2 (Prostin) infusion?</label>
+
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">4. Could there be an undiagnosed congenital anomaly? <span class="cl-plain">(e.g. diaphragmatic hernia, tracheo-oesophageal fistula, oesophageal atresia etc?) Pass an NG tube and perform a CXR.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">5. Have you considered seizures or an arrhythmia?</label>
+
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">6. Discuss early with your tertiary neonatal intensive care unit, or neonatal transport service.</label>
+
+			<a href="#checklists" class="checklist-back" data-role="button" style="margin-bottom: 55px; padding-top: 15px; padding-bottom: 15px" data-icon="arrow-l" data-transition="none" data-iconpos="left" data-theme="d">Back to Index</a>
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+<!-- END CHECKLIST -->
+
+<!-- START CHECKLIST -->
+<div data-role="page" id="checklist-hie">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<div class="ui-bar ui-bar-b checklist-secondary-bar">
+				<a href="#checklists" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+			</div>
+
+			<h2 class="checklisth2">Term Baby with Encephalopathy</h2>
+
+			<div class="checklistabstract">Following stabilisation with a systematic standard newborn life support approach, use the following checklist to remember the most important steps in the management of a term baby with encephalopathy due to a suspected hypoxic insult.</div>
+
+			<h3 class="checklisth3">1. Early Assessment</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Have you performed a formal neurological examination? <span class="cl-plain">Include <i>at least</i> tone, posture, suck and pupils. Perform this after arrival to your neonatal unit, and certainly <b>before</b> giving muscle relaxants or sedatives.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Have you asked for cord gases? </label>
+
+			<label><input type="checkbox" name="checkbox-0" data-theme="i"><span class="checkbox-link">Would this baby benefit from cooling? <span class="cl-plain">(Remember <a href="#popcoolingdialog" data-transition="none" data-corners="false">Toby cooling criteria</a>).</span></span>
+				<ul class="checklist-bullet">
+					<li>Still discuss with local cooling centre if only Criteria A is met.</li>
+					<li>Start passive cooling as soon as possible: turn off heater, remove incubator lid/open doors. Use rectal temperature monitoring if possible every 15 minutes (axilla if not available). When temperature reaches 34.5&deg;C, turn incubator heater on to avoid over-cooling.</li>
+				</ul></label>
+
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Can you perform cerebral function monitoring (CFM)? <span class="cl-plain">This is helpful information if available.</span></label>
+
+			<h3 class="checklisth3">2. Information Gathering</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Cause: <span class="cl-plain">was there a sentinel event? For example: antepartum haemorrhage, abruption, cord prolapse</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Timings: <span class="cl-plain">first heart rate, first gasp, onset of regular respiration</span></label>
+
+			<h3 class="checklisth3">3. Refer Early</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Call your local cooling centre for advice as early as possible.</span></label>
+
+			<a href="#checklists" class="checklist-back" data-role="button" style="margin-bottom: 55px; padding-top: 15px; padding-bottom: 15px" data-icon="arrow-l" data-transition="none" data-iconpos="left" data-theme="d">Back to Index</a>
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+<!-- END CHECKLIST -->
+
+
+<!-- START CHECKLIST -->
+<div data-role="page" id="checklist-preterm">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<div class="ui-bar ui-bar-b checklist-secondary-bar">
+				<a href="#checklists" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+			</div>
+
+			<h2 class="checklisth2">Extreme Preterm Delivery</h2>
+
+			<div class="checklistabstract">The following is a checklist to help guide the delivery of an extremely premature baby. The checklist is not a comprehensive "how to" guide - it provides reminders of only the most critical steps.</div>
+
+			<h3 class="checklisth3">1. Preparing Parents</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Has the neonatal team spoken to the parents?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Have you explored their ideas, concerns and expectations?
+				<ul class="checklist-bullet">
+					<li><span class="checkbox-link"><b>Ethics:</b> <a href="#popbapmguidelines" data-corners="false">Ethical guidance from BAPM</a> is very helpful when speaking to parents, and also includes many relevant statistics.</span></li>
+					<li><span class="checkbox-link-external"><b>Statistics:</b> An overview is helpful for some parents. The <a href="http://www.bliss.org.uk/Handlers/Download.ashx?IDMF=f3d01126-3af4-426d-b9cc-cc1287aaf9be" target="_system" class="external">Bliss information sheet on Epicure</a> can be useful here.</span></li>
+				</ul>
+			</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Do the parents have adequate support?</label>
+
+			<h3 class="checklisth3">2. Preparing Your Team</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Have you notified all important people? <span class="cl-plain">i.e. Consultant on-call, senior neonatal nurse, porters to retrieve incubator</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Have you allocated everybody clear roles?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Does the midwife know to take cord gases?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Is all necessary equipment ready, available, and checked? <span class="cl-plain">Don't forget surfactant, batteries, gas and supplies.</span></label>
+
+			<h3 class="checklisth3">3. Thermoregulation</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Is the overhead heater switched onto full power?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Do you have a plastic bag (food grade) ready? <span class="cl-plain">Remember not to cover the baby with towels while in the plastic bag.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Is the room as warm as possible? <span class="cl-plain">Close doors, switch off air conditioning.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Do you have a hat ready? <span class="cl-plain">Remember: hat on before intubation.</span></label>
+
+			<h3 class="checklisth3">4. Airway management</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i"><span class="checkbox-link">Prepare an appropriately-sized endotracheal tube, and identify desired length before birth <span class="cl-plain">(<a href="#popett" data-corners="false">click here for table</a>). Ensure tube is at recommended length <b>before</b> surfactant delivery.</span></span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Consider using a CO2 detection method to confirm tube placement.</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Consider gastric tube placement.</label>
+
+			<h3 class="checklisth3">5. Breathing</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Have you attached a pulse oximeter to the right hand? <span class="cl-plain">The hand may remain inside the bag.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Have you thought about using the least pressure and lowest oxygen concentration necessary? <span class="cl-plain">Start in air; if the chest is moving well, consider reducing the positive inspiratory pressure (PIP)</span></label>
+
+			<h3 class="checklisth3">6. Circulation</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">When should the dextrose infusion begin? <span class="cl-plain">Do my local circumstances mean that I should insert a cannula and start dextrose on the labour ward before transfer to NICU?</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Have you prepared equipment for central umbilical lines? <span class="cl-plain">Aim to have lines inserted within the first hour after birth.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Is there a need for a fluid bolus? <span class="cl-plain">Have you considered inotropic support prior to multiple fluid boluses?</label>
+			
+
+			<h3 class="checklisth3">7. Next steps</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">If transfer is required, call your tertiary neonatal intensive care unit for advice, or contact your neonatal transport service.</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Early maternal breast milk - <span class="cl-plain">does the mother know how to express colostrum and the benefits for her baby?</span></label>
+
+			<a href="#checklists" class="checklist-back" data-role="button" style="margin-bottom: 55px; padding-top: 15px; padding-bottom: 15px" data-icon="arrow-l" data-transition="none" data-iconpos="left" data-theme="d">Back to Index</a>
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+<!-- END CHECKLIST -->
+
+<!-- START CHECKLIST -->
+<div data-role="page" id="checklist-underventilated">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<div class="ui-bar ui-bar-b checklist-secondary-bar">
+				<a href="#checklists" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+			</div>
+
+			<h2 class="checklisth2">The Underventilated Baby</h2>
+
+			<div class="checklistabstract">This checklist will help with optimising a stable baby with suboptimal blood gas or oxygen saturations. For an acute deterioration, please see <a href="#checklist-dope">"Sudden Deterioration of a Ventilated Baby"</a>.</div>
+
+			<h3 class="checklisth3">1. What are <span class="checkbox-link">your target numbers?</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Oxygen saturations: <span class="cl-plain">Term babies - should be 95% or above. Preterm babies - usually aim for 90-94%. Cardiologists may require lower saturations in congenital heart disease.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">pH and CO<sub>2</sub>: <span class="cl-plain">For preterm babies, pCO<sub>2</sub> in the 7-8 kPa range or higher may be acceptable ("permissive hypercapnoea"), as long as pH remains above 7.25.</span></label>
+
+			<h3 class="checklisth3">2. Is this acute or chronic?</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Recent changes: <span class="cl-plain">Has there been a recent change to ventilation that can be simply reversed?</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Recent events: <span class="cl-plain">Has the baby just had nursing cares or a procedure?</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Swinging: <span class="cl-plain">Does the baby tend to "swing" regardless of ventilator settings?</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">If any of the above are true, <span class="cl-plain">and the baby is not deteriorating rapidly, consider close observation and repeat gas in 30 minutes.</span></label>
+
+			<h3 class="checklisth3">3. Mechanical factors</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Tube position: <span class="cl-plain">Tip should be at T1-T2 on CXR.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Pain / baby position: <span class="cl-plain">If the baby is "fighting", splinting, or asynchronous with the ventilator, consider analgesia, sedation or paralysis, and look for any underlying causes.</span></label>
+
+			<h3 class="checklisth3">4. To improve oxygenation:</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Conventional ventilation: <span class="cl-plain">Consider increasing PIP. For larger babies at lower rates, consider increasing PEEP to improve alveolar recruitment. Monitor tidal volume (do not exceed 7 ml/kg if possible, to avoid barotrauma).</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">High frequency oscillation: <span class="cl-plain">Review CXR. Consider increasing mean airway pressure (MAP) to achieve chest inflation of 8-9 anterior ribs. Repeat CXR after 30 minutes. After senior advice, lowering the frequency may also improve oxygenation (but you may need to reduce amplitude, and monitor blood gases carefully for sudden hypocapnoea).</span></label>
+			
+			<h3 class="checklisth3">5. To improve CO<sub>2</sub> clearance:</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Conventional ventilation: <span class="cl-plain">Consider increasing rate by 5-10 /min. Max frequency is usually 60 breaths/min.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">High frequency oscillation: <span class="cl-plain">Consider increasing amplitude (delta P) by 5-10 cmH<sub>2</sub>O. If you cannot increase amplitude, consider lowering the frequency under senior supervision.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">All ventilation strategies: <span class="cl-plain">Remove as much dead space as possible between the ET tube and ventilator circuit.</span></label>
+
+			<a href="#checklists" class="checklist-back" data-role="button" style="margin-bottom: 55px; padding-top: 15px; padding-bottom: 15px" data-icon="arrow-l" data-transition="none" data-iconpos="left" data-theme="d">Back to Index</a>
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+<!-- END CHECKLIST -->
+
+<!-- START CHECKLIST -->
+<div data-role="page" id="checklist-dope">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<div class="ui-bar ui-bar-b checklist-secondary-bar">
+				<a href="#checklists" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+			</div>
+
+			<h2 class="checklisth2">Sudden Deterioration of a Ventilated Baby</h2>
+
+			<div class="checklistabstract">This checklist helps assess a baby using the "DOPE" approach.  Consider ordering a chest x-ray whilst assessing clinically. If the baby becomes profoundly hypoxic or bradycardic, they should be immediately resuscitated using a systematic newborn life support approach.</div>
+
+			<h3 class="checklisth3">1. DISPLACEMENT of ET Tube?</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Check measurement at lips: <span class="cl-plain">Compare to documented length. An audible cry is another sign the baby has extubated.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Examine: <span class="cl-plain">Check for asymmetrical chest movement (low tube), or absent/intermittent air entry (high or dislodged tube). Is the baby achieving intended pressures on the ventilator? What is the leak measurement? Check exhaled CO<sub>2</sub> if possible.</span></label>
+
+			<h3 class="checklisth3">2. OBSTRUCTED tube?</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Auscultate: <span class="cl-plain">Switch to t-piece or bag and check air entry.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Recent suction: <span class="cl-plain">Has blood or thick mucus recently been suctioned? Could there be an obstructing plug? Irrigate with saline and suction. If fresh blood is suctioned, get urgent senior help and consider increasing PEEP (or MAP if oscillated).</span></label>
+			
+			<h3 class="checklisth3">3. Could there be a PNEUMOTHORAX?</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Cold light: <span class="cl-plain">In a darkened room, the affected side may transmit the light brightly.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Consider urgent CXR</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Needle aspiration: <span class="cl-plain">In acute decompensation, consider needle aspiration while preparing a chest drain.</span></label>
+
+			<h3 class="checklisth3">4. Is there EQUIPMENT failure?</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Alerts and alarms: <span class="cl-plain">Check ventilator for problems. Double check with someone else.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Check circuit: <span class="cl-plain">Follow circuit from ventilator to patient and back. Ensure all connections are tight.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Manual ventilation: <span class="cl-plain">If there is an improvement when manually ventilating, consider swapping out the ventilator/circuit for a replacement.</span></label>
+
+			<p><b>If the baby fails to improve</b>, you need to consider the risk of removing the tube and attempting mask ventilation and reintubation.</p>
+
+			<p>Most babies can be effectively mask ventilated whilst waiting for help. Babies with pulmonary haemorrhage or pneumothorax will deteriorate significantly on extubation, so be sure you have excluded these beforehand.</p>
+
+			<a href="#checklists" class="checklist-back" data-role="button" style="margin-bottom: 55px; padding-top: 15px; padding-bottom: 15px" data-icon="arrow-l" data-transition="none" data-iconpos="left" data-theme="d">Back to Index</a>
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+<!-- END CHECKLIST -->
+
+
+<!-- START CHECKLIST -->
+<div data-role="page" id="checklist-termbadcondition">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<div class="ui-bar ui-bar-b checklist-secondary-bar">
+				<a href="#checklists" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+			</div>
+
+			<h2 class="checklisth2">Term Baby Born in Unexpectedly Poor Condition</h2>
+
+			<div class="checklistabstract">This checklist is intended to help the neonatal team arriving at the delivery of a baby born in unexpectedly poor condition. It provides only reminders of the steps that are easy to forget.</div>
+
+			<h3 class="checklisth3">1. Stabilise the baby</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Use a standard systematic newborn life support approach.</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Re-evaluate regularly. How long has active resuscitation been continuing?</label>
+
+			<h3 class="checklisth3">2. Why has this happened?</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Have you asked staff and midwife why they think the baby is in poor condition?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Are there any specific antenatally diagnosed problems?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Is there a cord gas available?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Have you considered these common conditions?
+				<ul class="checklist-bullet">
+					<li>Sepsis</li>
+					<li>Hypoxic insult (e.g. abruption)</li>
+					<li>Drugs / toxins</li>
+					<li>Unusual causes: e.g. diaphragmatic hernia, tracheo-oesophageal fistula</li>
+				</ul></label>
+
+
+			<h3 class="checklisth3">3. Next steps</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k"><span class="checkbox-link">Would this baby benefit from cooling? <span class="cl-plain">(Remember <a href="#popcoolingdialog" data-corners="false">Toby cooling criteria</a>. Consider passive cooling and discuss with your local network cooling centre.</span></span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Seek advice from your senior colleague, tertiary neonatal intensive care unit, or neonatal transport service.</label>
+
+
+
+			<a href="#checklists" class="checklist-back" data-role="button" style="margin-bottom: 55px; padding-top: 15px; padding-bottom: 15px" data-icon="arrow-l" data-transition="none" data-iconpos="left" data-theme="d">Back to Index</a>
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+<!-- END CHECKLIST -->
+
+<!-- START CHECKLIST -->
+<div data-role="page" id="checklist-suspectednec">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<div class="ui-bar ui-bar-b checklist-secondary-bar">
+				<a href="#checklists" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+			</div>
+
+			<h2 class="checklisth2">Suspected Necrotising Enterocolitis (NEC)</h2>
+
+			<div class="checklistabstract">Babies with necrotising enterocolitis can deteriorate rapidly. Use this checklist to ensure you have not forgotten any key steps.</div>
+
+			<h3 class="checklisth3">1. Airway</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Have you intubated the baby? <span class="cl-plain">Early intubation is generally recommended</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Has the baby been given adequate analgesia? <span class="cl-plain">NEC is painful, leading babies to splint their diaphragm. Consider giving a morphine bolus followed by morphine infusion at 20-40 mcg/kg/hr. Also consider muscle relaxation.</label>
+
+			<h3 class="checklisth3">2. Breathing</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Have you checked and optimised ventilator settings? <span class="cl-plain">Higher pressures and longer inspiratory times may be necessary.</span></label>
+
+			<h3 class="checklisth3">3. Circulation</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Does the baby require a bolus? <span class="cl-plain">Intravascular depletion is likely to occur. Crystalloid bolus or blood products may be necessary. It may be wise to fluid restrict in the light of likely capillary leak and the need for volume boluses.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Have you ordered blood products? <span class="cl-plain">It will take time to prepare a neonatal transfusion, so plan early.</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="k">Strict fluid balance monitoring is essential.</label>
+
+			<h3 class="checklisth3">4. Key next steps</h3>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Have you inserted a large bore (size 6-8) gastric tube? <span class="cl-plain">Place on free drainage. Aspirate hourly. Consider replacement of aspirate volume.</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Have you ordered an AXR? <span class="cl-plain">Look for signs including pneumoperitoneum, portal veous gas and intramural gas (pneumatosis).</span></label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Discuss early with your local neonatal surgical centre.</label>
+
+			<a href="#checklists" class="checklist-back" data-role="button" style="margin-bottom: 55px; padding-top: 15px; padding-bottom: 15px" data-icon="arrow-l" data-transition="none" data-iconpos="left" data-theme="d">Back to Index</a>
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+<!-- END CHECKLIST -->
+
+
+<!-- ################### CHECKLISTS PAGES END #################### -->
+<div data-role="page" id="checklist-premature-old">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<h2 style="margin-top: 63px; margin-bottom: 34px">Premature Delivery Checklist</h2>
+
+			<p>Pre-resuscitation Briefing:</p>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Team introductions / assign roles</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Any special considerations?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Communication expectations: "if any team member sees any developing problem or concern, please bring it to my attention as soon as possible". Reminder to call back all orders from Leader (i.e. "PIP is now 40").</label>
+
+			<p>Equipment Checks:</p>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Set up Neopuff (30/5 for term, 20/5 for preterm; FiO2 21%, correctly-sized mask). Check warmer turned to manual at 100%.</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Intubation equipment checked and prepared with appropriate sized tubes</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Surfactant ready for babies <28 weeks. Plastic bag ready for babies <26 weeks.</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Suction set at 80-100 mmHg.</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Pulse oximeter ready and probe prepared.</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="j">Stethoscope ready.</label>
+
+			<p>Debrief:</p>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">What did we do well?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">What can we improve upon?</label>
+			<label><input type="checkbox" name="checkbox-0" data-theme="i">Do we need to follow-up on any items?</label>
+
+
+			<a href="#checklists" data-role="button" style="margin-bottom: 55px; padding-top: 15px; padding-bottom: 15px" data-icon="arrow-l" data-transition="none" data-iconpos="left" data-theme="d">Back to Index</a>
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" class="ui-btn-active ui-state-persist" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+
+
+<div data-role="page" data-close-btn="left" data-history="false" data-theme="c" id="weightinfobox">
+  <div data-role="header">
+  	<a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>Quick Weight Estimation</h2>
+  </div>
+  <div role="main" class="ui-content dialogcontent">
+    
+  <div class="popsubpanel">In an emergency, if weight is unknown, use these average 50th centile weights by gestation from the RCPCH UK-WHO Growth Charts (2009):</div>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="1" class="alternatingcolor">
+  <tr>
+    <td class="header" align="center"><strong>Gestation<br>(weeks)</strong></td>
+    <td class="header" align="center" ><strong>Estimated<br>Birth Weight (g)</strong></td>
+    <td class="header">&nbsp;</td>
+  </tr>
+  <tr class="weighttablerow">
+  	<td colspan="3" style="height: 8px"></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">23</td>
+    <td align="center" class="contentrows">587</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="587">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">24</td>
+    <td align="center" class="contentrows">686</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="686">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">25</td>
+    <td align="center" class="contentrows">789</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="789">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">26</td>
+    <td align="center" class="contentrows">896</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="896">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">27</td>
+    <td align="center" class="contentrows">1007</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="1007">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">28</td>
+    <td align="center" class="contentrows">1125</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="1125">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">29</td>
+    <td align="center" class="contentrows">1253</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="1253">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">30</td>
+    <td align="center" class="contentrows">1398</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="1398">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">31</td>
+    <td align="center" class="contentrows">1565</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="1565">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">32</td>
+    <td align="center" class="contentrows">1756</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="1756">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">33</td>
+    <td align="center" class="contentrows">1966</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="1966">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">34</td>
+    <td align="center" class="contentrows">2191</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="2191">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">35</td>
+    <td align="center" class="contentrows">2423</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="2423">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">36</td>
+    <td align="center" class="contentrows">2658</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="2658">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">37</td>
+    <td align="center" class="contentrows">2888</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="2888">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">38</td>
+    <td align="center" class="contentrows">3106</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="3106">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">39</td>
+    <td align="center" class="contentrows">3307</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="3307">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">40</td>
+    <td align="center" class="contentrows">3484</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="3484">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">41</td>
+    <td align="center" class="contentrows">3636</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="3636">Select</span></td>
+  </tr>
+  <tr class="weighttablerow">
+    <td align="center" class="contentrows">42</td>
+    <td align="center" class="contentrows">3772</td>
+    <td align="center" class="contentrows"><span class="estweightlink" data-weight="3772">Select</span></td>
+  </tr>
+</table>
+<br>
+<div class="footnote"><strong>Source:</strong> 50th centile average birthweight of male/female infants, using RCPCH UK–WHO Neonatal and Infant Close Monitoring Growth Chart 2009<br><span style="font-size: 10px">Cole TJ, Freeman JV, Preece MA. British 1990 growth reference centiles for weight, height, body mass index and head circumference fitted by maximum penalized likelihood. Stat.Med. 1998;17:407-29.</span></div><br>
+
+
+    <a data-role="button" class="backicon" data-theme="d">Close</a>
+  </div>
+</div>
+
+<div data-role="page" data-theme="c" id="popmap">
+  <div data-role="header">
+  	<a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>Calculating MAP</h2>
+  </div>
+  <div role="main" class="ui-content dialogcontent">
+
+<p>Mean airway pressure (MAP) is a unit that is usually calculated by modern ventilators.</p>
+<p>If you are using a mechanical ventilator that does not offer this facility, use the following equation to calculate MAP:</p>
+
+		<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+		<div style="float:left;">MAP = &nbsp;</div></td>
+		 <td> <div style="float:left">
+		    <div style="font-size: 14px; border-bottom:1px solid;text-align:center;">(Ti * PIP) + (Te * PEEP)</div>
+		    <div style="font-size:14px;text-align:center;">Ti + Te</div>
+		  </div></td>
+		</tr>
+		</tbody></table>
+
+		<br>
+		PIP = Peak Inspiratory Pressure<br>
+		PEEP = Peak End Expiratory Pressure<br>
+		Ti = Inspiratory time<br>
+		Te = Expiratory time<br>
+
+	<br>
+
+
+    <a data-role="button" class="backicon" data-theme="d">Close</a>
+  </div>
+</div>
+
+
+<div data-role="page" data-theme="c" id="popett">
+  <div data-role="header">
+  	<a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>Endotracheal tube length</h2>
+  </div>
+  <div role="main" class="ui-content dialogcontent">
+
+Use the following table to insert the ET tube to the optimum length. Always confirm position by chest x-ray: tube tip should be seen at level of T1-T2.<br><br>
+
+<table width="100%" border="0">
+  <tr class="tableheader">
+    <td>ETT Length at Lips (cm)</td>
+    <td>Gestation (weeks)</td>
+    <td>Weight (kg)</td>
+  </tr>
+  <tr>
+    <td>5.5</td>
+    <td>23-24</td>
+    <td>0.5-0.6</td>
+  </tr>
+  <tr>
+    <td>6.0</td>
+    <td><p>25-26</p></td>
+    <td>0.7-0.8</td>
+  </tr>
+  <tr>
+    <td>6.5</td>
+    <td>27-29</td>
+    <td>0.9-1.0</td>
+  </tr>
+  <tr>
+    <td>7.0</td>
+    <td>30-32</td>
+    <td>1.1-1.4</td>
+  </tr>
+  <tr>
+    <td>7.5</td>
+    <td>33-34</td>
+    <td>1.5-1.8</td>
+  </tr>
+  <tr>
+    <td>8.0</td>
+    <td>35-37</td>
+    <td>1.9-2.4</td>
+  </tr>
+  <tr>
+    <td>8.5</td>
+    <td>38-40</td>
+    <td>2.5-3.1</td>
+  </tr>
+  <tr>
+    <td>9.0</td>
+    <td>41-43</td>
+    <td>3.2-4.2</td>
+  </tr>
+</table>
+    <p><strong>Endotracheal tube length for neonatal intubation</strong> Kempley, S.T., Moreiras, J.W., Petrone, F.L., 2008. Resuscitation, 77, pp.369–373. <br><br>Available at: <a href="http://dx.doi.org/10.1016/j.resuscitation.2008.02.002" class="external">ScienceDirect</a> | <a href="http://www.ncbi.nlm.nih.gov/pubmed/18372092" class="external">Pubmed</a><br><br></p>
+    <a data-role="button" class="backicon" data-theme="d">Close</a>
+  </div>
+</div>
+
+<div data-role="page" data-theme="c" id="popuacuvc">
+  <div data-role="header">
+  	<a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>UAC/UVC Position</h2>
+  </div>
+  <div role="main" class="ui-content dialogcontent">
+
+<h3>Umbilical arterial catheters (UAC)</h3>
+<p>UAC position is very important - it is essential that the tip of the catheter does not sit in a branch of the aorta (which could block the vessel or give a high concentration of infusion into an organ-feeding vessel - i.e. the renal artery).</p>
+<p>During insertion, the UAC passes through the umbilicus, inferiorly through the umbilical artery, into the internal iliac artery, common iliac artery, and into the aorta.</p>
+<p>Therefore, aim for one of the following two positions:
+<ol><li><strong>High position: </strong>T6-T10 level</li>
+<li><strong>Low position: </strong>L3-L5 level</li></ol></p>
+
+<h3>Umbilical venous catheters (UVC)</h3>
+<p>During insertion, the UVC passes through the umbilicus, umbilical vein, left portal vein, ductus venosus, middle/left hepatic vein, and into the inferior vena cava.</p>
+<p>The optimum position of the tip is at the junction of the inferior vena cava and right atrium.</p>
+
+<h3>Example x-ray position</h3>
+<p>The following case shows normal positioning of UAC (tip at T8) and UVC (at junction of IVC and right atrium).</p>
+
+<img src="images/xrays/umbilical-catheters.jpg" width="100%"><br>
+<strong>Source:</strong> Case courtesy of <a href="http://radiopaedia.org/cases/umbilical-catheters" class="external">Radiopaedia.org</a> (Creative Commons Licence)</strong>
+
+    
+    <a data-role="button" class="backicon" data-theme="d">Close</a>
+  </div>
+</div>
+
+
+<div data-role="page" data-theme="c" id="popsarnat">
+  <div data-role="header">
+  <a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>Sarnat Staging</h2>
+  </div>
+  <div role="main" class="ui-content dialogcontent">
+
+<table class="sarnat-table">
+<tr>
+<th></th>
+<th><b>Grade I mild</b></th>
+<th><b>Grade II moderate</b></th>
+<th><b>Grade III severe</b></th>
+</tr>
+<tr>
+<td><b>Alertness</td>
+<td>Hyperalert</td>
+<td>Lethargy</td>
+<td>Coma</td>
+</tr>
+<tr>
+<td><b>Muscle tone</b></td>
+<td>Normal or increased</td>
+<td>Hypotonic</td>
+<td>Flaccid</td>
+</tr>
+<tr>
+<td><b>Seizures</b></td>
+<td>None</td>
+<td>Frequent</td>
+<td>Uncommon</td>
+</tr>
+<tr>
+<td><b>Pupils</b></td>
+<td>Dilated, reactive</td>
+<td>Small, reactive</td>
+<td>Variable, fixed</td>
+</tr>
+<tr>
+<td><b>Respiration</b></td>
+<td>Regular</td>
+<td>Periodic</td>
+<td>Apnoeic</td>
+</tr>
+<tr>
+<td><b>Duration</b></td>
+<td>&lt;24h</td>
+<td>2 - 14 days</td>
+<td>Weeks</td>
+</tr>
+</table>
+
+    <p>Adapted from: Sarnat, H.B. &amp; Sarnat, M.S., 1976. Neonatal encephalopathy following fetal distress. A clinical and electroencephalographic study. Archives of neurology, 33, pp.696–705. <br><br>Available at: <a href="http://www.ncbi.nlm.nih.gov/pubmed/987769" class="external">Pubmed</a> | <a href="http://archneur.jamanetwork.com/article.aspx?articleid=574959" class="external">JAMA Neurology</a><br><br></p>
+    <a data-role="button" class="backicon" data-theme="d">Close</a>
+  </div>
+</div>
+
+
+<div data-role="page" data-theme="c" id="popcoolingdialog">
+  <div data-role="header">
+  <a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>Cooling Criteria</h2>
+  </div>
+  <div role="main" class="ui-content dialogcontent">
+			<h3>When to consider treatment with cooling</h3>
+
+						<table width="100%" cellspacing="0" cellpadding="0" class="toby-table">
+							<tr><td><p><b>A. Infants ≥ 36 completed weeks gestation admitted to the neonatal unit
+							with at least one of the following:</b> 
+
+							<ul><li>Apgar score of ≤5 at 10 minutes after birth</li>
+							<li>Continued need for resuscitation, including endotracheal or mask ventilation, at 
+							10 minutes after birth</li>
+							<li>Acidosis within 60 minutes of birth (defined as any occurrence of umbilical cord, 
+							arterial or capillary pH <7.00)</li>
+							<li>Base Deficit ≥ 16 mmol/L in umbilical cord or any blood sample (arterial, venous 
+							or capillary) within 60 minutes of birth </li></ul>
+							<p>Infants that meet criteria A should be assessed for whether they meet the 
+							neurological abnormality entry criteria (B):</p>
+
+								<p><b>B. seizures or moderate to severe encephalopathy, consisting of:</b>
+							<ul><li>Altered state of consciousness (reduced response to stimulation or absent 
+							response to stimulation) and</li>
+							<li>Abnormal tone (focal or general hypotonia, or flaccid) and</li>
+							<li>Abnormal primitive reflexes (weak or absent suck or Moro response).</li></ul>
+
+							<p>Infants who meet criteria A and B may be considered for treatment with cooling.
+							</td></tr>
+						</table><br>
+			The information above comes from the UK TOBY Clinician's Handbook found <a href="https://www.npeu.ox.ac.uk/downloads/files/tobyregister/Register-Clinicans-Handbook1-v4-07-06-10.pdf" class="external">here</a>.
+
+	<br><br>
+    <a data-role="button" class="backicon" data-theme="d">Close</a>
+  </div>
+</div>
+
+<div data-role="page" data-theme="c" id="popbapmguidelines">
+  <div data-role="header">
+  <a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>BAPM Ethical Guideline</h2>
+  </div>
+  <div role="main" class="ui-content">
+	<div class="ui-bar ui-bar-b dialog-secondary-bar">
+		<a data-rel="back" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+	</div>
+
+			<h3>Ethical Guidance for Extremely Preterm Birth</h3>
+			<div class="checklistabstract">The information below comes from <a href="http://www.bapm.org/publications/documents/guidelines/Approved_manuscript_preterm_final.pdf" class="external">The Management of Babies born Extremely Preterm at less than 26 weeks of gestation</a>, A Framework for Clinical Practice at the time of Birth, British Association of Perinatal Medicine 2008.<br><br>
+			Please read the <a href="http://www.bapm.org/publications/documents/guidelines/Approved_manuscript_preterm_final.pdf" class="external">full report</a>, but for speed, a key passage is reproduced below.</div>
+
+			<p>A Framework for Clinical Practice based on consensus and the most recent evidence available follows:</p><h3>(A)    LESS THAN 23+0 WEEKS</h3><p>If gestational age is <i><b>certain </b></i>and less than 23+0 (i.e. at 22 weeks) it would be considered in the best interests of the baby, and standard practice, for resuscitation not to be carried out. If the parents wish they should have the opportunity to discuss outcomes with a second senior member of the perinatal team.</p><p class="s8">In t<span class="s9">he EPICure study of all babies born in 1995 in the UK and Eire at &lt;26 weeks gestational age, only two babies reported at &lt;23 weeks survived to discharge and one has severe disability.</span></p><p class="s9">In the EPICure 2 study (2006) survival remains extremely rare at this gestational age, with a high incidence of early major morbidity in the few who are discharged home.</p><h3>(B)      23+0 to 23+6 WEEKS</h3><p>If gestational age is <i><b>certain </b></i>at 23+0 – 23+6 (i.e. at 23 weeks) and the fetal heart is heard during labour,<br/>a professional experienced in resuscitation should be available to attend the birth. In the best interests of the baby a decision not to start resuscitation is an appropriate approach particularly if the parents have expressed this wish. However, if resuscitation is started with lung inflation using a mask, the response of the heart rate will be critical in deciding whether to continue or to stop and sensitively explain to the parents the futility of further interventions.</p><p class="s9">The EPICure study (1995) reported in 2000 that at 23 weeks 121/241 (50%) of live born babies were admitted for intensive care of whom 105 (80%) died in hospital. 26 babies were discharged home, one died and 14 (54%) have a moderate or severe disability at six years.</p><p class="s9">Early findings in the EPICure 2 study (2006) show that at this gestational age survival has not increased significantly and there has been no change in early major morbidity.</p><h3>(C)      24+0 to 24+6 WEEKS</h3><p>If gestational age is <b>certain </b>at 24+0 – 24+6 resuscitation should be commenced unless the parents and clinicians have considered that the baby will be born severely compromised. However the response of the heart rate to lung inflation using a mask will be critical in deciding whether to proceed to intensive care. If the baby is assessed to be more immature than expected, deciding not to start resuscitation may be considered in the best interest of the baby.</p><p class="s9">In the 1995 study, although 313/382 (78%) of babies born at this gestational age (313) were given intensive care, 198 (66%) died. Half of the survivors (52) have a moderate or severe disability at six years.</p><p class="s9">Early findings in the EPICure 2 study (2006) show that at this gestational age survival has increased significantly by 12%. More babies were treated for retinopathy of prematurity but there is no evidence of any change in other early major morbidity.</p><h3>(D)      25 WEEKS AND GREATER</h3><p>When gestational age is 25<span class="s4">+0 </span>weeks or more, survival is now considerably greater than in 1995. It is appropriate to resuscitate babies at this gestation and, if the response is encouraging, to start intensive care.</p><p class="s9">In the 1995 study389/424 (92%) babies born alive at 25 weeks were admitted for intensive care but 171 (48%) died.27% of the survivors had no identifiable impairment at six years.</p><p class="s9">In 2006 survival had increased significantly from 54% to 67%by 13%, but there is no evidence of any change in early major morbidity.</p><h3>(E)      UNCERTAIN GESTATIONAL AGE</h3><p>If gestational age is uncertain, (i.e. no dating ultrasound scan) but thought to be <u>&gt;</u>23+0 weeks, an ultrasound scan by an experienced sonographer should be carried out if time permits. If the fetal heart is heard during labour, a professional experienced in resuscitation and another clinician (neonatal nurse or trainee paediatrician) should be called to attend birth. A decision should then be made, in the best interests of the baby, as to whether resuscitation should begin with mask ventilation. Once begun, the response of heart rate to lung inflation will be crucial in judging how long to continue resuscitation. If there is any uncertainty about management guidance from more senior staff should be sought urgently.</p><h2>Intensive care</h2><p>The response of the baby to mask ventilation is critical in deciding whether to commence intensive care. If  the heart rate increases rapidly and the colour improves, appropriate ventilatory support, including intubation and surfactant therapy, should be given and the baby transferred to the neonatal unit for further assessment.<br/>There is no evidence to support the use of adrenaline by any route, or chest compressions, during resuscitation at gestational age &lt;26 weeks.<br/>Management should be decided by doctors and nurses experienced in neonatal intensive care.</p><h2>Withholding or withdrawing resuscitation or intensive care</h2><p>When resuscitation or intensive care is withheld or withdrawn, the baby should be given all the care needed for his/her comfort and the parents encouraged by appropriate staff to hold and spend time with their baby, if they wish, in a quiet and private location.
+
+	<br><br>
+    <a data-role="button" class="backicon" data-theme="d">Close</a><br><br><br>
+  </div>
+  	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" class="ui-btn-active ui-state-persist" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+
+
+<div data-role="page" id="reference">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+		<div data-role="content">
+			<h2 class="checklist-header">Quick Reference</h2>
+
+			<p class="checklist-text">The following information provides quick reference for neonatal staff.</p>
+			<ul class="checklistul checklistulclick" data-theme="k" data-role="listview">
+	            <li data-icon="false"><a href="#popbapmguidelines">BAPM Guidelines for Extreme Prematurity</a><p>Helpful for counselling parents, based on consensus and most recent evidence available.</p></li>
+	            <li data-icon="false"><a href="#reference-cfm">Cerebral Function Monitoring (CFM) Guide</a><p>Quick and concise guide giving examples and helping you to interpret early CFM results.</p></li>
+	            <li data-icon="false"><a href="#popett" data-transition="none" data-corners="false">ETT Length Table</a><p>Optimum endotracheal tube lengths, based upon an observational study.</p></li>	
+	            <li data-icon="false"><a href="#popcoolingdialog" data-corners="false">TOBY Cooling Criteria</a><p>Reminder of the criteria for cooling, based upon the TOBY trial criteria.</p></li>	
+	            <li data-icon="false"><a href="#popsarnat" data-corners="false">Sarnat Staging</a><p>Key features in the Sarnat staging criteria for hypoxic-ischaemic encephalopathy of the newborn.</p></li>	
+	        </ul>
+
+	     <p class="checklist-footer-text"><b>Suggestions?</b> Do you wish something else was included here? Please let us know so we can add it by <a href="mailto:chris@paediatrics.co.uk">contacting us</a>.</p>
+
+			</div>
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" class="ui-btn-active ui-state-persist" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+
+
+<div data-role="page" data-theme="c" id="reference-cfm">
+  <div data-role="header">
+  <a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>Cerebral Function Monitoring</h2>
+  </div>
+  <div role="main" class="ui-content">
+	<div class="ui-bar ui-bar-b dialog-secondary-bar">
+		<a data-rel="back" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+	</div>
+
+			<h3>Brief Introduction to CFM</h3>
+			<div class="checklistabstract">The Cerebral Function Monitor (CFM) records a single channel of EEG and provides information about global cerebral activity. CFM can be helpful in assessing hypoxic-ischaemic encephalopathy after an asphyxial insult, and for providing information about duration, intensity and frequence of neonatal seizures.<br><br>
+			<b>Source:</b> TOBY CFM Manual, Prof Denis Azzopardi</div>
+
+			<h3>Key points to note</h3>
+			<ul>
+			<li>The CFM does not give information about EEG frequency.</li>
+			<li>Focal lesions may not be identified because the signal is obtained from a single channel. Following asphyxia the occurrence of a moderately or severely abnormal trace has a positive predictive value for abnormal outcome in the order of >70%.</li>
+			<li>Medications may affect the record. Anticonvulsants or sedatives such as morphine or chloral hydrate may transiently suppress the CFM record.</li>
+			</ul>
+
+			<h3>Normal trace</h3>
+			<p>In healthy full term infants the trace alters in width according to the state of the infant. The trace is narrower when the infant is awake and widens during sleep. These changes in the width of the trace with infant state are called sleep/wake cycling. In normal infants the width of the trace varies from approximately 10-40 microvolts.<br><br>A sample of a normal trace is given below:<br>
+			<img src="images/cfm/normal.jpg" class="refimg100"></p>
+
+			<h3>Moderately Abnormal Trace</h3>
+			<p>A moderately abnormal trace has an upper margin that is greater than 10 microvolts and a lower margin less than 5 microvolts. The trace therefore appears wider than in normal infants. This appearance can be seen in infants with moderately severe encephalopathy, or immediately after administration of drugs such as anticonvulsants and sedatives. This
+			pattern may also be seen in pre term infants (below 36 weeks gestation).<br><br>A sample of a moderately abnormal trace is shown below:<br>
+			<img src="images/cfm/modabnormal.jpg" class="refimg100"></p>
+
+			<h3>Severely Abnormal Trace</h3>
+			<p>A severely abnormal trace is characterised by a general suppression of amplitude so that the trace appears narrow and of low voltage. The upper margin of the trace is less than 10 microvolts. The lower margin is usually less than 5 microvolts (on occasion the lower margin may be transiently greater than 5 microvolts whilst the upper margin is less than 10 microvolts). This pattern may be accompanied by brief bursts of higher voltage spikes, which appear as single spikes above the background activity. This appearance is sometimes called “burst suppression”. A severely abnormal trace is usually seen with severe encephalopathy and is often accompanied by seizure activity.<br><br>
+			Two examples of severely abnormal traces are shown here:<br>
+			<img src="images/cfm/sevabnormal1.jpg" class="refimg100"><br>
+			<img src="images/cfm/sevabnormal2.jpg" class="refimg100"></p>
+
+			<h3>Seizures</h3>
+			Seizures may only be identified if they are sufficiently prolonged, i.e. more than 2-3 minutes. Shorter lasting discharges may be missed since the CFM is recorded at a very slow speed. Two main seizure patterns may be seen.
+			<ol><li>There is a sudden rise and narrowing of the trace (reflecting the increase in EEG voltage).</li>
+			<li>A narrowing of the trace without a rise in voltage may be seen. The trace returns to the previous appearance when the seizure activity stops.</li></ol>
+
+			<b>Notes:</b><br>
+			<ol><li>It may be difficult to distinguish burst suppression from brief seizures in a severely abnormal trace - but the distinction is not important.</li>
+			<li>An isolated sudden change in the trace suggestive of seizure may be difficult to interpret in the absence of any clinical observation. Artefact due to touching the infant may cause diagnostic difficulty.</li>
+			<li>It may not be possible to comment on the background of the trace if seizures are very frequent.</li>
+			<li>Continuous seizure activity may be difficult to recognise because the trace may appear to be of normal voltage. However, with long term recording it may be possible to identify when seizure activity stops.</li></ol>
+
+			<br>
+
+			This trace demonstrates both burst suppression and seizures:<br>
+			<img src="images/cfm/seizures2.jpg" class="refimg100"><br>
+
+			This trace shows borderline normal amplitude with seizure developing towards the end of the trace:<br>
+			<img src="images/cfm/seizures3.jpg" class="refimg100"><br>
+
+			In this trace, note two seizures on otherwise normal amplitude:<br>
+			<img src="images/cfm/seizures4.jpg" class="refimg100"><br>
+
+			Reduction in seizures following increase in anticonvulsant.<br>
+			<img src="images/cfm/seizures5.jpg" class="refimg100"><br>
+
+			Severely abnormal trace with burst suppression and probable seizures. It may be difficult to distinguish between bursts and seizures but both are often present in severely abnormal traces.<br>
+			<img src="images/cfm/seizures6.jpg" class="refimg100"><br>
+
+			Note effect of sedative (chloral hydrate) on amplitude:<br>
+			<img src="images/cfm/chloral.jpg" class="refimg100"><br>
+
+			<p>Thank you to Prof Denis Azzopardi for letting us reproduce these examples here. For more examples, please visit the <a href="https://www.npeu.ox.ac.uk/downloads/files/toby/TOBY-CFM-Manual.pdf" target="external">TOBY CFM Manual</a> (external link).</p>
+
+    <a href="#reference" data-transition="none" data-role="button" data-theme="d">Back</a><br><br><br>
+  </div>
+  	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" class="ui-btn-active ui-state-persist" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+
+
+
+
+<div data-role="page" data-theme="c" id="popcrm">
+  <div data-role="header">
+  <a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>Crisis Resource Management (CRM)</h2>
+  </div>
+  <div role="main" class="ui-content dialogcontent">
+	<div class="ui-bar ui-bar-b dialog-secondary-bar">
+		<a href="#checklists" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+	</div>
+
+			<h3>Key Principles of CRM</h3>
+			<div class="checklistabstract">Crisis Resource Management was developed in the 1970s by the aviation industry, after analysis of aircraft crashes showed that human error was responsible for 85% of events. The following is especially useful for anyone working in a neonatal intensive care environment.</div>
+
+<strong>KEY PRINCIPLES OF CRM</strong></p>
+
+<img src="images/CRM-diagram.gif" id="crm-diagram">
+
+<p>Rall and Gaba identified the following 15 key principles:</p><ol><li>Know the environment</li><li>Anticipate and plan</li><li>Call for help early</li><li>Exercise leadership and followership</li><li>Distribute the workload</li><li>Mobilize all available resources</li><li>Communicate effectively</li><li>Use all available information</li><li>Prevent and manage fixation errors</li><li>Cross (double) check</li><li>Use cognitive aids</li><li>Re-evaluate repeatedly</li><li>Use good teamwork</li><li>Allocate attention wisely</li><li>Set priorities dynamically</li></ol>
+
+<p><strong>KNOW YOUR ENVIRONMENT</strong></p>
+<ul><li>How things work, and where things are</li>
+<li>Be aware of strengths and vulnerabilities of environment</li>
+<li>Maintain situational awareness</li>
+<li>Use cognitive aids e.g. equipment maps</li>
+<li>Regular training</li>
+<li>Know the role and level of experience of team members (role confusion is common in the resuscitation setting)</li></ul>
+
+<p><strong>ANTICIPATE, SHARE AND REVIEW THE PLAN</strong></p><ul><li>Think ahead and plan for all contingencies</li><li>Set priorities dynamically</li><li>Re-evaluate periodically</li><li>Anticipate delays</li><li>Use checklists</li><li>Share the plan with others – sharing the mental model facilitates effective action towards a common goal</li><li>Think out loud and provide periodic briefings to verbalise priorities, goals and clinical findings as they change</li><li>Encourage team members to share relevant thoughts and plans</li><li>Continually review the plan based on observations and response to treatment</li></ul>
+
+<p><strong>ENSURE LEADERSHIP, ROLE CLARITY AND GOOD TEAMWORK</strong></p><ul><li>Employ the least confrontational approach consistent with the goal</li><li>Participative decision making improves team buy in</li><li>Use an authoritative approach when necessary (e.g. time critical situations)</li><li>Allocate team roles</li><li>Establish behavioural and performance expectations of team members</li><li>Establish and maintain the team’s shared mental model of what is happening and the team’s goals</li><li>Monitor the external and internal environments of the team to avoid being caught off guard</li><li>Team members should show good followership and be active &#8211; each observes and monitors events and advocates or asserts corrective actions</li><li>Leader provides debriefing</li><li>Team members including the Leader need to be able to recognise when they are affected by stress, and develop appropriate self-care behaviours</li><li>All team members &#8211; Leaders and Followers &#8211; are equally responsible for ensuring good patient outcomes</li></ul>
+
+<p><strong>COMMUNICATE EFFECTIVELY</strong></p><ul><li>distribute needed information to team members and update the shared mental model</li><li>Use closed loop communication</li><li>Be assertive, not aggressive or submissive</li><li>Avoid personal attacks</li><li>Resolve conflict</li><li>Maintain relationships</li><li>Facilitate collaborative efforts working towards a common goal</li><li>Cross (double) check</li></ul>
+
+<p><strong>CALL FOR HELP EARLY</strong></p><ul><li>Be aware of barriers to asking for help (e.g. fear of criticism or losing face)</li><li>Set predefined criteria for asking for help</li><li>Call for help early</li><li>Mobilise all available resources</li></ul>
+
+<p><strong>ALLOCATE ATTENTION WISELY – AVOID FIXATION</strong></p><ul><li>Be aware of ‘fixation error’ that reduces situational awareness</li><li>Prioritize tasks and focus on the most important task at hand</li><li>Delegate tasks to others</li><li>Use all available information</li></ul>
+
+<p><strong>DISTRIBUTE THE WORKLOAD – MONITOR AND SUPPORT TEAM MEMBERS</strong></p><ul><li>Team Leader stands back whenever possible to maintain situational awareness and oversee the team</li><li>Assign tasks according to the defined roles of the team</li><li>Team Leader supports team members in their tasks</li></ul>
+
+<p><b>References:</b></p>
+<p style="font-size: 13px">
+<b>Emergency Manual:  Cognitive aids for perioperative critical events</b>, Stanford Anesthesia Cognitive Aid Group*. See <a href="http://emergencymanual.stanford.edu" target="external">Stanford website</a> for latest  version. Creative Commons <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/legalcode" target="external">BY-NC-ND 2014</a> (Version 2). *Core contributors in random order: Howard SK, Chu LF, Goldhaber-Fiebert SN,  Gaba DM, Harrison TK.<br><br>
+
+<b>Life In The Fast Lane</b> - <a href="http://lifeinthefastlane.com/" target="external">http://lifeinthefastlane.com/</a> - an excellent Free Open Access Meducation site.</p>
+
+
+	<br><br>
+    <a data-role="button" class="backicon" data-theme="d">Close</a>
+  </div>
+</div>
+
+
+
+<div data-role="page" data-theme="c" id="halfcorrection">
+  <div data-role="header">
+  <a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>Correction of Acidosis</h2>
+  </div>
+  <div role="main" class="ui-content dialogcontent">
+    <p>Total number of mmol of bicarbonate required can be calculated by:<br><br>
+    <b>F</b> x <b>base deficit (mmol/L)</b> x <b>weight (kg)</b><br><br>
+    <b>F</b> represents the extracellular fluid:weight ratio. This is:
+    <ul>
+    	<li>0.5-0.6 in premature neonates</li>
+    	<li>0.4 in neonates</li>
+    	<li>0.3 in infants and children</li>
+    </ul>
+    Only <b>half</b> the base deficit should be corrected initially by slow IV infusion, and blood glucose, pH and electrolytes analysed before full correction.<br><br>
+    For reference:
+    <ul>
+    	<li>4.2% concentration has 0.5 mmol of sodium and bicarbonate in 1 ml</li>
+    	<li>8.4% concentration has 1 mmol of sodium and bicarbonate in 1ml</li>
+    </ul>
+
+    </p>
+    <a href="#main" data-role="button" data-rel="back" data-theme="d">Close</a>
+  </div>
+</div>
+
+<div data-role="page" data-theme="c" id="popadditives">
+  <div data-role="header">
+  <a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>Additives for Infusion</h2>
+  </div>
+  <div role="main" class="ui-content dialogcontent">
+    <p><b>How to Calculate IV Fluid Additives</b></p>
+
+    <p>To calculate how much additive to add to a bag/syringe for infusion, use the following simple formula:<br><br></p>
+
+    <span style="font-size: 14px; font-weight: bold;">Amount of additive to add to your bag for IV infusion</span><br>
+		<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+		<div style="float:left; font-size:11px;">=&nbsp;</div></td>
+		 <td> <div style="float:left">
+		    <div style="font-size: 11px; border-bottom:1px solid;text-align:center;">Bag volume (ml) * Desired daily amount (mmol/kg/day)</div>
+		    <div style="font-size:11px;text-align:center;">Fluid infusion rate (ml/kg/day)</div>
+		  </div></td>
+		</tr>
+		</tbody></table><br>
+
+		<span style="font-size: 14px; font-weight: bold;">So for our current baby:</span><br>
+
+		<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+		<div style="float:left; font-size: 11px">Amount of sodium to add =&nbsp;</div></td>
+		 <td> <div style="float:left">
+		    <div style="border-bottom:1px solid;font-size:small;text-align:center;">500ml * <span id="popadditives-naamount">x</span> mmol/kg/day</div>
+		    <div style="font-size:small;text-align:center;"><span id="popadditives-fluidrate">x</span> ml/kg/day</div>
+		  </div></td>
+		</tr>
+		</tbody></table><br>
+		<span style="color: #FCF5F5; font-size: 11px">Amount of sodium to add </span><span style="font-size: 11px"> =&nbsp;</span><span id="popadditives-answer" style="font-size:small; font-weight: bold">x</span> mmol
+		<br><br>
+		<a href="#main" data-role="button" data-rel="back" data-theme="d">Close</a>
+    </div>
+  </div>
+</div>
+
+
+<div data-role="page" data-theme="c" id="gir">
+  <div data-role="header">
+  <a class="backicon" data-icon="delete">&nbsp;</a>
+    <h2>Glucose Delivery</h2>
+  </div>
+  <div role="main" class="ui-content dialogcontent">
+    <p><b>How to Calculate Glucose Infusion Rate</b></p>
+
+    <p>To calculate the glucose infusion rate (GIR) that is being delivered to your baby via their intravenous fluids, use the following equation:<br>
+
+		<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+		<div style="float:left;">GIR =&nbsp;</div></td>
+		 <td> <div style="float:left">
+		    <div style="font-size: 11px; border-bottom:1px solid;text-align:center;">IV Rate (mL/hr) * Dex Conc (g/dL) * 1000 (mg/g)</div>
+		    <div style="font-size:11px;text-align:center;">Weight (kg) * 60 (min/hr) * 100 (mL/dL)</div>
+		  </div></td>
+		</tr>
+		</tbody></table><br>
+
+		So for our current baby:<br>
+
+		<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+		<div style="float:left;">GIR =&nbsp;</div></td>
+		 <td> <div style="float:left">
+		    <div style="border-bottom:1px solid;font-size:small;text-align:center;"><span id="gir-rate">x</span> ml/hr * <span id="gir-dexconc">x</span> g/dL * 1000 (mg/g)</div>
+		    <div style="font-size:small;text-align:center;"><span id="gir-weight">x</span> kg * 60 (min/hr) * 100 (mL/dL)</div>
+		  </div></td>
+		</tr>
+		</tbody></table><br>
+		<span style="color: #FCF5F5">GIR </span> =&nbsp;<span id="gir-answer">x</span> mg/kg/min</p>
+
+		<p>For reference, in a newborn baby, normal glucose utilisation rates in neonates are 5-8 mg/kg/min. Consider investigating for hyperinsulinism in newborn babies who require >10 mg/kg/min to maintain normal glucose levels.</p>
+    <br><br><a href="#main" data-role="button" data-rel="back" data-theme="d">Close</a>
+    </div>
+  </div>
+</div>
+
+<div data-role="page" data-theme="c" id="infusion-detail">
+    <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+        <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+        <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+    </div><!-- /header -->
+
+	<div role="main" class="ui-content">
+				<div class="ui-bar ui-bar-b checklist-secondary-bar">
+				<a href="#main" data-role="button" class="backbtn" data-inline="true" data-transition="none" data-theme="e" data-icon="arrow-l">Back</a>
+			</div>
+	<h2><span id="infusionheader"></span> Infusion Calculation</h2>
+
+	<div class="summarybox"><strong>Summary </strong><span class="maintitle-weight" style="font-weight: bold"></span>:<br>
+	<span id="infusionoutputtext">Calculation conclusion text</span>
+	<span id="fusualdose">Pharmacy note</span>
+	</div>	
+
+	<form id="druginfusionform">
+	<input type="hidden" name="fdrugname" value="">
+	<input type="hidden" name="ffluidtype" id="ffluidtype" value="">
+
+		<fieldset class="ui-grid-c druginfusioncalc">
+				<div class="ui-block-a">
+					<div data-role="fieldcontain">
+						<label for="fdeliverydose">Dose:</label>
+						<input type="number" name="fdeliverydose" id="fdeliverydose" value=""  />
+					</div>	
+
+				</div>
+				<div class="ui-block-b">
+					<div data-role="fieldcontain">
+						<label for="fdeliveryunitsdrug" class="select">Units:</label>
+						<select name="fdeliveryunitsdrug" data-icon="slash" class="inlineselect" id="fdeliveryunitsdrug">
+							<option value="g">g</option>
+							<option value="mg">mg</option>
+							<option value="mcg">mcg</option>
+							<option value="ng">nanog</option>
+						</select>
+					</div>
+				</div>
+				<div class="ui-block-c">
+					<div data-role="fieldcontain">
+						<label for="fdeliveryunits" class="select">&nbsp;</label>
+						<select name="fdeliveryunits" data-icon="slash" class="inlineselect" id="fdeliveryunits">
+							<option value="kg" selected>kg</option>
+						</select>
+					</div>
+				</div>
+				<div class="ui-block-d">
+					<div data-role="fieldcontain">
+						<label for="fdeliveryunitstime" class="select">&nbsp;</label>
+						<select name="fdeliveryunitstime" data-icon="false" class="inlineselect" id="fdeliveryunitstime">
+							<option value="min">min</option>
+							<option value="hr">hr</option>
+							<option value="day">day</option>
+						</select>
+					</div>
+				</div>					
+	    </fieldset>
+
+	<label for="fdesiredrate">Infusion rate (ml/hr):</label>
+	<input type="range" name="fdesiredrate" id="fdesiredrate" min="0.1" max="2" step="0.1" />
+
+
+	<label for="fsyringe">Syringe size (ml):</label>
+	<input type="range" name="fsyringe" id="fsyringe" value="50" min="0" max="50" step="5" />
+
+	</form>
+
+	<p><br><a href="#main" data-role="button" class="nofastclick" data-transition="none" data-theme="d">Close</a></p><br><br><br>
+	</div>
+	
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" class="ui-btn-active ui-state-persist" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+
+
+<div data-role="page" id="qunit">
+		<div data-role="content">
+
+			<div id="qunit"><h1>NeoMate Test Suite</h1><p>This section is intended for the app designers while debugging problems.</p>
+			<a href="#main" data-role="button" data-rel="back" data-theme="d">Go back to app</a><br>
+			<p>Or if you're sure... <a href="Javascript:QUnit.start();">Start testing sequence</a></p></div>
+			<div id="qunit-fixture"></div>
+
+		</div>
+</div>
+
+
+<script src="phonegap.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+  $(document).bind("mobileinit", function(){
+      $.mobile.hashListeningEnabled = true;
+  });
+</script>  
+<script type="text/javascript" src="js/neomate-preinit.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/fastclick.js"></script>
+<script type="text/javascript" src="js/underscore-min.js"></script>
+<!-- <script type="text/javascript" src="1js-full/neomate-full.js"></script> -->
+<script type="text/javascript" src="js/neomate.js"></script>
+
+
+
+<!-- QUNIT -->
+
+<!-- <link rel="stylesheet" href="1testing/qunit-1.17.1.css">
+ <script src="1testing/qunit-1.17.1.js"></script>
+ <script src="1testing/nts-test.js"></script> //-->
+
+<!-- END QUNIT -->
+
+</body>
+</html>
