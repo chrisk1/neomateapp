@@ -157,7 +157,7 @@
 .ui-bar-b a.ui-link:hover{color:#2489ce}
 .ui-bar-b a.ui-link:active{color:#2489ce}
 .ui-bar-b input,.ui-bar-b select,.ui-bar-b textarea,.ui-bar-b button{font-family:Lato,sans-serif}
-.ui-body-b,.ui-overlay-b{border:2px solid #166549;color:#34495e;background: #fff;background-image:none}
+.ui-body-b,.ui-overlay-b{border:2px solid #166549;border-radius: 3px;color:#34495e;background: #fff;background-image:none}
 .ui-body-b{font-family:Lato,sans-serif;}
 .ui-body-b input,.ui-body-b select,.ui-body-b textarea,.ui-body-b button{font-family:Lato,sans-serif;background:#fff}
 .ui-body-b .ui-link-inherit{color:#333}
@@ -1800,7 +1800,7 @@ label.ui-submit { font-size: 16px; line-height: 1.4; font-weight: normal; margin
 .ui-collapsible-heading .ui-btn { text-align: left; margin: 0; border-left-width: 0; border-right-width: 0; }
 .ui-collapsible-inset .ui-collapsible-heading .ui-btn { border-right-width: 1px; border-left-width: 1px; }
 .ui-collapsible-collapsed + .ui-collapsible:not(.ui-collapsible-inset) .ui-collapsible-heading .ui-btn { border-top-width: 0; }
-.ui-collapsible-set .ui-collapsible:not(.ui-collapsible-inset) .ui-collapsible-heading .ui-btn { border-top-width: 1px; }
+.ui-collapsible-set .ui-collapsible:not(.ui-collapsible-inset) .ui-collapsible-heading .ui-btn { border-top-width: 0px; }
 .ui-collapsible-heading .ui-btn-inner { padding-left: 12px; padding-right: 12px; }
 .ui-collapsible-heading .ui-btn-icon-left .ui-btn-inner { padding-left: 40px; }
 .ui-collapsible-heading .ui-btn-icon-right .ui-btn-inner { padding-right: 40px; }
@@ -1814,7 +1814,7 @@ label.ui-submit { font-size: 16px; line-height: 1.4; font-weight: normal; margin
 .ui-collapsible-heading-status { position: absolute; top: -9999px; left:0px; }
 .ui-collapsible-content {
 	display: block;
-	margin: 0 -15px;
+	margin: 0 -21px;
 	padding: 10px 15px;
 	border-left-width: 0;
 	border-right-width: 0;

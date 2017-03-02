@@ -64,8 +64,8 @@ body {
 	display: block;
 	width: 120px;
 	margin-top: -37px;
-	float: right;
-	right: 30px;
+  float: left;
+  left: 80px;
   text-align: right;
     z-index:2; /* Or higher than parent div */
 }
@@ -74,12 +74,15 @@ body {
   border: 2px solid #CE6563;
   border-radius: 4px;
   float: right;
-  padding: 5px;
-  margin-top: -4px;
+  padding: 7px;
+  margin-top: -43px;
   background-color: #F7EAEA;
   font-size: 11px;
   margin-left: 8px;
   color: #561715;
+  position: relative;
+  right: 45px;
+  z-index: 2;
 }
 
 .estweightlink {
@@ -172,13 +175,13 @@ body {
  }
 
 .checklist-header {
-  margin-top: 63px; 
+  margin-top: 20px; 
   margin-bottom: 15px;
   padding: 0px;
 }
 
 .checklist-secondary-bar {
-  margin-top:48px;
+  margin-top: -1px;
   margin-left: -15px;
   margin-right: -15px;
   padding: 0px !important;
@@ -187,7 +190,7 @@ body {
 }
 
 .dialog-secondary-bar {
-  margin-top:42px;
+  margin-top: -1px;
   margin-left: -15px;
   margin-right: -15px;
   padding: 0px !important;

@@ -33,16 +33,16 @@
 
 <body>
 
-   <div data-role="page" id="main" style="background: url(images/nts-horizontal-bg2.png); ebackground-position: bottom right">
+   <div data-role="page" id="main" style="background: url(images/nts-horizontal-bg2.png); background-position: right -40px; background-size: 150px;">
  	<a name="maintop">
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
  
         <div data-role="content" style="top: 50px; position: absolute" id="maincontentarea">
-				<div style="padding-left: 8px; padding-right: 8px;"><input type="number" id="babyweight" data-theme="b" pattern="\d*" placeholder="Enter baby weight" data-clear-btn="true" tabindex=1  /><div class="units" id="inputunits"><a href="#weightinfobox" style="text-decoration: none" data-corners="false">grams <div id="estimatelabel">gestation</div></a></div><input type='text' tabindex=2 style="opacity:0; display: block; font-size:1px; height: 0px; width: 1px; border: 0px; padding: 0px !important; clear:both" id="decoy1" onfocus="javascript:$(this).blur();" data-role="none"></div>
+				<div style="padding-left: 8px; padding-right: 8px;"><input type="number" id="babyweight" data-theme="b" pattern="\d*" placeholder="Enter baby weight" data-clear-btn="true" tabindex=1  /><div class="units" id="inputunits"><a href="#" style="text-decoration: none" data-corners="false">grams</a></div><div id="estimatelabel">gestation</div><input type='text' tabindex=2 style="opacity:0; display: block; font-size:1px; height: 0px; width: 1px; border: 0px; padding: 0px !important; clear:both" id="decoy1" onfocus="javascript:$(this).blur();" data-role="none"></div>
 
 				<div data-role="collapsible-set" class="ui-collapsible-set" data-theme="b" data-content-theme="b" data-inset="false">
 
@@ -197,145 +197,104 @@
 							<tr class="infusionheader"><td colspan="2">Maintenance fluids</td></tr>
 						</table>
 
-<div style="padding: 15px; padding-bottom: 0px; padding-top: 0px">
-									
-<input type="text" id="fluidsvalue" data-theme="e" pattern="\d*" placeholder="Enter total fluids" tabindex=3 data-inset="false" /><div class="fluidunits" id="inputunits">ml/kg/day</div><input type="text" style="opacity:0; display: block; font-size:1px; margin: 0px; padding: 0px; height: 0px; width: 1px; border: 0px solid #fff !important; padding: 0px !important;" id="decoy2" tabindex=4 onfocus="javascript:$(this).blur();" data-role="none">
-</div>
+						<div style="padding: 15px; padding-bottom: 0px; padding-top: 0px">								
+							<input type="text" id="fluidsvalue" data-theme="e" pattern="\d*" placeholder="Enter total fluids" tabindex=3 data-inset="false" /><div class="fluidunits" id="inputunits">ml/kg/day</div><input type="text" style="opacity:0; display: block; font-size:1px; margin: 0px; padding: 0px; height: 0px; width: 1px; border: 0px solid #fff !important; padding: 0px !important;" id="decoy2" tabindex=4 onfocus="javascript:$(this).blur();" data-role="none">
+						</div>
 
-<!-- <div class="ui-grid-a">
-	<div class="ui-block-a">
-		<div data-role="fieldcontain">
-		<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-					<legend>Sodium: <span style="font-size: 10px">(mmol/kg/d)</span></legend>
-				<input type="radio" name="tisodium" id="tisodium-0" value="0"/>
-				<label for="tisodium-0">0</label>
-				<input type="radio" name="tisodium" id="tisodium-1" value="1" />
-				<label for="tisodium-1">1</label>
-				<input type="radio" name="tisodium" id="tisodium-2" value="2" />
-				<label for="tisodium-2">2</label>	
-				<input type="radio" name="tisodium" id="tisodium-3" value="3" />
-				<label for="tisodium-3">3</label>
-				<input type="radio" name="tisodium" id="tisodium-4" value="4" />
-				<label for="tisodium-4">4</label>	
-		</fieldset>
-		</div>
-	</div>
-	<div class="ui-block-b">
-		<div data-role="fieldcontain">
-		<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-					<legend>Potassium: <span style="font-size: 10px">(mmol/kg/d)</span></legend>
-				<input type="radio" name="tipotassium" id="tipotassium-0" value="0"/>
-				<label for="tipotassium-0">0</label>
-				<input type="radio" name="tipotassium" id="tipotassium-1" value="1"/>
-				<label for="tipotassium-1">1</label>
-				<input type="radio" name="tipotassium" id="tipotassium-2" value="2" />
-				<label for="tipotassium-2">2</label>	
-				<input type="radio" name="tipotassium" id="tipotassium-3" value="3"  />
-				<label for="tipotassium-3">3</label>
-				<input type="radio" name="tipotassium" id="tipotassium-4" value="4"  />
-				<label for="tipotassium-4">4</label>
-		</fieldset>
-		</div>
-	</div>
-</div>
--->
+						<label for="dextrosefluid">Dextrose: (%)</label>
+						<input type="range" name="dextrosefluid" id="dextrosefluid" value="10" min="5" max="30" step="2.5" />
 
-<label for="dextrosefluid">Dextrose: (%)</label>
-<input type="range" name="dextrosefluid" id="dextrosefluid" value="10" min="5" max="30" step="2.5" />
+						<label for="tisodium">Sodium: (mmol/kg/day)</label>
+						<input type="range" name="tisodium" id="tisodium" data-theme="c" value="0" min="0" max="10" step="0.5" />
 
-<label for="tisodium">Sodium: (mmol/kg/day)</label>
-<input type="range" name="tisodium" id="tisodium" data-theme="c" value="0" min="0" max="10" step="0.5" />
+						<label for="tipotassium">Potassium: (mmol/kg/day)</label>
+						<input type="range" name="tipotassium" id="tipotassium" data-theme="c" value="0" min="0" max="8" step="0.5" />
 
-<label for="tipotassium">Potassium: (mmol/kg/day)</label>
-<input type="range" name="tipotassium" id="tipotassium" data-theme="c" value="0" min="0" max="8" step="0.5" />
+						<div data-role="content" style="padding: 10px; border: 2px solid #457b87; margin-top: 20px; margin-bottom: 20px; display: none" id="fluidcontainer">
 
-<div data-role="content" style="padding: 10px; border: 2px solid #457b87; margin-top: 20px; margin-bottom: 20px; display: none" id="fluidcontainer">
+							<span id="fluidoutput">
 
-<span id="fluidoutput">
+							</span>
 
-</span>
-
-</div>
-</div>
+						</div>
+				</div>
 
 
-		<div data-role="collapsible" data-collapsed-icon="flat-lungs" data-expanded-icon="back">
-			<h3>Oxygenation Index</h3>
+				<div data-role="collapsible" data-collapsed-icon="flat-lungs" data-expanded-icon="back">
+					<h3>Oxygenation Index</h3>
 
-		<div class="calcinfopanel">The oxygenation index (OI) measures the fraction of inspired oxygen and its usage within the body. A lower OI is better - as oxygenation improves, a baby will be able to achieve a higher PaO2 at a lower FiO2.<br><br>
-		OI > 25: indicates severe respiratory failure<br>
-		OI > 40: consider ECMO</div>
-		<table><tbody><tr style="background-color: none !important; background: none !important"><td>
-		<div style="float:left; font-size: 13px">Oxygenation index =&nbsp;</div></td>
-		 <td> <div style="float:left">
-		    <div style="font-size: 11px; border-bottom:1px solid;text-align:center;">MAP (cmH<sub>2</sub>O) * FiO<sub>2</sub> (%)</div>
-		    <div style="font-size:11px;text-align:center;">PaO<sub>2</sub> (mmHg)</div>
-		  </div></td>
-		</tr>
-		</tbody></table><br>
+					<div class="calcinfopanel">The oxygenation index (OI) measures the fraction of inspired oxygen and its usage within the body. A lower OI is better - as oxygenation improves, a baby will be able to achieve a higher PaO2 at a lower FiO2.<br><br>
+					OI > 25: indicates severe respiratory failure<br>
+					OI > 40: consider ECMO</div>
+					<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+					<div style="float:left; font-size: 13px">Oxygenation index =&nbsp;</div></td>
+					 <td> <div style="float:left">
+					    <div style="font-size: 11px; border-bottom:1px solid;text-align:center;">MAP (cmH<sub>2</sub>O) * FiO<sub>2</sub> (%)</div>
+					    <div style="font-size:11px;text-align:center;">PaO<sub>2</sub> (mmHg)</div>
+					  </div></td>
+					</tr>
+					</tbody></table><br>
 
-		Inspired oxygen percentage (%):<br>
-		<input type="range" name="oifio2" id="oifio2" value="21" min="21" max="100" step="1" />
-		<br>
+					Inspired oxygen percentage (%):<br>
+					<input type="range" name="oifio2" id="oifio2" value="21" min="21" max="100" step="1" />
+					<br>
 
-		Mean airway pressure (MAP): <a href="#popmap" data-corners="false"><img src="images/question50px.png" class="infobtnsimple" /></a><br>
-		<div style="padding: 15px; padding-bottom: 0px; padding-top: 0px">									
-		<input type="text" id="oimap" data-theme="e" pattern="\d*" placeholder="Enter MAP" tabindex=3 data-inset="false" /><div class="oiunitstext" id="oimapunits">cmH<sub>2</sub>O <img src="images/penpaper.png" class="infobtn" /></div><input type="text" style="opacity:0; display: block; font-size:1px; margin: 0px; padding: 0px; height: 0px; width: 1px; border: 0px solid #fff !important; padding: 0px !important;" id="oidecoy2" tabindex=4 onfocus="javascript:$(this).blur();" data-role="none">
-		</div>
+					Mean airway pressure (MAP): <a href="#popmap" data-corners="false"><img src="images/question50px.png" class="infobtnsimple" /></a><br>
+					<div style="padding: 15px; padding-bottom: 0px; padding-top: 0px">									
+					<input type="text" id="oimap" data-theme="e" pattern="\d*" placeholder="Enter MAP" tabindex=3 data-inset="false" /><div class="oiunitstext" id="oimapunits">cmH<sub>2</sub>O <img src="images/penpaper.png" class="infobtn" /></div><input type="text" style="opacity:0; display: block; font-size:1px; margin: 0px; padding: 0px; height: 0px; width: 1px; border: 0px solid #fff !important; padding: 0px !important;" id="oidecoy2" tabindex=4 onfocus="javascript:$(this).blur();" data-role="none">
+					</div>
 
-		Partial pressure of oxygen (PaO<sub>2</sub>):
-		<div style="padding: 15px; padding-bottom: 0px; padding-top: 0px">
-		<input type="text" id="oippo2" data-theme="e" pattern="\d*" placeholder="Enter PaO2" tabindex=5 data-inset="false" /><div class="oiunitstext" id="oippo2units">kPa <img src="images/penpaper.png" class="infobtn" /></div><input type="text" style="opacity:0; display: block; font-size:1px; margin: 0px; padding: 0px; height: 0px; width: 1px; border: 0px solid #fff !important; padding: 0px !important;" id="oidecoy3" tabindex=6 onfocus="javascript:$(this).blur();" data-role="none">
-		</div>
+					Partial pressure of oxygen (PaO<sub>2</sub>):
+					<div style="padding: 15px; padding-bottom: 0px; padding-top: 0px">
+					<input type="text" id="oippo2" data-theme="e" pattern="\d*" placeholder="Enter PaO2" tabindex=5 data-inset="false" /><div class="oiunitstext" id="oippo2units">kPa <img src="images/penpaper.png" class="infobtn" /></div><input type="text" style="opacity:0; display: block; font-size:1px; margin: 0px; padding: 0px; height: 0px; width: 1px; border: 0px solid #fff !important; padding: 0px !important;" id="oidecoy3" tabindex=6 onfocus="javascript:$(this).blur();" data-role="none">
+					</div>
 
-		<div data-role="content" style="padding: 10px; border: 2px solid #457b87; margin-top: 20px; margin-bottom: 20px; display: none" id="oicontainer">
-			<span id="oioutput">
-			</span>
-		</div>
+					<div data-role="content" style="padding: 10px; border: 2px solid #457b87; margin-top: 20px; margin-bottom: 20px; display: none" id="oicontainer">
+						<span id="oioutput">
+						</span>
+					</div>
 
-	<div data-role="fieldcontain">
-	    <fieldset data-role="controlgroup" data-type="horizontal">
-	     	<legend>Mean airway pressure (MAP) units:</legend>
-	         	<input type="radio" checked name="oimapunits" id="oimapunits-a" value="cmH2O"  />
-	         	<label for="oimapunits-a">cmH2O</label>
-	         	<input type="radio" name="oimapunits" id="oimapunits-b" value="mmHg"  />
-	         	<label for="oimapunits-b">mmHg</label>
-	    </fieldset>
-	</div>
-	
-	<div data-role="fieldcontain">
-	    <fieldset data-role="controlgroup" data-type="horizontal">
-	     	<legend>Partial pressure of oxygen (PaO<sub>2</sub>) units:</legend>
-	         	<input type="radio" checked name="oipao2units" id="oipao2units-a" value="kPa"  />
-	         	<label for="oipao2units-a">kPa</label>
-	         	<input type="radio" name="oipao2units" id="oipao2units-b" value="mmHg"  />
-	         	<label for="oipao2units-b">mmHg</label>
-	    </fieldset>
-	</div>
+					<div data-role="fieldcontain">
+					    <fieldset data-role="controlgroup" data-type="horizontal">
+					     	<legend>Mean airway pressure (MAP) units:</legend>
+					         	<input type="radio" checked name="oimapunits" id="oimapunits-a" value="cmH2O"  />
+					         	<label for="oimapunits-a">cmH2O</label>
+					         	<input type="radio" name="oimapunits" id="oimapunits-b" value="mmHg"  />
+					         	<label for="oimapunits-b">mmHg</label>
+					    </fieldset>
+					</div>
+					
+					<div data-role="fieldcontain">
+					    <fieldset data-role="controlgroup" data-type="horizontal">
+					     	<legend>Partial pressure of oxygen (PaO<sub>2</sub>) units:</legend>
+					         	<input type="radio" checked name="oipao2units" id="oipao2units-a" value="kPa"  />
+					         	<label for="oipao2units-a">kPa</label>
+					         	<input type="radio" name="oipao2units" id="oipao2units-b" value="mmHg"  />
+					         	<label for="oipao2units-b">mmHg</label>
+					    </fieldset>
+					</div>
 
-	<br class="clearbr" />
-
-	</div>
-
-
-
-		<div data-role="collapsible" data-collapsed-icon="spanner" data-expanded-icon="back" id="othercalculators">
-					<h3>Other Infusions <span class="maintitle-weight"></span></h3>
-
-			<ul class="checklistul othertools" data-theme="c" data-role="listview">
-	            <li data-icon="false" class="infusion-detail" data-infusion-drugname="generic"><a href="#genericinfusion">Drug Infusion Calculator</a><p>Check your infusion prescriptions here. Remember there are specific calculators for common drugs above.</p></li>
-	            <li data-icon="false" class="infusion-detail" data-infusion-drugname="daily"><a href="#genericinfusion">24hr Drug Infusion Calculator</a><p>Quickly calculate and check 24 hour IV infusions (e.g. vancomycin continuous infusion).</p></li>
-	            <!--<li data-icon="false"><a href="#">Something else!</a></p></li>-->
-	        </ul>
-
-	        <br class="clearbr" />
+					<br class="clearbr" />
 
 				</div>
 
-</div>
+				<div data-role="collapsible" data-collapsed-icon="spanner" data-expanded-icon="back" id="othercalculators">
+					<h3>Infusion Calculators <span class="maintitle-weight"></span></h3>
 
-		<div id="footernote" style="padding-top: 6px; margin-bottom: 55px; font-size: 8pt">Remember to always double check calculations. Please note that this app does not replace your local drug formulary.</div>
-    </div><!-- /content -->
+					<ul class="checklistul othertools" data-theme="c" data-role="listview">
+			            <li data-icon="false" class="infusion-detail" data-infusion-drugname="generic"><a href="#genericinfusion">Any Drug Infusion Calculator</a><p>Check your infusion prescriptions here. Remember there are specific calculators for common drugs above.</p></li>
+			            <li data-icon="false" class="infusion-detail" data-infusion-drugname="daily"><a href="#genericinfusion">24hr Drug Infusion Calculator</a><p>Quickly calculate and check 24 hour IV infusions (e.g. vancomycin continuous infusion).</p></li>
+			            <!--<li data-icon="false"><a href="#">Something else!</a></p></li>-->
+			        </ul>
+
+			        <br class="clearbr" />
+
+				</div>
+
+				</div><!-- Collapsible set -->
+
+		<div id="footernote" style="padding-top: 6px; margin-bottom: 50px; font-size: 8pt">Remember to always double check calculations. Please note that this app does not replace your local drug formulary.<br></div>
+</div><!-- /content -->
  
 	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
         <div data-role="navbar">
@@ -357,8 +316,8 @@
         </div><!-- /header -->
 
 <!-- CONTENT -->
-		<div data-role="content" style="background: url(images/nts-colour-horizontal-750px.png); background-position: right top; background-size: 180px; background-repeat: no-repeat; position: absolute;">
-			<h2 style="margin-top: 95px; margin-bottom: 40px">Important Notice</h2>
+		<div data-role="content" style="background: url(images/nts-colour-horizontal-750px.png); background-position: right -50px; background-size: 180px; background-repeat: no-repeat; position: absolute;">
+			<h2 style="margin-top: 30px; margin-bottom: 40px">Important Notice</h2>
 
 			NeoMate is an app to help qualified neonatal staff in emergency situations. Guidance is based upon established UK national standards and the London Neonatal Transfer Service (NTS) drug formulary.<br><br>
 
@@ -373,7 +332,7 @@
 			 </table>
 			 <br>
 
-			Please read the following information carefully before using the app for the first time. <br><br>Information contained within this app is sourced from:<br>
+			<b>Please read the following information carefully before using the app for the first time.</b> <br><br>Information contained within this app is sourced from:<br>
 
 			<div style="background-color: #FFFFFF; padding: 15px; margin-top: 10px">
 			<b style="color: #000000">Intubation and central line insertion</b><br>"Neonatal Life Support", <br>Resuscitation Council (UK), 2013 <div style="padding-left: 2px; padding-right: 2px; background-color: rgb(206, 101, 99); margin-left: 5px; display: inline"><a href="http://www.resus.org.uk/pages/nlsgen.htm" class="external" style="color: #FFFFFF; text-decoration: none;">Link</a></div><br><br>
@@ -398,7 +357,7 @@
 
 			<h2 style="padding-left: 0px">About NeoMate</h2>
 
-			<b>App created</b> by Dr Chris Kelly &nbsp;<a href="http://www.twitter.com/chrisck" class="external" style="text-decoration: none"><img src="images/twitter.png" width="15">@chrisck</a> (Paediatrics trainee at the Evelina Children's Hospital, London). Please do <a href="mailto:chris@paediatrics.co.uk">contact me</a> with any suggestions or ideas for improvement.<br><br>
+			<b>App created</b> by Dr Chris Kelly &nbsp;<a href="http://www.twitter.com/chrisck" class="external" style="text-decoration: none"><img src="images/twitter.png" width="15">@chrisck</a> (Paediatrics trainee at the Evelina Children's Hospital, London). Please do <a href="mailto:chris@paediatrics.co.uk" class="external">contact me</a> with any suggestions or ideas for improvement.<br><br>
 
 			<b>Clinical Lead:</b> Dr Syed Mohinuddin (Consultant Neonatologist, London NTS and Royal London Hospital).<br><br>
 
@@ -414,8 +373,8 @@
 
 			Published by London Neonatal Transfer Service, 8D Central Tower, Royal London Hospital, Whitechapel Road, London E1 1BB.<br><br> 
 
-			Version 2.3.1, released 20 October 2015.<br>
-			Formulary for review in June 2016.<br><br>
+			Version 3.0, released March 2017.<br>
+			Formulary for review in March 2018.<br><br>
 
 			<h2 style="padding-left: 0px">Usage Statistics</h2>
 			NeoMate collects basic usage statistics for the purposes of improving this app. All stats are fully anonymised.<br><br>
@@ -438,31 +397,7 @@
 
 			You agree to indemnify and hold London NTS harmless from any claim or demand, including costs and expenses, made by any third party as a result of your use or misuse of the App which is not in accordance with the instructions for use and/or under the conditions and/or for the purposes intended and any action you take which is or may be based on the information contained within the App.<br><br>
 
-			This disclaimer shall be governed by the laws of England and Wales, and any dispute will be submitted to the English courts.
-
-			<h2 style="padding-left: 0px">Acknowledgements</h2>
-
-			<b>JQuery</b>, <b>JQuery UI</b> and <b>JQuery Mobile</b><br>Copyright 2013 jQuery Foundation and other contributors
-			<br>http://jquery.com/<br><br>
-
-			Permission is hereby granted, free of charge, to any person obtaining
-			a copy of this software and associated documentation files (the
-			"Software"), to deal in the Software without restriction, including
-			without limitation the rights to use, copy, modify, merge, publish,
-			distribute, sublicense, and/or sell copies of the Software, and to
-			permit persons to whom the Software is furnished to do so, subject to
-			the following conditions:<br><br>
-
-			The above copyright notice and this permission notice shall be
-			included in all copies or substantial portions of the Software.<br><br>
-
-			THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-			EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-			MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-			NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-			LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-			OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-			WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br><br><br>
+			This disclaimer shall be governed by the laws of England and Wales, and any dispute will be submitted to the English courts.<br><br>
 
 			<a href="#whatsnew" data-theme="b" data-role="button">Accept</a>
 
@@ -483,8 +418,8 @@
 
         <!-- CONTENT -->
 
-		<div data-role="content" style="background: url(images/nts-colour-horizontal-750px.png); background-position: right top; background-size: 180px; background-repeat: no-repeat; position: absolute;">
-			<h2 style="margin-top: 95px; margin-bottom: 40px">Important Notice</h2>
+		<div data-role="content" style="background: url(images/nts-colour-horizontal-750px.png); background-position: right -50px; background-size: 180px; background-repeat: no-repeat; position: absolute;">
+			<h2 style="margin-top: 30px; margin-bottom: 40px">Important Notice</h2>
 
 			NeoMate is an app to help qualified neonatal staff in emergency situations. Guidance is based upon established UK national standards and the London Neonatal Transfer Service (NTS) drug formulary.<br><br>
 
@@ -499,6 +434,8 @@
 			 </table>
 			 <br>
 			<div class="aboutsubpanel">If you find NeoMate useful, please do consider <a href="Javascript:AppRate.promptForRating(true);">writing a review</a> on the app store.</div>
+
+			<div class="aboutsubpanel">We would love to find out who uses NeoMate! Please click here to <a href="#survey">give us some feedback</a>.</div>		
 
 			Please read the following information carefully before using the app for the first time. <br><br>Information contained within this app is sourced from:<br>
 
@@ -541,8 +478,8 @@
 
 			Published by London Neonatal Transfer Service, 8D Central Tower, Royal London Hospital, Whitechapel Road, London E1 1BB.<br><br>
 
-			Version 2.3.1, released 20 October 2015.<br>
-			Formulary for review in June 2016.<br><br>
+			Version 3.0, released March 2017.<br>
+			Formulary for review in March 2018.<br><br>
 
 			<h2 style="padding-left: 0px">Usage Statistics</h2>
 			NeoMate collects basic usage statistics for the purposes of improving this app. All stats are fully anonymised.<br><br>
@@ -597,30 +534,363 @@
 		</div>
 	<!-- END CONTENT -->
 
-	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
-        <div data-role="navbar">
-        <ul>
-            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
-         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
-         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
-            <li><a href="#about" class="ui-btn-active ui-state-persist" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
-        </ul>
-        </div>
-	</div><!-- /footer -->
+		<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+	        <div data-role="navbar">
+	        <ul>
+	            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+	         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+	         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+	            <li><a href="#about" class="ui-btn-active ui-state-persist" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+	        </ul>
+	        </div>
+		</div><!-- /footer -->
+	</div>
 
-</div>
+
+	<div data-role="page" id="survey">
+
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+
+            <img src="images/headertitle8-neomate.gif" width="171" height="33">
+        </div><!-- /header -->
+
+        <!-- CONTENT -->
+
+		<div data-role="content">
+			<h2 style="margin-top: 70px; margin-bottom: 20px">Who uses NeoMate?</h2>
+
+			<div class="aboutsubpanel">We would love to find out more about our users. Please fill in the five questions below, including your email address if you'd be willing to help give us feedback in the future.</div>
+
+			<form>
+				<div data-role="fieldcontain">
+				    <label for="surveyemail">Email address:</label>
+				    <input type="text" name="surveyemail" id="surveyemail" placeholder="Tap to enter..." value="">
+				</div>
+
+				<div data-role="fieldcontain">
+				    <label for="surveycountry">Which country do you work in?</label>
+				    <select name="surveycountry" id="surveycountry">
+						<option value="">Please select...</option>
+						<option value="AFG">Afghanistan</option>
+						<option value="ALA">Åland Islands</option>
+						<option value="ALB">Albania</option>
+						<option value="DZA">Algeria</option>
+						<option value="ASM">American Samoa</option>
+						<option value="AND">Andorra</option>
+						<option value="AGO">Angola</option>
+						<option value="AIA">Anguilla</option>
+						<option value="ATA">Antarctica</option>
+						<option value="ATG">Antigua and Barbuda</option>
+						<option value="ARG">Argentina</option>
+						<option value="ARM">Armenia</option>
+						<option value="ABW">Aruba</option>
+						<option value="AUS">Australia</option>
+						<option value="AUT">Austria</option>
+						<option value="AZE">Azerbaijan</option>
+						<option value="BHS">Bahamas</option>
+						<option value="BHR">Bahrain</option>
+						<option value="BGD">Bangladesh</option>
+						<option value="BRB">Barbados</option>
+						<option value="BLR">Belarus</option>
+						<option value="BEL">Belgium</option>
+						<option value="BLZ">Belize</option>
+						<option value="BEN">Benin</option>
+						<option value="BMU">Bermuda</option>
+						<option value="BTN">Bhutan</option>
+						<option value="BOL">Bolivia, Plurinational State of</option>
+						<option value="BES">Bonaire, Sint Eustatius and Saba</option>
+						<option value="BIH">Bosnia and Herzegovina</option>
+						<option value="BWA">Botswana</option>
+						<option value="BVT">Bouvet Island</option>
+						<option value="BRA">Brazil</option>
+						<option value="IOT">British Indian Ocean Territory</option>
+						<option value="BRN">Brunei Darussalam</option>
+						<option value="BGR">Bulgaria</option>
+						<option value="BFA">Burkina Faso</option>
+						<option value="BDI">Burundi</option>
+						<option value="KHM">Cambodia</option>
+						<option value="CMR">Cameroon</option>
+						<option value="CAN">Canada</option>
+						<option value="CPV">Cape Verde</option>
+						<option value="CYM">Cayman Islands</option>
+						<option value="CAF">Central African Republic</option>
+						<option value="TCD">Chad</option>
+						<option value="CHL">Chile</option>
+						<option value="CHN">China</option>
+						<option value="CXR">Christmas Island</option>
+						<option value="CCK">Cocos (Keeling) Islands</option>
+						<option value="COL">Colombia</option>
+						<option value="COM">Comoros</option>
+						<option value="COG">Congo</option>
+						<option value="COD">Congo, the Democratic Republic of the</option>
+						<option value="COK">Cook Islands</option>
+						<option value="CRI">Costa Rica</option>
+						<option value="CIV">Côte d'Ivoire</option>
+						<option value="HRV">Croatia</option>
+						<option value="CUB">Cuba</option>
+						<option value="CUW">Curaçao</option>
+						<option value="CYP">Cyprus</option>
+						<option value="CZE">Czech Republic</option>
+						<option value="DNK">Denmark</option>
+						<option value="DJI">Djibouti</option>
+						<option value="DMA">Dominica</option>
+						<option value="DOM">Dominican Republic</option>
+						<option value="ECU">Ecuador</option>
+						<option value="EGY">Egypt</option>
+						<option value="SLV">El Salvador</option>
+						<option value="GNQ">Equatorial Guinea</option>
+						<option value="ERI">Eritrea</option>
+						<option value="EST">Estonia</option>
+						<option value="ETH">Ethiopia</option>
+						<option value="FLK">Falkland Islands (Malvinas)</option>
+						<option value="FRO">Faroe Islands</option>
+						<option value="FJI">Fiji</option>
+						<option value="FIN">Finland</option>
+						<option value="FRA">France</option>
+						<option value="GUF">French Guiana</option>
+						<option value="PYF">French Polynesia</option>
+						<option value="ATF">French Southern Territories</option>
+						<option value="GAB">Gabon</option>
+						<option value="GMB">Gambia</option>
+						<option value="GEO">Georgia</option>
+						<option value="DEU">Germany</option>
+						<option value="GHA">Ghana</option>
+						<option value="GIB">Gibraltar</option>
+						<option value="GRC">Greece</option>
+						<option value="GRL">Greenland</option>
+						<option value="GRD">Grenada</option>
+						<option value="GLP">Guadeloupe</option>
+						<option value="GUM">Guam</option>
+						<option value="GTM">Guatemala</option>
+						<option value="GGY">Guernsey</option>
+						<option value="GIN">Guinea</option>
+						<option value="GNB">Guinea-Bissau</option>
+						<option value="GUY">Guyana</option>
+						<option value="HTI">Haiti</option>
+						<option value="HMD">Heard Island and McDonald Islands</option>
+						<option value="VAT">Holy See (Vatican City State)</option>
+						<option value="HND">Honduras</option>
+						<option value="HKG">Hong Kong</option>
+						<option value="HUN">Hungary</option>
+						<option value="ISL">Iceland</option>
+						<option value="IND">India</option>
+						<option value="IDN">Indonesia</option>
+						<option value="IRN">Iran, Islamic Republic of</option>
+						<option value="IRQ">Iraq</option>
+						<option value="IRL">Ireland</option>
+						<option value="IMN">Isle of Man</option>
+						<option value="ISR">Israel</option>
+						<option value="ITA">Italy</option>
+						<option value="JAM">Jamaica</option>
+						<option value="JPN">Japan</option>
+						<option value="JEY">Jersey</option>
+						<option value="JOR">Jordan</option>
+						<option value="KAZ">Kazakhstan</option>
+						<option value="KEN">Kenya</option>
+						<option value="KIR">Kiribati</option>
+						<option value="PRK">Korea, Democratic People's Republic of</option>
+						<option value="KOR">Korea, Republic of</option>
+						<option value="KWT">Kuwait</option>
+						<option value="KGZ">Kyrgyzstan</option>
+						<option value="LAO">Lao People's Democratic Republic</option>
+						<option value="LVA">Latvia</option>
+						<option value="LBN">Lebanon</option>
+						<option value="LSO">Lesotho</option>
+						<option value="LBR">Liberia</option>
+						<option value="LBY">Libya</option>
+						<option value="LIE">Liechtenstein</option>
+						<option value="LTU">Lithuania</option>
+						<option value="LUX">Luxembourg</option>
+						<option value="MAC">Macao</option>
+						<option value="MKD">Macedonia, the former Yugoslav Republic of</option>
+						<option value="MDG">Madagascar</option>
+						<option value="MWI">Malawi</option>
+						<option value="MYS">Malaysia</option>
+						<option value="MDV">Maldives</option>
+						<option value="MLI">Mali</option>
+						<option value="MLT">Malta</option>
+						<option value="MHL">Marshall Islands</option>
+						<option value="MTQ">Martinique</option>
+						<option value="MRT">Mauritania</option>
+						<option value="MUS">Mauritius</option>
+						<option value="MYT">Mayotte</option>
+						<option value="MEX">Mexico</option>
+						<option value="FSM">Micronesia, Federated States of</option>
+						<option value="MDA">Moldova, Republic of</option>
+						<option value="MCO">Monaco</option>
+						<option value="MNG">Mongolia</option>
+						<option value="MNE">Montenegro</option>
+						<option value="MSR">Montserrat</option>
+						<option value="MAR">Morocco</option>
+						<option value="MOZ">Mozambique</option>
+						<option value="MMR">Myanmar</option>
+						<option value="NAM">Namibia</option>
+						<option value="NRU">Nauru</option>
+						<option value="NPL">Nepal</option>
+						<option value="NLD">Netherlands</option>
+						<option value="NCL">New Caledonia</option>
+						<option value="NZL">New Zealand</option>
+						<option value="NIC">Nicaragua</option>
+						<option value="NER">Niger</option>
+						<option value="NGA">Nigeria</option>
+						<option value="NIU">Niue</option>
+						<option value="NFK">Norfolk Island</option>
+						<option value="MNP">Northern Mariana Islands</option>
+						<option value="NOR">Norway</option>
+						<option value="OMN">Oman</option>
+						<option value="PAK">Pakistan</option>
+						<option value="PLW">Palau</option>
+						<option value="PSE">Palestinian Territory, Occupied</option>
+						<option value="PAN">Panama</option>
+						<option value="PNG">Papua New Guinea</option>
+						<option value="PRY">Paraguay</option>
+						<option value="PER">Peru</option>
+						<option value="PHL">Philippines</option>
+						<option value="PCN">Pitcairn</option>
+						<option value="POL">Poland</option>
+						<option value="PRT">Portugal</option>
+						<option value="PRI">Puerto Rico</option>
+						<option value="QAT">Qatar</option>
+						<option value="REU">Réunion</option>
+						<option value="ROU">Romania</option>
+						<option value="RUS">Russian Federation</option>
+						<option value="RWA">Rwanda</option>
+						<option value="BLM">Saint Barthélemy</option>
+						<option value="SHN">Saint Helena, Ascension and Tristan da Cunha</option>
+						<option value="KNA">Saint Kitts and Nevis</option>
+						<option value="LCA">Saint Lucia</option>
+						<option value="MAF">Saint Martin (French part)</option>
+						<option value="SPM">Saint Pierre and Miquelon</option>
+						<option value="VCT">Saint Vincent and the Grenadines</option>
+						<option value="WSM">Samoa</option>
+						<option value="SMR">San Marino</option>
+						<option value="STP">Sao Tome and Principe</option>
+						<option value="SAU">Saudi Arabia</option>
+						<option value="SEN">Senegal</option>
+						<option value="SRB">Serbia</option>
+						<option value="SYC">Seychelles</option>
+						<option value="SLE">Sierra Leone</option>
+						<option value="SGP">Singapore</option>
+						<option value="SXM">Sint Maarten (Dutch part)</option>
+						<option value="SVK">Slovakia</option>
+						<option value="SVN">Slovenia</option>
+						<option value="SLB">Solomon Islands</option>
+						<option value="SOM">Somalia</option>
+						<option value="ZAF">South Africa</option>
+						<option value="SGS">South Georgia and the South Sandwich Islands</option>
+						<option value="SSD">South Sudan</option>
+						<option value="ESP">Spain</option>
+						<option value="LKA">Sri Lanka</option>
+						<option value="SDN">Sudan</option>
+						<option value="SUR">Suriname</option>
+						<option value="SJM">Svalbard and Jan Mayen</option>
+						<option value="SWZ">Swaziland</option>
+						<option value="SWE">Sweden</option>
+						<option value="CHE">Switzerland</option>
+						<option value="SYR">Syrian Arab Republic</option>
+						<option value="TWN">Taiwan, Province of China</option>
+						<option value="TJK">Tajikistan</option>
+						<option value="TZA">Tanzania, United Republic of</option>
+						<option value="THA">Thailand</option>
+						<option value="TLS">Timor-Leste</option>
+						<option value="TGO">Togo</option>
+						<option value="TKL">Tokelau</option>
+						<option value="TON">Tonga</option>
+						<option value="TTO">Trinidad and Tobago</option>
+						<option value="TUN">Tunisia</option>
+						<option value="TUR">Turkey</option>
+						<option value="TKM">Turkmenistan</option>
+						<option value="TCA">Turks and Caicos Islands</option>
+						<option value="TUV">Tuvalu</option>
+						<option value="UGA">Uganda</option>
+						<option value="UKR">Ukraine</option>
+						<option value="ARE">United Arab Emirates</option>
+						<option value="GBR">United Kingdom</option>
+						<option value="USA">United States</option>
+						<option value="UMI">United States Minor Outlying Islands</option>
+						<option value="URY">Uruguay</option>
+						<option value="UZB">Uzbekistan</option>
+						<option value="VUT">Vanuatu</option>
+						<option value="VEN">Venezuela, Bolivarian Republic of</option>
+						<option value="VNM">Viet Nam</option>
+						<option value="VGB">Virgin Islands, British</option>
+						<option value="VIR">Virgin Islands, U.S.</option>
+						<option value="WLF">Wallis and Futuna</option>
+						<option value="ESH">Western Sahara</option>
+						<option value="YEM">Yemen</option>
+						<option value="ZMB">Zambia</option>
+						<option value="ZWE">Zimbabwe</option>
+					</select>
+				</div>
+
+				<div data-role="fieldcontain">
+				    <label for="surveyrole">Your role at work:</label>
+				    <select name="surveyrole" id="surveyrole">
+				        <option value="">Please select...</option>
+				        <option value="paediatrician">General Paediatrician</option>
+				        <option value="neonatologist">Neonatologist</option>
+				        <option value="anaesthetist">Anaesthetist</option>
+				        <option value="emergency">Emergency Medicine Doctor</option>
+				        <option value="otherdoctor">Other Doctor</option>
+				        <option value="nurse">Nurse</option>
+				        <option value="midwife">Midwife</option>
+				        <option value="pharmacist">Pharmacist</option>
+				        <option value="student">Student</option>
+				        <option value="paramedic">Paramedic</option>
+				        <option value="other">Other</option>
+				    </select>
+				</div>
+
+				<div data-role="fieldcontain">
+				    <label for="surveyexperience">How many years experience do you have in neonatal care?</label>
+				    <select name="surveyexperience" id="surveyexperience">
+				        <option value="">Please select...</option>
+				        <option value="1">Less than 1 year</option>
+				        <option value="1-3">1 - 3 years</option>
+				        <option value="4-6">4 - 6 years</option>
+				        <option value="6-8">6 - 8 years</option>
+				        <option value="8-15">8 - 15 years</option>
+				        <option value="mt15">More than 15 years</option>
+				    </select>
+				</div>
+
+				<label for="surveyfeedback">Do you have any feedback for the team?</label>
+				<textarea cols="40" rows="8" name="surveyfeedback" id="surveyfeedback"></textarea>
+
+				<br>
+
+				<input type="submit" value="Submit questionnaire" data-theme="b">
+
+				<br><br><br>
+			</form>
+
+		</div>
+	<!-- END CONTENT -->
+
+		<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+	        <div data-role="navbar">
+	        <ul>
+	            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calculator</a></li>
+	         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+	         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+	            <li><a href="#about" class="ui-btn-active ui-state-persist" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+	        </ul>
+	        </div>
+		</div><!-- /footer -->
+
+	</div>
 
 
 <div data-role="page" id="whatsnew">
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 <!-- CONTENT -->
 		<div data-role="content">
-			<h2 style="margin-top: 95px; margin-bottom: 40px">What's New (v2.3)</h2>
+			<h2 style="margin-top: 95px; margin-bottom: 40px">What's New (v3.0)</h2>
 
 			<h3>Infusion Calculations</h3>
 
@@ -648,7 +918,7 @@
 <div data-role="page" id="checklists">
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -690,7 +960,7 @@
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -748,7 +1018,7 @@
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -792,7 +1062,7 @@
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -841,7 +1111,7 @@
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -893,7 +1163,7 @@
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -966,7 +1236,7 @@
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -1021,7 +1291,7 @@
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -1076,7 +1346,7 @@
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -1131,7 +1401,7 @@
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -1181,7 +1451,7 @@
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -1603,7 +1873,7 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 <div data-role="page" id="reference">
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
 
 		<div data-role="content">
@@ -1878,7 +2148,7 @@ Use the following table to insert the ET tube to the optimum length. Always conf
     <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
 
         <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
-        <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" style="margin-right: 10px"></div>
+        <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
     </div><!-- /header -->
 
 	<div role="main" class="ui-content">
@@ -1973,7 +2243,8 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 
 
 <script src="phonegap.js"></script>
-<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+
 <script type="text/javascript">
   $(document).bind("mobileinit", function(){
       $.mobile.hashListeningEnabled = true;
@@ -1983,8 +2254,8 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
 <script type="text/javascript" src="js/fastclick.js"></script>
 <script type="text/javascript" src="js/underscore-min.js"></script>
-<!-- <script type="text/javascript" src="1js-full/neomate-full.js"></script> -->
-<script type="text/javascript" src="js/neomate.js"></script>
+<script type="text/javascript" src="1js-full/neomate-full.js"></script>
+<!-- <script type="text/javascript" src="js/neomate.js"></script> -->
 
 
 

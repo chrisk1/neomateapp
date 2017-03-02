@@ -178,36 +178,30 @@ infusiondb = [
 // ################## START: App functions / setup #######################
 var gramsnotification = '';
 
+document.addEventListener("deviceready", onDeviceReady, false);
+
 // Analytics
-var gaPlugin;
-
-	document.addEventListener("deviceready", onDeviceReady, false);
-
 	function trackAppLoad() {
 		console.log("Triggered app load");
-	    if(typeof gaPlugin !== "undefined"){
-	    	//localStorage.trackpermission==="trackon" &&
-	        //gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "App Load", "Click", "event only", 1);
 	        trackPage("Start page");
 	        console.log("Track app load");
-	    }    
 	}
 
 	function trackMenuOpen(menuname) {
 		console.log("Triggered menu open");
-	    if(typeof gaPlugin !== "undefined"){
-	    	//localStorage.trackpermission==="trackon" &&
 	        console.log("Track menu open: " + menuname);
-	        gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, menuname+"-"+$("#babyweight").val(), "Click", "event only", 1);
-	    }    
+	        
+	    if(typeof ga !== "undefined"){    
+	        // window.ga.trackEvent('Category', 'Action', 'Label', Value)
+	        window.ga.trackEvent(menuname+"-"+$("#babyweight").val(), 'Click');
+	    }
 	}
 
 	function trackPage(pagename) {
 		console.log("Triggered pageview - " + pagename);
-	    if(typeof gaPlugin !== "undefined"){
-	    	//localStorage.trackpermission==="trackon" &&
-	        gaPlugin.trackPage( nativePluginResultHandler, nativePluginErrorHandler, pagename);
-	    }    
+		if(typeof ga !== "undefined"){    
+			window.ga.trackView(pagename);
+		}
 	}
 
 	// Function to handle external URLs - from http://stackoverflow.com/questions/17887348/phonegap-open-link-in-browser
@@ -232,12 +226,6 @@ var gaPlugin;
 	    }
 	}
 
-	// Fix for iOS 9 popup problems / navigation problems
-	$(document).bind("mobileinit", function(){
-      // $.mobile.hashListeningEnabled = false;
-      // $.mobile.ajaxEnabled = false;
-  	});
-
 	$(".backicon").click(function(){
 		// history.go(0); //this is bad because it reloads the page...
 		$.mobile.back();
@@ -253,8 +241,7 @@ var gaPlugin;
 		FastClick.attach(document.body);
 	   	// GAP Analytics set up (on ready)
 	    console.log('initializeGAplugin');
-	    gaPlugin = window.plugins.gaPlugin;
-	    gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, "UA-54184908-2", 5);
+	    window.ga.startTrackerWithId('UA-54184908-2', 5)
 
 	  	trackAppLoad();
 
@@ -286,11 +273,19 @@ var gaPlugin;
 			setTimeout(function() {
     			navigator.splashscreen.hide();
 			}, 0);
+			window.scrollTo(0, 1);
+			setTimeout(function() {
+				$.mobile.resetActivePageHeight();
+			}, 100);
 		}
 		else {
 			setTimeout(function() {
 	    		navigator.splashscreen.hide();
-			}, 1000);
+			}, 0);
+			window.scrollTo(0, 1);
+			setTimeout(function() {
+				$.mobile.resetActivePageHeight();
+			}, 100);
 		}
 
 	}
@@ -339,6 +334,26 @@ function babyCounter() {
 	    	console.log("Baby counter: baby number: " + countBabyLoad);
 	    }
 
+}
+
+function neomateUUID() {
+	// Create GUID for unique user counting
+    var neomateuuid = localStorage.getItem("neomateuuid");
+    var v = null;
+    if (neomateuuid.length < 10) {
+    	console.log("Creating new UUID...");
+    	localStorage.setItem("neomateuuid", 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    	var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    	return v.toString(16);
+		}));
+	}
+	else {
+	       console.log("Existing UUID: " + neomateuuid);
+	}
+}
+
+function checkUUID() {
+	return localStorage.getItem("neomateuuid");
 }
 
 	// Allow links to be clicked in checklists
@@ -390,6 +405,10 @@ function babyCounter() {
 	// pop ups
 	$('div[id^="pop"]').on("pageshow", function() {
 		$(".backbtn").removeClass("ui-btn-active");
+	});
+
+	$('#estimatelabel').click(function() {
+		$.mobile.changePage( "#weightinfobox");
 	});
 
 	// estimate weight when select button clicked
@@ -513,7 +532,7 @@ if (1==1) { // this was originally if userAgent = iPhone
 	$(document).one("pagebeforechange", function () {
 
 	    // animation speed;
-	    var animationSpeed = 500;
+	    var animationSpeed = 300;
 
 	    function animateCollapsibleSet(elm) {
 
@@ -521,7 +540,7 @@ if (1==1) { // this was originally if userAgent = iPhone
 	        elm.one("expand", function () {
 
 	        	// Prep - extend end div to 800px to prevent flickering
-	        	$("#footernote").addClass("longfooternote");
+	        	// $("#footernote").addClass("longfooternote");
 
 	        	// force show toolbar if initialised
 	        	if ($("#main").find(".ui-collapsible-collapsed").length > 0) {
@@ -607,7 +626,7 @@ if (1==1) { // this was originally if userAgent = iPhone
 	            return false;
 	        });
 
-	        $("#footernote").removeClass("longfooternote");
+	        // $("#footernote").removeClass("longfooternote");
 
 	    }
 
@@ -638,8 +657,8 @@ $(".infusionheader").css("background-color", "#CE6563");
 
 $(function(){
 
-    $("#footernote").css("height", $(window).height()-226);
-    console.log($(window).height());
+//    $("#footernote").css("height", $(window).height()-226);
+//    console.log($(window).height());
 
     // SET APP LOAD COUNTER
     var countAppLoad = localStorage.getItem("countAppLoad");
@@ -655,6 +674,9 @@ $(function(){
 
     // SET APP BABY COUNTER
     babyCounter();
+
+   	// SET UP UUID
+   	neomateUUID(); 
 
     
 	// SHOW DISCLAIMER IF NOT SHOWN BEFORE
@@ -674,7 +696,7 @@ $(function(){
 	else if (item.length === 0) {
 	       //
 	}
-	
+
 
 // Click links within checklist tiles
 	$('ul.checklistulclick li').bind('click', function() {
