@@ -338,9 +338,9 @@ function babyCounter() {
 
 function neomateUUID() {
 	// Create GUID for unique user counting
-    var neomateuuid = localStorage.getItem("neomateuuid");
+    var uuid = localStorage.getItem("neomateuuid");
     var v = null;
-    if (neomateuuid.length < 10) {
+    if (uuid == null) {
     	console.log("Creating new UUID...");
     	localStorage.setItem("neomateuuid", 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     	var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
@@ -348,7 +348,7 @@ function neomateUUID() {
 		}));
 	}
 	else {
-	       console.log("Existing UUID: " + neomateuuid);
+	    console.log("Existing UUID: " + uuid);
 	}
 }
 
