@@ -690,6 +690,10 @@ $(function(){
    	// SET UP UUID
    	neomateUUID(); 
 
+   	// SUBMIT SURVEY DATA (if not already done)
+	if (localStorage.getItem("surveysync") == 2) {
+		ProcessSurvey("delayed");
+	}
     
 	// SHOW DISCLAIMER IF NOT SHOWN BEFORE
 
@@ -805,9 +809,18 @@ $("#surveysubmitbtn").click(function(event) {
 
 		event.preventDefault();
 
-		$("#surveystatus").text("Sending - please wait...");
+		$("#surveystatus").html("Sending - please wait... <img src=\"images/spinner20px.svg\">");
 
 		// process the form
+		ProcessSurvey("submit");
+            
+    });
+});
+
+var ProcessSurvey = function(requesttype) {
+
+	if (requesttype == 'submit') {
+		// This form has just been submitted, so grab data from the live form
 
 		if($("#surveyemail").val().length === 0) {
 			surveyemail = "unknown";
@@ -821,6 +834,14 @@ $("#surveysubmitbtn").click(function(event) {
 			surveyfeedback = $("#surveyfeedback").val();
 		}
 
+        // Save in local storage for now
+        localStorage.setItem("surveyemail", surveyemail);
+        localStorage.setItem("surveycountry", $("#surveycountry").val());
+        localStorage.setItem("surveyrole", $("#surveyrole").val());
+        localStorage.setItem("surveyexperience", $("#surveyexperience").val());
+        localStorage.setItem("surveyfeedback", $("#surveyfeedback").val());
+
+
         var formData = {
 	        'uuid': checkUUID(),
 	        'surveyemail': surveyemail,
@@ -828,28 +849,80 @@ $("#surveysubmitbtn").click(function(event) {
 	        'surveyrole': $("#surveyrole").val(),
 	        'surveyexperience': $("#surveyexperience").val(),
 	        'surveyfeedback': surveyfeedback,
-	        'surveydevice': cordova.platformId + "-" + navigator.userAgent,
+	        'surveydevice': device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent,
 	        'surveyversion': '3.0.0',
 	        'surveyip': 'unknown',
-	        'surveybabies': localStorage.getItem("countBabyLoad")
+	        'surveybabies': localStorage.getItem("countBabyLoad"),
+	        'submittype': 'live'
         };
+    }
+
+    else if (requesttype == 'delayed') {
+		// Try again to send data that failed last time
+
+		if($("#surveyemail").val().length === 0) {
+			surveyemail = "unknown";
+		} else {
+			surveyemail = $("#surveyemail").val();
+		}
+
+		if($("#surveyfeedback").val().length === 0) {
+			surveyfeedback = "none";
+		} else {
+			surveyfeedback = $("#surveyfeedback").val();
+		}
+
+        // Save in local storage for now
+        localStorage.setItem("surveyemail", surveyemail);
+        localStorage.setItem("surveycountry", $("#surveycountry").val());
+        localStorage.setItem("surveyrole", $("#surveyrole").val());
+        localStorage.setItem("surveyexperience", $("#surveyexperience").val());
+        localStorage.setItem("surveyfeedback", surveyfeedback);
+
+
+        var formData = {
+	        'uuid': checkUUID(),
+	        'surveyemail': localStorage.getItem("surveyemail"),
+	        'surveycountry': localStorage.getItem("surveycountry"),
+	        'surveyrole': localStorage.getItem("surveyrole"),
+	        'surveyexperience': localStorage.getItem("surveyexperience"),
+	        'surveyfeedback': localStorage.getItem("surveyfeedback"),
+	        'surveydevice': device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent,
+	        'surveyversion': '3.0.0',
+	        'surveyip': 'unknown',
+	        'surveybabies': localStorage.getItem("countBabyLoad"),
+	        'submittype': 'delayed'
+        };
+    }
+
         $.ajax({
             type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
             url         : 'https://zj49kbd1s1.execute-api.eu-west-2.amazonaws.com/prod/NeoMateStore', // the url where we want to POST
             data        : formData, // our data object
             dataType    : 'json', // what type of data do we expect back from the server
-            encode      : false,
+            encode      : true,
             success     : function(msg){
         					console.log(msg); 
-                			$("#surveystatus").text("Your answers have been sent - thank you!");
-  							},
+                			$("#surveystatus").html("<div class=\"ui-icon ui-icon-check\" style=\"float:left; margin-right: 10px\"></div>Your answers have been sent - thank you! Taking you to the home screen...");
+                			$("#surveystatus").addClass("statussuccess");
+                			$("#surveysubmitbtn").parent().hide();
+                			localStorage.setItem("surveysync", 1);
+                			setTimeout(function() {
+    	            			$.mobile.changePage("#main", { transition: "none", reverse: false, changeHash: true });
+    						}, 3000);
+     						},
 			error       : function(XMLHttpRequest, textStatus, errorThrown) {
-     						$("#surveystatus").text("Something went wrong - are you connected to the internet? Please try again!");
+     						$("#surveystatus").html("<div class=\"ui-icon ui-icon-check\" style=\"float:left; margin-right: 10px\"></div>Saved - thank you. Taking you to the home screen...");
+                			$("#surveystatus").addClass("statussuccess");
+                			$("#surveysubmitbtn").parent().hide();
+                			localStorage.setItem("surveysync", 2);
+                			setTimeout(function() {
+    	            			
+    						}, 3000);
  							}
-			})
-            
-    });
-});
+			});
+
+}
 
 var OICalc = function() {
 	// FiO2 = #oifio2 (%)

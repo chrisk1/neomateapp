@@ -351,7 +351,7 @@ body {
 }
 
 .aboutsubpanel {
-  padding: 7px;
+  padding: 10px;
   background-color: #F7EAEA;
   margin-bottom: 15px;
 }
@@ -609,6 +609,15 @@ h3.ui-collapsible-heading-collapsed, h3.ui-collapsible-heading-toggle, h3.ui-col
   padding: 10px;
   font-size: 12px;
   margin-bottom: 15px;
+}
+
+.statussuccess {
+    background-color: #3E8D71;
+    color: #FFFFFF;
+    padding: 18px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 /* v2.3 - preparation for migration of dialogs */
