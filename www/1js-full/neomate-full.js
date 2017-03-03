@@ -807,8 +807,6 @@ $('.ui-content').on('click', '.ui-icon-delete', function(e){
 
 $("#surveysubmitbtn").click(function(event) {
 
-		event.preventDefault();
-
 		$("#surveystatus").html("Sending - please wait... <img src=\"images/spinner20px.svg\">");
 
 		// process the form

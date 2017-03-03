@@ -620,6 +620,10 @@ h3.ui-collapsible-heading-collapsed, h3.ui-collapsible-heading-toggle, h3.ui-col
     margin-bottom: 10px;
 }
 
+.ui-page-active {
+  padding-top: 0px !important;
+}
+
 /* v2.3 - preparation for migration of dialogs */
 
 .dialogcontent {
