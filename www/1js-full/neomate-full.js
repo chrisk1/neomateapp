@@ -237,6 +237,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		$.mobile.silentScroll(0);
 	});
 
+	$(".contactchris").click(function(){
+		console.log("Contact link clicked");
+		window.open("mailto:chris.kelly@doctors.org.uk", '_system');
+	});
+
 	function onDeviceReady() {
 		// Fastclick initialisation
 		FastClick.attach(document.body);
