@@ -337,7 +337,23 @@ function babyCounter() {
 }
 
 function neomateUUID() {
-	// Create GUID for unique user counting
+	// Create UUID for unique user counting
+    var uuid = localStorage.getItem("neomateuuid");
+    var v = null;
+    if (uuid == null) {
+    	console.log("Creating new UUID...");
+    	localStorage.setItem("neomateuuid", 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    	var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    	console.log("New UUID: " + v.toString(16));
+		}));
+	}
+	else {
+	    console.log("Existing UUID: " + uuid);
+	}
+}
+
+function checkUUID() {
+	// Check UUID
     var uuid = localStorage.getItem("neomateuuid");
     var v = null;
     if (uuid == null) {
@@ -348,12 +364,8 @@ function neomateUUID() {
 		}));
 	}
 	else {
-	    console.log("Existing UUID: " + uuid);
+	    return(uuid);
 	}
-}
-
-function checkUUID() {
-	return localStorage.getItem("neomateuuid");
 }
 
 	// Allow links to be clicked in checklists
@@ -386,7 +398,7 @@ function checkUUID() {
 
 		if (countBabyLoad > 20) {
 			setTimeout(function() {   //calls click event after a certain time
-   				AppRate.promptForRating();
+   				AppRate.promptForRating(false);
 			}, 2000);	
 		}
 
@@ -789,6 +801,54 @@ $('.ui-content').on('click', '.ui-icon-delete', function(e){
 		$("#estimatelabel").show();
 	});
 
+$("#surveysubmitbtn").click(function(event) {
+
+		event.preventDefault();
+
+		$("#surveystatus").text("Sending - please wait...");
+
+		// process the form
+
+		if($("#surveyemail").val().length === 0) {
+			surveyemail = "unknown";
+		} else {
+			surveyemail = $("#surveyemail").val();
+		}
+
+		if($("#surveyfeedback").val().length === 0) {
+			surveyfeedback = "none";
+		} else {
+			surveyfeedback = $("#surveyfeedback").val();
+		}
+
+        var formData = {
+	        'uuid': checkUUID(),
+	        'surveyemail': surveyemail,
+	        'surveycountry': $("#surveycountry").val(),
+	        'surveyrole': $("#surveyrole").val(),
+	        'surveyexperience': $("#surveyexperience").val(),
+	        'surveyfeedback': surveyfeedback,
+	        'surveydevice': cordova.platformId + "-" + navigator.userAgent,
+	        'surveyversion': '3.0.0',
+	        'surveyip': 'unknown',
+	        'surveybabies': localStorage.getItem("countBabyLoad")
+        };
+        $.ajax({
+            type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
+            url         : 'https://zj49kbd1s1.execute-api.eu-west-2.amazonaws.com/prod/NeoMateStore', // the url where we want to POST
+            data        : formData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode      : false,
+            success     : function(msg){
+        					console.log(msg); 
+                			$("#surveystatus").text("Your answers have been sent - thank you!");
+  							},
+			error       : function(XMLHttpRequest, textStatus, errorThrown) {
+     						$("#surveystatus").text("Something went wrong - are you connected to the internet? Please try again!");
+ 							}
+			})
+            
+    });
 });
 
 var OICalc = function() {
