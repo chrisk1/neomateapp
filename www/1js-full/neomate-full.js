@@ -177,6 +177,7 @@ infusiondb = [
 
 // ################## START: App functions / setup #######################
 var gramsnotification = '';
+var weighthistory = '';
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -1006,10 +1007,13 @@ var CalculateApp = function() {
 
 	// Stop app from completing if 
 		if (babyweight > 7) {
-			showMessage("This app is only valid for babies on NICU. Please check your weight and try again.", highlightWeight, "Oops - please check weight", "Done");
+			if (babyweight != weighthistory) {
+				showMessage("This app is only valid for babies on NICU. Please check your weight and try again.", highlightWeight, "Oops - please check weight", "Done");
+			}
 			console.log("Baby too large");
 			// $("#babyweight").focus();
 			highlightWeight();
+			weighthistory = babyweight;
 			babyweight = "";
 		}
 
