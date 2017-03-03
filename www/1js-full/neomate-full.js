@@ -243,6 +243,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	});
 
 	function onDeviceReady() {
+		console.log("Device on ready launched");
 		// Fastclick initialisation
 		FastClick.attach(document.body);
 	   	// GAP Analytics set up (on ready)
@@ -274,6 +275,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		AppRate.preferences.customLocale = customLocale;
 
 		var countBabyLoad = localStorage.getItem("countBabyLoad");
+
+		// Run unit tests before hiding splash screen
+		var unitresults = initialisetests();
+		console.log(unitresults);
 
 		if (navigator.userAgent.match(/Android/)) {
 			setTimeout(function() {
@@ -345,13 +350,15 @@ function babyCounter() {
 function neomateUUID() {
 	// Create UUID for unique user counting
     var uuid = localStorage.getItem("neomateuuid");
-    var v = null;
-    if (uuid == null) {
+
+    if (uuid == null || uuid.length>40) {
     	console.log("Creating new UUID...");
-    	localStorage.setItem("neomateuuid", 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    	var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-    	console.log("New UUID: " + v.toString(16));
-		}));
+    	var newuuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+		    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+		    return v.toString(16);
+			});
+    	localStorage.setItem("neomateuuid", newuuid);
+    	console.log("New UUID created: " + newuuid);
 	}
 	else {
 	    console.log("Existing UUID: " + uuid);
@@ -418,6 +425,19 @@ function checkUUID() {
 	// Remove active green bits
 	$('div[id^="checklist"]').on("pageshow", function() {
 		$(".backbtn").removeClass("ui-btn-active");
+	});
+
+	// Set up existing fields for survey if already entered
+	$("#survey").on( "pageshow", function(event) {
+		if (localStorage.getItem("surveyemail") != "unknown") {
+			$("#surveyemail").val(localStorage.getItem("surveyemail"));
+		}
+		if (localStorage.getItem("surveyfeedback") != "unknown") {
+			$("#surveyfeedback").val(localStorage.getItem("surveyfeedback"));
+		}
+		$("#surveycountry").val(localStorage.getItem("surveycountry")).selectmenu('refresh');
+		$("#surveyrole").val(localStorage.getItem("surveyrole")).selectmenu('refresh');
+		$("#surveyexperience").val(localStorage.getItem("surveyexperience")).selectmenu('refresh');
 	});
 	
 	// pop ups
@@ -516,6 +536,56 @@ function nativePluginResultHandler() {
 
 function nativePluginErrorHandler() {
 	console.log("Track fail");
+}
+
+var unittestcount=0;
+var unittestfailcount=0;
+var unittestfailsummary='';
+var unittestsummary='pass';
+
+function unittest (actual, expected, comment) {
+	unittestcount=unittestcount+1;
+	if (actual == expected) {
+		return true;
+	} else {
+		unittestfailcount=unittestfailcount+1;
+		if (unittestfailsummary == '') {
+			unittestfailsummary=comment;
+		} else {
+			unittestfailsummary=unittestfailsummary+', '+comment;			
+		}
+		unittestsummary='fail';
+		return false;
+	}
+}
+
+function initialisetests() {
+	// Shorter version of private full unit testing suite, intended to
+	// ensure that the app's calculation system is intact.
+	// i.e. JS engine changes in future upgrades of iOS/Android OS that
+	// we cannot predict.
+	// This should be run before the splash screen is cleared, so maximum
+	// 300ms or so to run this.
+
+	// 1. Complete check of intubation
+		$("#babyweight").val(1000);
+		CalculateApp();
+		unittest( $("#babyweight").val(), 1000, "Weight input set to 1kg" );
+		unittest( $("#ettsize").text(), "3.0", "ETT = 3.0" );
+		unittest( $("#ettlength").text(), "6.5 cm", "ETT = Tube length = 6.5cm" );
+		unittest( $("#fentanylbolus").text(), "5 micrograms by slow IV push(preferred drug for intubation)", "Fentanyl: 5 micrograms by slow IV push(preferred drug for intubation)" );
+		unittest( $("#morphinebolus").text(), "100 micrograms by slow IV push(nb onset of action approx 5 mins; peak action at 15 - 30 mins)", "Morphine: 100 micrograms by slow IV push(effective only after 20-30 mins)" );
+		unittest( $("#suxbolus").text(), "2 mg by slow IV push", "Suxamethonium 2 mg by slow IV push" );
+		unittest( $("#atropinebolus").text(), "20 micrograms by slow IV push", "Atropine 20 micrograms by slow IV push" );
+		unittest( $("#curosurf").text(), "First dose: 200 mg,Second dose: 100 mg (if indicated)Give via ET tube.Practical note: use whole vial closest to calculated dose.", "First dose: 200 mg,Second dose: 100 mg (if indicated)Give via ET tube.Practical note: use whole vial closest to calculated dose." );
+
+	// Reset things back to initalised
+	$("#babyweight").val('');
+	CalculateApp;
+
+	// Report back on the results
+	// output ['pass/fail', # failed tests, 'if fail, comments']
+	return [unittestsummary, unittestfailcount, unittestfailsummary];
 }
 
 // ################## END: App functions / setup #######################
@@ -900,14 +970,14 @@ var ProcessSurvey = function(requesttype) {
     }
 
         $.ajax({
-            type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
+            type        : 'GET',
             url         : 'https://zj49kbd1s1.execute-api.eu-west-2.amazonaws.com/prod/NeoMateStore', // the url where we want to POST
-            data        : formData, // our data object
+            data        : formData,
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true,
             success     : function(msg){
         					console.log(msg); 
-                			$("#surveystatus").html("<div class=\"ui-icon ui-icon-check\" style=\"float:left; margin-right: 10px\"></div>Your answers have been sent - thank you! Taking you to the home screen...");
+                			$("#surveystatus").html("<div class=\"ui-icon ui-icon-check\" style=\"float:left; margin-right: 10px\"></div>Your answers have been sent - thank you!");
                 			$("#surveystatus").addClass("statussuccess");
                 			$("#surveysubmitbtn").parent().hide();
                 			localStorage.setItem("surveysync", 1);
@@ -916,7 +986,7 @@ var ProcessSurvey = function(requesttype) {
     						}, 3000);
      						},
 			error       : function(XMLHttpRequest, textStatus, errorThrown) {
-     						$("#surveystatus").html("<div class=\"ui-icon ui-icon-check\" style=\"float:left; margin-right: 10px\"></div>Saved - thank you. Taking you to the home screen...");
+     						$("#surveystatus").html("<div class=\"ui-icon ui-icon-check\" style=\"float:left; margin-right: 10px\"></div>Saved - thank you!");
                 			$("#surveystatus").addClass("statussuccess");
                 			$("#surveysubmitbtn").parent().hide();
                 			localStorage.setItem("surveysync", 2);
@@ -1016,6 +1086,7 @@ var CalculateApp = function() {
 				showMessage("This app is only valid for babies on NICU. Please check your weight and try again.", highlightWeight, "Oops - please check weight", "Done");
 			}
 			console.log("Baby too large");
+			throw "Baby too large";
 			// $("#babyweight").focus();
 			highlightWeight();
 			weighthistory = babyweight;
@@ -1265,6 +1336,7 @@ PREVIOUS SIZES
 				console.log("Volume error");
 				$("#fluidoutput").html($("#fluidsvalue").val() + " ml/kg/day is more than usually recommended in a newborn. Please check and try again.");
 				showMessage("This amount of fluid is probably too much for normal neonatal care. Please check and try again.", alertCallback, "Fluid volume error", "Done");
+				throw "Fluid volume too great for normal practice";
 			}
 			else
 			{
@@ -1667,22 +1739,10 @@ console.log("Popup: " + popup);
 
 	$(document).ready(function () {
 
-	// Initialise Analytics
-	//	analyticsInit();
-
-/* First attempt at this routine
-			$('.infusion-detail').click(function() {
-			var infusion = new Infusion($(this).parent().data('infusion-drugname'), $(this).parent().data('infusion-deliverydose'), $(this).parent().data('infusion-deliveryunits'), $(this).parent().data('infusion-desiredrate'), 0, $(this).parent().data('infusion-syringe'), $(this).parent().data('infusion-fluidtype'), 1)
-			console.log(infusion.outputtext());
-			return false;
-		});
-*/
-
-/* Second attempt */
-
+// Second implementation of this routine
 // Note this has been disabled:
-// .infusion-detail has been changed 3x to .infusion-detail-temp below
-// the css class has also been changed in drug infusion calculator in the main html
+// - .infusion-detail has been changed 3x to .infusion-detail-temp below
+// - the css class has also been changed in drug infusion calculator in the main html
 
 		$(".infusion-detail").parent().click(function(){
 			var drugname = $(this).find(".infusion-detail").data('infusion-drugname');
