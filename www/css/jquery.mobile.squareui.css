@@ -1627,11 +1627,11 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 	left: 0;
 	right: 0;
 	width: 100%;
-	position: fixed;
+	position: fixed !important;
 	z-index: 1000;
 }
 .ui-header-fixed {
-	top: -1px;
+	top: 0px;
 	padding-top: 1px;
 }
 .ui-header-fixed.ui-fixed-hidden {
@@ -1662,7 +1662,7 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 	padding: 0;
 }
 .ui-fixed-hidden {
-	position: absolute;
+	/* position: absolute; */
 }
 .ui-page-header-fullscreen .ui-fixed-hidden,
 .ui-page-footer-fullscreen .ui-fixed-hidden {

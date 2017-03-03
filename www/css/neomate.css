@@ -452,7 +452,7 @@ body {
 }
 
 .ui-footer-fixed.ui-fixed-hidden {
-  display: none;
+  /* display: none; */
 }
 
 .topmargin70 {
