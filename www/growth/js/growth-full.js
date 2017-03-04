@@ -623,53 +623,22 @@ function NaNFix(input) {
 // var uniquedata;
 
 function nativePluginResultHandler (result) {
-	alert('nativePluginResultHandler - '+result);
+	// alert('nativePluginResultHandler - '+result);
 	console.log('nativePluginResultHandler: '+result);
 }
 
 function nativePluginErrorHandler (error) {
-	alert('nativePluginErrorHandler - '+error);
+	// alert('nativePluginErrorHandler - '+error);
 	console.log('nativePluginErrorHandler: '+error);
 }
 
-$(function(){
-	// Initiate fastclick
-		FastClick.attach(document.body);
-
-	// SHOW DISCLAIMER IF NOT SHOWN BEFORE
-
-    var item = localStorage.getItem("growthdisc");
-    if (item == null) {
-		$.mobile.changePage( "#splashscreen", { transition: "flip"} );
-		localStorage.setItem("growthdisc", "true");
-    }
-    else if (item.length === 0) {
-       //
-    }
-
-
-	// TO OPEN TAGS CLASSSED AS EXTERNAL IN SAFARI
-	$(document).on('click', ".external", function (e) {
-		e.preventDefault();
-		var targetURL = $(this).attr("href");
-
-		window.open(targetURL, "_system", "location=no");
-	});
-
-	// Swipe right to go back from results
-		$(window).on("swiperight", function(){
-			if ($.mobile.activePage.attr('id') == "results") {
-				$.mobile.changePage("#main", {transition: "slide",
-				reverse: true}, true, true);
-		}
-		});
-
-});
+// NeoMate modifications
+// Removed window.onload - duplicates with existing code
 
 
 // Centre content after page has loaded and hide splash screen
 
-$("#main").on( "pageshow", function( event ) {
+$("#clinic").on( "pageshow", function( event ) {
 	$('#main-content').css('margin-top',($(window).height() - $('[data-role=header]').height() - $('[data-role=footer]').height() - $('#main-content').outerHeight())/2);
 
 	var isAndroid = navigator.userAgent.match(/android/i) ? true : false;
@@ -687,30 +656,15 @@ $("#main").on( "pageshow", function( event ) {
 	} 
 	*/
 
-	setTimeout(function() {
-    navigator.splashscreen.hide();
-    }, 2000);
+// NeoMate modifications
+	// setTimeout(function() {
+ //    navigator.splashscreen.hide();
+ //    }, 2000);
 });
-
-$("#results").on( "pageshow", function( event ) {
-    // GAP	gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "dimension1", uniquedata);
-});
-
-$("#main").on( "deviceready", function( event ) {
-	setTimeout(function() {
-     navigator.splashscreen.hide();
-    }, 3000);
-
-   	// GAP Analytics set up (on ready)
-	// gaPlugin = window.plugins.gaPlugin;
-    // gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, "UA-54184908-1", 2);
-    // gaPlugin.trackPage(nativePluginResultHandler, nativePluginErrorHandler, "main");
-});
-
 
 // better way of initialising with JM
-$(document).on('pageinit', '#main', function () {
-    $('#dob').mobiscroll().date({
+$(document).on('pageinit', '#clinic', function () {
+    $('#clinic #dob').mobiscroll().date({
         theme: 'ios7',
         display: 'inline',
         mode: 'scroller',
@@ -723,7 +677,7 @@ $(document).on('pageinit', '#main', function () {
 		showOnFocus: true
     });
 
-    $('#select-choice-a').mobiscroll().select({
+    $('#clinic #select-choice-a').mobiscroll().select({
         theme: 'ios7',
         headerText: 'Gestation at birth',
         accent: ' ',
@@ -734,30 +688,29 @@ $(document).on('pageinit', '#main', function () {
         rows: 7
     });
 
-    $(".ui-select").click(function () {
-    	$('#select-choice-a').mobiscroll('show');
-
+    $("#clinic .ui-select").click(function () {
+    	$('#clinic #select-choice-a').mobiscroll('show');
     });
 
     $("#newcentile").click(function() {
 		//reset checkboxes and radio inputs, then refresh them
-		$(".ui-checkbox input[type='checkbox'], .ui-radio input[type='radio']").prop("checked", false).checkboxradio("refresh"); 
+		$("#clinic .ui-checkbox input[type='checkbox'], #clinic .ui-radio input[type='radio']").prop("checked", false).checkboxradio("refresh"); 
 
 		//reset all select menus and then refresh them
-		$('.ui-select select').val('40+0').selectmenu('refresh');
+		$('#clinic .ui-select select').val('40+0').selectmenu('refresh');
 
 		//reset text boxes
-		$('#weight').val('');
-		$('#head').val('');
-		$('#length').val('');
+		$('#clinic #weight').val('');
+		$('#clinic #head').val('');
+		$('#clinic #length').val('');
     });
 
-    $("#calculatebtn").click(function () {
+    $("#clinic #calculatebtn").click(function () {
     	calculatecentile();
     });
 
     $("#daterow").click(function () {
-	        $('#customdate').mobiscroll('show'); 
+	        $('#clinicresults #customdate').mobiscroll('show'); 
 	        return false;	
     });
 
@@ -768,7 +721,7 @@ $(document).on('pageinit', '#main', function () {
     var calculatecentile = function(datetodayinput) {
 
     	// Error check first
-     	if (($("#weight").val() != "" || $("#length").val() != "" || $("#head").val() != "") && typeof $("input:radio[name=sex]:checked").val() == "undefined") {
+     	if (($("#clinic #weight").val() != "" || $("#clinic #length").val() != "" || $("#clinic #head").val() != "") && typeof $("#clinic input:radio[name=sex]:checked").val() == "undefined") {
     		// alert("Oops - please pick if this is a boy or a girl!");
     		navigator.notification.alert(
 	            'Oops - please pick if this is a boy or a girl!',  // message
@@ -779,7 +732,7 @@ $(document).on('pageinit', '#main', function () {
     		return false;
     	}
 
-    	if (moment($('#dob').mobiscroll('getDate').toString("dd/MM/yyyy"), "DD/MM/YYYY").isAfter(moment())) {
+    	if (moment($('#clinic #dob').mobiscroll('getDate').toString("dd/MM/yyyy"), "DD/MM/YYYY").isAfter(moment())) {
     		// alert("Hmmmm. Baby's date of birth can't be in the future!");
     		navigator.notification.alert(
 	            'Hmmmm. Baby\'s date of birth can\'t be in the future!',  // message
@@ -802,7 +755,7 @@ $(document).on('pageinit', '#main', function () {
 			monthText: '',
 			dayText: '',
 	        dateOrder: 'ddMMyyyy',
-	        minDate: new Date($('#dob').mobiscroll('getDate').toString("MM/dd/yyyy")),
+	        minDate: new Date($('#clinic #dob').mobiscroll('getDate').toString("MM/dd/yyyy")),
 	        display: 'bottom',
 	        mode: 'scroller',
 	        buttons: [ 
@@ -810,7 +763,7 @@ $(document).on('pageinit', '#main', function () {
 			    { 
 			        text: 'DOB', 
 			        handler: function (event, inst) { 
-			            $("#customdate").mobiscroll().scroller('setDate', $('#dob').mobiscroll('getDate'))
+			            $("#customdate").mobiscroll().scroller('setDate', $('#clinic #dob').mobiscroll('getDate'))
 			        } 
 			    },
 			    'cancel'
@@ -829,24 +782,24 @@ $(document).on('pageinit', '#main', function () {
     	
     	var baby = new Baby($("#select-choice-a").val(), $("input:radio[name=sex]:checked").val(), $('#dob').mobiscroll('getDate').toString("dd/MM/yyyy"));
     	var babyage = new Babyage(baby, datetoday);
-    	var growthchart = new Growthchart(baby, datetoday, $("#weight").val(), $("#length").val(), $("#head").val());
+    	var growthchart = new Growthchart(baby, datetoday, $("#clinic #weight").val(), $("#clinic #length").val(), $("#clinic #head").val());
 
     	// GAP Track event data
-	    // var uniquedata = babyage.ga() + "-" + $("#weight").val() + "-" + $("#length").val() + "-" + $("#head").val() + "-" + babyage.cga();
+	    // var uniquedata = babyage.ga() + "-" + $("#clinic #weight").val() + "-" + $("#clinic #length").val() + "-" + $("#clinic #head").val() + "-" + babyage.cga();
 
 
     	// Update results table
-	    	$("#weightval").html($("#weight").val() + "kg");
-	    	$("#weighthuman").html(growth_centile_to_range(growthchart.weightcentile) + NaNFix(growthchart.weightcentiletext));
+	    	$("#clinicresults #weightval").html($("#clinic #weight").val() + "kg");
+	    	$("#clinicresults #weighthuman").html(growth_centile_to_range(growthchart.weightcentile) + NaNFix(growthchart.weightcentiletext));
 
-	    	$("#headval").html($("#head").val() + "cm");
-	    	$("#headhuman").html(growth_centile_to_range(growthchart.hccentile) + NaNFix(growthchart.hccentiletext));
+	    	$("#clinicresults #headval").html($("#clinic #head").val() + "cm");
+	    	$("#clinicresults #headhuman").html(growth_centile_to_range(growthchart.hccentile) + NaNFix(growthchart.hccentiletext));
 
-			$("#lengthval").html($("#length").val() + "cm");
-	    	$("#lengthhuman").html(growth_centile_to_range(growthchart.lengthcentile) + NaNFix(growthchart.lengthcentiletext));
+			$("#clinicresults #lengthval").html($("#clinic #length").val() + "cm");
+	    	$("#clinicresults #lengthhuman").html(growth_centile_to_range(growthchart.lengthcentile) + NaNFix(growthchart.lengthcentiletext));
 
 	    	$("#datetodayval").html(moment(babyage.datetodaym).format("ddd Do MMM YYYY"));
-	    	$("#babyedd").html(moment(babyage.duedatem()).format("ddd Do MMM YYYY"));
+	    	$("#clinicresults #babyedd").html(moment(babyage.duedatem()).format("ddd Do MMM YYYY"));
 
     	// Age results box
 
@@ -882,17 +835,17 @@ $(document).on('pageinit', '#main', function () {
 	    	else {var gender = "";} //[gender not specified]
 
 	    	var pretermmessage = "";
-	    	if (babyage.yearsLMS() < 2 && growthchart.charttype == "preterm") { var pretermmessage = "Preterm";}
-	    	$("#message").html("RCPCH UK-WHO Growth Chart " + pretermmessage + " " + gender);
+	    	if (babyage.yearsLMS() < 2 && growthchart.charttype == "preterm") { var pretermmessage = "NICM";}
+	    	$("#clinicresults #message").html("RCPCH UK-WHO Growth Chart " + pretermmessage + " " + gender);
  
 	    // Change page
-	    	$.mobile.changePage("#results", { transition: "slide"});
+	    	$.mobile.changePage("#clinicresults", { transition: "none"});
 	    // Draw chart
 	       	drawchart();
  		// Update chart
-	    	$('#container').highcharts().series[0].data[0].update({y: Math.round(growthchart.weightcentile), origsize: $("#weight").val() + "kg"})
-	    	$('#container').highcharts().series[0].data[1].update({y: Math.round(growthchart.hccentile), origsize: $("#head").val() + "cm"})
-	    	$('#container').highcharts().series[0].data[2].update({y: Math.round(growthchart.lengthcentile), origsize: $("#length").val() + "cm"})
+	    	$('#clinicresults #container').highcharts().series[0].data[0].update({y: Math.round(growthchart.weightcentile), origsize: $("#clinic #weight").val() + "kg"})
+	    	$('#clinicresults #container').highcharts().series[0].data[1].update({y: Math.round(growthchart.hccentile), origsize: $("#clinic #head").val() + "cm"})
+	    	$('#clinicresults #container').highcharts().series[0].data[2].update({y: Math.round(growthchart.lengthcentile), origsize: $("#clinic #length").val() + "cm"})
 
 	    return false;
     }

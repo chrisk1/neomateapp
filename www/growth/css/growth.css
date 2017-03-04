@@ -1,0 +1,121 @@
+#ageresultsbox {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 20px;
+	background-image:url('images/stripe_bg-old.png') !important;
+	background-repeat:repeat !important;
+	margin-top: 15px;
+}
+
+#ageresultsbox #title {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Lato, Helvetica; sans-serif;
+}
+
+#ageresultsbox #titlenobold {
+	font-size: 20px;
+	font-weight: normal;
+	font-family: Lato, Helvetica; sans-serif;
+	color: #666;
+}
+
+.resultsheadercell {
+	font-size: 18px;
+	color: #111;
+	font-weight: bold;
+	font-family: Lato, Helvetica; sans-serif;
+}
+
+#clinicresults #message {
+	font-size: 13px;
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-top: -5px;
+}
+
+#footnotes {
+	font-size: 13px;
+}
+
+.highcharts-container {
+	width: 100% !important;
+}
+
+/* Fiddling with Mobiscroll box */
+#clinic #select-choice-a-button span {
+	display: none;
+}
+
+#clinic #select-choice-a_dummy {
+	color: #FFF;
+	font-weight: bold;
+	padding: 0 !important;
+}
+
+#clinic .ui-select #select-choice-a-button {
+	padding-top: 3px !important;
+	padding-bottom: 4px !important;
+	padding-left: 20px !important;
+}
+
+#clinic .ui-select .ui-input-text {
+	background: transparent !important;
+	border: 0 !important;
+	margin: 0px !important;
+}
+
+.greytext {
+	color: #999;
+}
+
+#clinic .ui-body-c {
+	border: 0px solid #f2f2f2 !important;
+	background-color: #f2f2f2;
+}
+
+#clinic .ui-input-text {
+    border: 0px solid #f2f2f2 !important;
+    background: #F6F6F6 !important;
+    padding: 0.2em 10px !important;
+}
+
+#clinic .ios7 .dw-li {
+	text-align: center;
+}
+
+#clinic .dw-persp {
+	margin-left: -10px !important;
+}
+
+#clinic #optionalmeasurements {
+	font-size: 12px;
+    color: #999999;
+    margin-top: -15px;
+    padding-top: 0px;
+    margin-bottom: 10px;
+}
+
+#clinic .ui-btn-text, #clinic .ui-btn-text .dw-hsel {
+	position: relative !important;
+}
+
+#clinic #gabox .ui-input-text {
+	display: none;
+}
+
+#clinic .ui-btn-active {
+	border: 1px solid #457b87;
+	background: #457b87 !important;
+}
+
+#clinicresults #growthresultsinfo {
+    font-size: 12px;
+    background-color: #f6f6f6;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-top: 20px;
+    margin-bottom: 55px;
+}

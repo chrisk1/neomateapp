@@ -27,8 +27,12 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
 <link href="css/jquery.mobile.squareui.css" rel="stylesheet" type="text/css" />
+<link href="growth/css/growth.css" rel="stylesheet" type="text/css" />
+<link href="growth/js/mobiscroll/css/mobiscroll.icons.css" rel="stylesheet" type="text/css" />
+<link href="growth/js/mobiscroll/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+<link href="growth/js/mobiscroll/css/mobiscroll.scroller.ios7.css" rel="stylesheet" type="text/css" />
+<link href="growth/js/mobiscroll/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
 <link href="css/neomate.css" rel="stylesheet" type="text/css" />
-<link href="css/growth.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -1927,9 +1931,8 @@ Use the following table to insert the ET tube to the optimum length. Always conf
         </div><!-- /header -->
 
 		<div data-role="content">
-			<h2 class="checklist-header">Growth Charts</h2>
 
-		<div style="margin-bottom: -9px; font-size: 16px">Date of birth:</div>
+		<div style="margin-bottom: 0px; margin-top: 20px; font-size: 16px">Enter date of birth:</div>
 		<input id="dob" name="dob" style="display:none" />
 
 		<div class="ui-grid-b">
@@ -1952,12 +1955,13 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 			</div>
 		</div>
 		</div>
+		<div id="optionalmeasurements">(measurements are optional)</div>
 
 
 <div class="ui-grid-a">
 <div class="ui-block-a">
 <div data-role="fieldcontain">
-		<fieldset data-theme="d" data-role="controlgroup" data-type="horizontal" >
+		<fieldset data-theme="c" data-role="controlgroup" data-type="horizontal" >
 			<input type="radio" name="sex" id="sex-male" value="m" />
 			<label for="sex-male">M <img src="images/Small-Mars_symbol.png" height=16></label>
 			<input type="radio" name="sex" id="sex-female" value="f" />
@@ -1965,9 +1969,9 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 		</fieldset>
 </div>
 </div>
-<div class="ui-block-b">
+<div class="ui-block-b" id="gabox">
       <div data-role="fieldcontain">
-        <select name="select-choice" id="select-choice-a" data-native-menu="true" data-prevent-focus-zoom="true" data-theme="e" data-form="ui-btn-up-a">
+        <select name="select-choice" id="select-choice-a" data-native-menu="true" data-prevent-focus-zoom="true" data-theme="c" data-form="ui-btn-up-c">
         <optgroup label="23 weeks">
           <option value="23+1">23+1</option>
           <option value="23+2">23+2</option>
@@ -2145,8 +2149,8 @@ Use the following table to insert the ET tube to the optimum length. Always conf
           <option value="42+2">42+2</option>
           <option value="42+3">42+3</option>
           <option value="42+4">42+4</option>
-          <option value="42+4">42+5</option>
-          <option value="42+4">42+6</option>
+          <option value="42+5">42+5</option>
+          <option value="42+6">42+6</option>
           </optgroup>
 		</select>
       </div>
@@ -2157,15 +2161,7 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 
 <!-- <button type="submit" data-theme="c">Calculate</button> -->
 
-<a href="#" data-transition="slide" data-theme="c" data-role="button" id="calculatebtn">Calculate Centiles</a>
-
-
-
-
-
-
-
-
+<a href="#" data-transition="slide" data-theme="e" data-role="button" id="calculatebtn">Calculate Corrected Age / Centiles</a>
 
 
 			</div>
@@ -2174,13 +2170,81 @@ Use the following table to insert the ET tube to the optimum length. Always conf
         <ul>
             <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calc</a></li>
             <li><a href="#clinic" class="ui-btn-active ui-state-persist" id="home-clinic" data-transition="none" data-iconpos="top" data-icon="clinic">Clinic</a></li>
-         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>21
+         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
          	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
             <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
         </ul>
         </div>
 	</div><!-- /footer -->
 </div>
+
+
+<div data-role="page" id="clinicresults">
+        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+
+
+        <div data-role="content">
+		<div id="ageresultsbox">Loading...<br><span id="title"></span></div>
+		<div id="message">Growth Chart</div>
+
+<div id="container" style="height: 120px; margin-bottom: 10px;"></div>
+
+	<table width="100%" cellspacing="0" cellpadding="0" style="font-size: 0.9em">
+		<tr>
+			<td class="resultsheadercell" valign="top">Weight</td>
+			<td><span id="weightval">x</span></td>
+			<td><span id="weighthuman">xth centile (xth)</span></td>
+		</tr>
+		<tr>
+			<td class="resultsheadercell" valign="top">Head</td>
+			<td><span id="headval">x</span></td>
+			<td><span id="headhuman">xth centile (xth)</span></td>
+		</tr>
+		<tr>
+			<td  class="resultsheadercell" valign="top">Length</td>
+			<td><span id="lengthval">xcm</span></td>
+			<td><span id="lengthhuman">xth centile (xrd)</span></td>
+		</tr>
+		<tr id="daterow">
+			<td colspan="3" style="vertical-align: middle; padding-top: 10px;">Measured on <span id="datetodayval">x/x/x</span> <img src="images/penpaper.png" width="20" height="20" id="dateicon" style="margin-left: 5px; vertical-align:middle;"></td>
+			<td> </td>
+		</tr>
+
+	</table>
+
+	<div class="ui-grid-a" style="margin-top: 15px">
+	<div class="ui-block-b"><a id="modifycentile" data-transition="none" data-direction="reverse" data-rel="back" data-theme="c" data-role="button" style="margin-left: 0px !important">Modify</a></div>
+	<div class="ui-block-b"><a href="#clinic" id="newcentile" data-transition="slide" data-theme="d" data-role="button" style="margin-right: 0px !important">New Chart</a></div>
+	</div>
+
+	<div id="footnotes" style="display:none; margin-top: 15px; margin-bottom: 0px"><b>Expected date of delivery:</b> <span id="babyedd">Awaited</span><br>
+	* Day 1 = baby's first day of life.</div>
+
+	<div id="growthresultsinfo">
+	<h3>About these results:</h3>
+	<p>Data used in this app have been provided by the Royal College of Paediatrics and Child Health (RCPCH), and are a combination of the Neonatal and Infant Close Monitoring Growth Chart (NICM), the UK WHO 0-4 years growth chart, and the the UK-90 Growth Chart (2-18 years) - full information available at the <a href="http://www.rcpch.ac.uk/growthcharts" target="external">RCPCH</a>. As per the RCPCH growth chart instructions, babies born between 37-42 weeks (i.e. term) are plotted on the 40 week line. The app uses statistical calculation methodology from the US CDC "Percentile Data Files with LMS Vales, Centers for Disease Control and Prevention" - <a href="https://www.cdc.gov/growthcharts/percentile_data_files.htm" target="external">details here</a>.</p>
+	</div>
+
+	<input id="customdate" data-role="none" style="display:none">
+
+    </div><!-- /content -->
+
+	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="#main" id="home-calc" data-transition="none" data-iconpos="top" data-icon="calc">NICU Calc</a></li>
+            <li><a href="#clinic" class="ui-btn-active ui-state-persist" id="home-clinic" data-transition="none" data-iconpos="top" data-icon="clinic">Clinic</a></li>
+         	<li><a href="#checklists" id="home-checklists" data-transition="none" data-iconpos="top" data-icon="ticked">Checklists</a></li>
+         	<li><a href="#reference" id="home-reference" data-transition="none" data-iconpos="top" data-icon="openbook">Reference</a></li>
+            <li><a href="#about" data-transition="none" data-iconpos="top" data-icon="about">About</a></li>
+        </ul>
+        </div>
+	</div><!-- /footer -->
+</div>
+
 
 <div data-role="page" data-theme="c" id="testfailure">
        <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
