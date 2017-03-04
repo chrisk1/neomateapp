@@ -285,7 +285,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 			navigator.splashscreen.hide();
 			$("#detailedtestinfopanel").html("Time performed: " + unitresults[4] + "<br><b>FAILURE</b> on " + unitresults[2] + " of " + unitresults[1] + " unit tests during app launch.<br><br>Detailed test failure info: <br>" + unitresults[3] + "<br><br>App version: " + appversion + "<br><br>");
 			$.mobile.changePage("#testfailure");
-			window.ga.trackException(unitresults[2] + "/" + unitresults[1] + "failed. V" + appversion + ". " + unitresults[3], true);
+			window.ga.trackException(unitresults[2] + "/" + unitresults[1] + " failed. V" + appversion + ". " + unitresults[3], true);
 		}
 
 		if (navigator.userAgent.match(/Android/)) {
@@ -851,7 +851,7 @@ $(function(){
    	neomateUUID(); 
 
    	// SUBMIT SURVEY DATA (if not already done)
-	if (localStorage.getItem("surveysync") == 2) {
+	if (localStorage.getItem("surveysync") == 2 || 1==1) {
 		ProcessSurvey("delayed");
 	}
     
@@ -1011,7 +1011,7 @@ var ProcessSurvey = function(requesttype) {
 	        'surveyexperience': $("#surveyexperience").val(),
 	        'surveyfeedback': surveyfeedback,
 	        'surveydevice': device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent,
-	        'surveyversion': '3.0.0',
+	        'surveyversion': appversion,
 	        'surveyip': 'unknown',
 	        'surveybabies': localStorage.getItem("countBabyLoad"),
 	        'submittype': 'live'
@@ -1021,39 +1021,37 @@ var ProcessSurvey = function(requesttype) {
     else if (requesttype == 'delayed') {
 		// Try again to send data that failed last time
 
-		if($("#surveyemail").val().length === 0) {
-			surveyemail = "unknown";
+		if (localStorage.getItem("surveysync") == 2 || localStorage.getItem("surveysync") == 1) {
+	        var formData = {
+		        'uuid': checkUUID(),
+		        'surveyemail': localStorage.getItem("surveyemail"),
+		        'surveycountry': localStorage.getItem("surveycountry"),
+		        'surveyrole': localStorage.getItem("surveyrole"),
+		        'surveyexperience': localStorage.getItem("surveyexperience"),
+		        'surveyfeedback': localStorage.getItem("surveyfeedback"),
+		        'surveydevice': device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent,
+		        'surveyversion': appversion,
+		        'surveyip': 'unknown',
+		        'surveybabies': localStorage.getItem("countBabyLoad"),
+		        'submittype': 'delayed'
+	        };
 		} else {
-			surveyemail = $("#surveyemail").val();
+			var formData = {
+		        'uuid': checkUUID(),
+		        'surveyemail': "unknown",
+		        'surveycountry': "unknown",
+		        'surveyrole': "unknown",
+		        'surveyexperience': "unknown",
+		        'surveyfeedback': "unknown",
+		        'surveydevice': device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent,
+		        'surveyversion': appversion,
+		        'surveyip': 'unknown',
+		        'surveybabies': localStorage.getItem("countBabyLoad"),
+		        'submittype': 'delayed'
+	        };
+
 		}
 
-		if($("#surveyfeedback").val().length === 0) {
-			surveyfeedback = "none";
-		} else {
-			surveyfeedback = $("#surveyfeedback").val();
-		}
-
-        // Save in local storage for now
-        localStorage.setItem("surveyemail", surveyemail);
-        localStorage.setItem("surveycountry", $("#surveycountry").val());
-        localStorage.setItem("surveyrole", $("#surveyrole").val());
-        localStorage.setItem("surveyexperience", $("#surveyexperience").val());
-        localStorage.setItem("surveyfeedback", surveyfeedback);
-
-
-        var formData = {
-	        'uuid': checkUUID(),
-	        'surveyemail': localStorage.getItem("surveyemail"),
-	        'surveycountry': localStorage.getItem("surveycountry"),
-	        'surveyrole': localStorage.getItem("surveyrole"),
-	        'surveyexperience': localStorage.getItem("surveyexperience"),
-	        'surveyfeedback': localStorage.getItem("surveyfeedback"),
-	        'surveydevice': device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent,
-	        'surveyversion': '3.0.0',
-	        'surveyip': 'unknown',
-	        'surveybabies': localStorage.getItem("countBabyLoad"),
-	        'submittype': 'delayed'
-        };
     }
 
         $.ajax({
