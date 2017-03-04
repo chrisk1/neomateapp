@@ -175,6 +175,7 @@ var gramsnotification = '';
 var weighthistory = '';
 var appversion = '3.0.0';
 var appdate = 'March 2017';
+var devicemodel = '';
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -979,14 +980,16 @@ $("#surveysubmitbtn").click(function(event) {
 
 var ProcessSurvey = function(requesttype) {
 
+	if (typeof device.model !== 'undefined') {
+		var devicemodel=device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent;
+	} else {
+		var devicemodel="unknown";
+	}
+
+	devicemodel="unknown";
+
 	if (requesttype == 'submit') {
 		// This form has just been submitted, so grab data from the live form
-
-		if (device.model == null) {
-			var devicemodel="unknown";
-		} else {
-			var devicemodel=device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent;
-		}
 
 		if($("#surveyemail").val().length === 0) {
 			surveyemail = "unknown";
@@ -1027,13 +1030,13 @@ var ProcessSurvey = function(requesttype) {
 		// Try again to send data that failed last time
 
 		if (localStorage.getItem("surveysync") == 2 || localStorage.getItem("surveysync") == 1) {
-	        if(localStorage.getItem("surveyemail") == null) {
+	        if(localStorage.getItem("surveyemail") == null || localStorage.getItem("surveyemail") == "") {
 				surveyemail = "unknown";
 			} else {
 				surveyemail = localStorage.getItem("surveyemail");
 			}
 
-	        if(localStorage.getItem("surveyfeedback") == null) {
+	        if(localStorage.getItem("surveyfeedback") == null || localStorage.getItem("surveyfeedback") == "") {
 				surveyfeedback = "unknown";
 			} else {
 				surveyfeedback = localStorage.getItem("surveyfeedback");
