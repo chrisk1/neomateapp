@@ -62,11 +62,11 @@ body {
 .units {
     position:relative;
 	display: block;
-	width: 120px;
+	width: 60px;
 	margin-top: -37px;
   float: left;
-  left: 80px;
-  text-align: right;
+  left: 145px;
+  text-align: center;
     z-index:2; /* Or higher than parent div */
 }
 

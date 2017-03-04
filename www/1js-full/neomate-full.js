@@ -894,7 +894,7 @@ $(function(){
 
 	$(function(){ $('[data-role=header],[data-role=footer]').fixedtoolbar({ tapToggle:false }); });
 
-	$("#inputunits").click(function() {
+	$("#inputunits").children().click(function() {
 			$("#babyweight").focus();	
 	});
 
@@ -982,6 +982,12 @@ var ProcessSurvey = function(requesttype) {
 	if (requesttype == 'submit') {
 		// This form has just been submitted, so grab data from the live form
 
+		if (device.model == null) {
+			var devicemodel="unknown";
+		} else {
+			var devicemodel=device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent;
+		}
+
 		if($("#surveyemail").val().length === 0) {
 			surveyemail = "unknown";
 		} else {
@@ -1009,7 +1015,7 @@ var ProcessSurvey = function(requesttype) {
 	        'surveyrole': $("#surveyrole").val(),
 	        'surveyexperience': $("#surveyexperience").val(),
 	        'surveyfeedback': surveyfeedback,
-	        'surveydevice': device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent,
+	        'surveydevice': devicemodel,
 	        'surveyversion': appversion,
 	        'surveyip': 'unknown',
 	        'surveybabies': localStorage.getItem("countBabyLoad"),
@@ -1040,7 +1046,7 @@ var ProcessSurvey = function(requesttype) {
 		        'surveyrole': localStorage.getItem("surveyrole"),
 		        'surveyexperience': localStorage.getItem("surveyexperience"),
 		        'surveyfeedback': surveyfeedback,
-		        'surveydevice': device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent,
+		        'surveydevice': devicemodel,
 		        'surveyversion': appversion,
 		        'surveyip': 'unknown',
 		        'surveybabies': localStorage.getItem("countBabyLoad"),
@@ -1054,7 +1060,7 @@ var ProcessSurvey = function(requesttype) {
 		        'surveyrole': "unknown",
 		        'surveyexperience': "unknown",
 		        'surveyfeedback': "unknown",
-		        'surveydevice': device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent,
+		        'surveydevice': devicemodel,
 		        'surveyversion': appversion,
 		        'surveyip': 'unknown',
 		        'surveybabies': localStorage.getItem("countBabyLoad"),
