@@ -149,6 +149,18 @@ body {
   margin-left:-15px!important;
 }
 
+.ui-icon-clinic {
+  background: url(../images/scales.png) 50% 50% no-repeat;
+  background-size: 20px 20px;
+  width: 30px;
+  height: 30px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  margin: -2px !important;
+  margin-left:-15px!important;
+  margin-bottom: 3px;
+}
+
 .ui-icon-checklist {
   background: url(../images/020w.png) 50% 50% no-repeat;
   background-size: 20px 20px;

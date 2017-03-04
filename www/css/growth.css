@@ -1,0 +1,70 @@
+#ageresultsbox {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 20px;
+	background-image:url('images/stripe_bg-old.png') !important;
+	background-repeat:repeat !important;
+
+}
+
+#ageresultsbox #title {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Lato, Helvetica; sans-serif;
+}
+
+#ageresultsbox #titlenobold {
+	font-size: 20px;
+	font-weight: normal;
+	font-family: Lato, Helvetica; sans-serif;
+	color: #666;
+}
+
+.resultsheadercell {
+	font-size: 18px;
+	color: #111;
+	font-weight: bold;
+	font-family: Lato, Helvetica; sans-serif;
+}
+
+#message {
+	font-size: 13px;
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-top: -5px;
+}
+
+#footnotes {
+	font-size: 13px;
+}
+
+.highcharts-container {
+	width: 100% !important;
+}
+
+/* Fiddling with Mobiscroll box */
+#select-choice-a-button span {
+	display: none;
+}
+
+#select-choice-a_dummy {
+	color: #FFF;
+	font-weight: bold;
+	padding: 0 !important;
+}
+
+.ui-select #select-choice-a-button {
+	padding-top: 3px !important;
+	padding-bottom: 4px !important;
+	padding-left: 20px !important;
+}
+
+.ui-select .ui-input-text {
+	background: transparent !important;
+	border: 0 !important;
+	margin: 0px !important;
+}
+
+.greytext {
+	color: #999;
+}
