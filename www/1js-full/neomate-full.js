@@ -851,9 +851,8 @@ $(function(){
    	neomateUUID(); 
 
    	// SUBMIT SURVEY DATA (if not already done)
-	if (localStorage.getItem("surveysync") == 2 || 1==1) {
-		ProcessSurvey("delayed");
-	}
+	// if (localStorage.getItem("surveysync") == 2 || 1==1) {
+	ProcessSurvey("delayed");
     
 	// SHOW DISCLAIMER IF NOT SHOWN BEFORE
 
@@ -1059,7 +1058,7 @@ var ProcessSurvey = function(requesttype) {
 		        'surveyversion': appversion,
 		        'surveyip': 'unknown',
 		        'surveybabies': localStorage.getItem("countBabyLoad"),
-		        'submittype': 'delayed'
+		        'submittype': 'startup'
 	        };
 
 		}
