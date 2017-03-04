@@ -292,7 +292,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		if (navigator.userAgent.match(/Android/)) {
 			setTimeout(function() {
     			navigator.splashscreen.hide();
-			}, 0);
+			}, 30);
 			window.scrollTo(0, 1);
 			setTimeout(function() {
 				$.mobile.resetActivePageHeight();
@@ -301,7 +301,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		else {
 			setTimeout(function() {
 	    		navigator.splashscreen.hide();
-			}, 0);
+			}, 30);
 			window.scrollTo(0, 1);
 			setTimeout(function() {
 				$.mobile.resetActivePageHeight();
@@ -657,6 +657,10 @@ function initialisetests() {
 
 	// Reset things back to initalised
 	$("#babyweight").val('');
+	$("#fluidsvalue").val("");
+	$("#dextrosefluid").val("10");
+	$("#tisodium").val("0");
+	$("#tipotassium").val("0");
 	CalculateApp();
 
 	// Get current time stamp
@@ -986,7 +990,7 @@ var ProcessSurvey = function(requesttype) {
 	// 	var devicemodel="unknown";
 	// }
 	var devicemodel = navigator.userAgent;
-	
+
 	devicemodel="unknown";
 
 	if (requesttype == 'submit') {
