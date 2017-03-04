@@ -33,11 +33,9 @@
 </head>
 
 <body>
-
+<a name="maintop">
    <div data-role="page" id="main" style="background: url(images/nts-horizontal-bg2.png); background-position: right -40px; background-size: 150px;">
- 	<a name="maintop">
         <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
-
             <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
             <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
         </div><!-- /header -->
@@ -374,7 +372,7 @@
 
 			Published by London Neonatal Transfer Service, 8D Central Tower, Royal London Hospital, Whitechapel Road, London E1 1BB.<br><br> 
 
-			Version 3.0, released March 2017.<br>
+			Version <span class="appversioninsert"></span>, released <span class="appdateinsert"></span>.<br>
 			Formulary for review in March 2018.<br><br>
 
 			<h2 style="padding-left: 0px">Usage Statistics</h2>
@@ -479,8 +477,9 @@
 
 			Published by London Neonatal Transfer Service, 8D Central Tower, Royal London Hospital, Whitechapel Road, London E1 1BB.<br><br>
 
-			Version 3.0, released March 2017.<br>
+			Version <span class="appversioninsert"></span>, released <span class="appdateinsert"></span>.<br>
 			Formulary for review in March 2018.<br><br>
+			<div id="teststatus"></div>
 
 			<h2 style="padding-left: 0px">Usage Statistics</h2>
 			NeoMate collects basic usage statistics for the purposes of improving this app. All stats are fully anonymised.<br><br>
@@ -1908,6 +1907,23 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 	</div><!-- /footer -->
 </div>
 
+<div data-role="page" data-theme="c" id="testfailure">
+       <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">
+            <div style="float:left"><img src="images/headertitle8-neomate.gif" width="171" height="33"></div>
+            <div style="float:right"><img src="images/nts-horizontal-bw-ht33px.png" height="32" width="105" style="margin-right: 10px"></div>
+        </div><!-- /header -->
+	  	<div role="main" class="ui-content dialogcontent">
+		  	<h2>Test failure</h2>
+
+		  	<p>A critical error has occurred during launch tests of NeoMate's calculation engine. The app should not be used if the calculation tests fail.</p>
+
+		  	<p>Please let us know <b>immediately</b> that this error has occurred, so that we can release a fix as quickly as possible. Please send a screenshot of this to <a href="#" class="contactchris">chris.kelly@doctors.org.uk</a>.</p>
+
+		  	<p>Detailed information:</p>
+		  	<div id="detailedtestinfopanel"></div>
+		</div>
+</div>
+
 
 <div data-role="page" data-theme="c" id="reference-cfm">
   <div data-role="header">
@@ -2246,7 +2262,7 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 		</div>
 </div>
 
-<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
 
 <script type="text/javascript">

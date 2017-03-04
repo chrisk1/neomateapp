@@ -178,6 +178,8 @@ infusiondb = [
 // ################## START: App functions / setup #######################
 var gramsnotification = '';
 var weighthistory = '';
+var appversion = '3.0.0';
+var appdate = 'March 2017';
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -277,8 +279,19 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		var countBabyLoad = localStorage.getItem("countBabyLoad");
 
 		// Run unit tests before hiding splash screen
+		// output ['pass/fail', # total tests, # failed tests, 'if fail, comments', timestamp]
 		var unitresults = initialisetests();
 		console.log(unitresults);
+
+		if (unitresults[0]=='fail') {
+			$("#teststatus").html("<b>Internal tests completed:</b><br>Last performed: " + unitresults[4] + "<br>Success on all unit tests during app launch. Drug dose calculation framework working as expected.<br><br>");
+		} else if (unitresults[0]=='pass') {
+			$("#teststatus").html("<b>Internal tests completed:</b><br>Last performed: " + unitresults[4] + "<br><b>FAILURE</b> on " + unitresults[2] + " of " + unitresults[1] + " unit tests during app launch.<br>Detailed test failure info: " + unitresults[3] + " <br><br>");
+			navigator.splashscreen.hide();
+			$("#detailedtestinfopanel").html("Time performed: " + unitresults[4] + "<br><b>FAILURE</b> on " + unitresults[2] + " of " + unitresults[1] + " unit tests during app launch.<br>Detailed test failure info: " + unitresults[3] + "<br><br>App version: " + appversion + "<br><br>");
+			$.mobile.changePage("#testfailure");
+			window.ga.trackException(unitresults[2] + "/" + unitresults[1] + "failed. V" + appversion + ". " + unitresults[3], Fatal);
+		}
 
 		if (navigator.userAgent.match(/Android/)) {
 			setTimeout(function() {
@@ -581,11 +594,20 @@ function initialisetests() {
 
 	// Reset things back to initalised
 	$("#babyweight").val('');
-	CalculateApp;
+	CalculateApp();
+
+	// Get current time stamp
+	var currentdate = new Date(); 
+	var datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
 
 	// Report back on the results
-	// output ['pass/fail', # failed tests, 'if fail, comments']
-	return [unittestsummary, unittestfailcount, unittestfailsummary];
+	// output ['pass/fail', # total tests, # failed tests, 'if fail, comments', timestamp]
+	return [unittestsummary, unittestcount, unittestfailcount, unittestfailsummary, datetime];
 }
 
 // ################## END: App functions / setup #######################
@@ -789,6 +811,9 @@ $(function(){
 	       //
 	}
 
+// Update version information
+	$(".appversioninsert").text(appversion);
+	$(".appdateinsert").text(appdate);
 
 // Click links within checklist tiles
 	$('ul.checklistulclick li').bind('click', function() {
