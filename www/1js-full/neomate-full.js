@@ -857,7 +857,7 @@ $(function(){
 
    	// SUBMIT SURVEY DATA (if not already done)
 	// if (localStorage.getItem("surveysync") == 2 || 1==1) {
-	ProcessSurvey("delayed");
+	// ProcessSurvey("delayed");
     
 	// SHOW DISCLAIMER IF NOT SHOWN BEFORE
 
