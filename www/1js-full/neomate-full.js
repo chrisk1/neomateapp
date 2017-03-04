@@ -980,12 +980,13 @@ $("#surveysubmitbtn").click(function(event) {
 
 var ProcessSurvey = function(requesttype) {
 
-	if (typeof device.model !== 'undefined') {
-		var devicemodel=device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent;
-	} else {
-		var devicemodel="unknown";
-	}
-
+	// if (typeof device.model !== 'undefined') {
+	// 	var devicemodel=device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent;
+	// } else {
+	// 	var devicemodel="unknown";
+	// }
+	var devicemodel = navigator.userAgent;
+	
 	devicemodel="unknown";
 
 	if (requesttype == 'submit') {
