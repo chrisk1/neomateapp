@@ -1022,13 +1022,25 @@ var ProcessSurvey = function(requesttype) {
 		// Try again to send data that failed last time
 
 		if (localStorage.getItem("surveysync") == 2 || localStorage.getItem("surveysync") == 1) {
-	        var formData = {
+	        if(localStorage.getItem("surveyemail") == null) {
+				surveyemail = "unknown";
+			} else {
+				surveyemail = localStorage.getItem("surveyemail");
+			}
+
+	        if(localStorage.getItem("surveyfeedback") == null) {
+				surveyfeedback = "unknown";
+			} else {
+				surveyfeedback = localStorage.getItem("surveyfeedback");
+			}
+
+			var formData = {
 		        'uuid': checkUUID(),
-		        'surveyemail': localStorage.getItem("surveyemail"),
+		        'surveyemail': surveyemail,
 		        'surveycountry': localStorage.getItem("surveycountry"),
 		        'surveyrole': localStorage.getItem("surveyrole"),
 		        'surveyexperience': localStorage.getItem("surveyexperience"),
-		        'surveyfeedback': localStorage.getItem("surveyfeedback"),
+		        'surveyfeedback': surveyfeedback,
 		        'surveydevice': device.model + "-" + device.platform + "-" + device.version + "-" + device.manufacturer + "-" + navigator.userAgent,
 		        'surveyversion': appversion,
 		        'surveyip': 'unknown',
