@@ -872,7 +872,7 @@ $(function(){
     
 	// SHOW DISCLAIMER IF NOT SHOWN BEFORE
 
-    var item = localStorage.getItem("neodisc21");
+    var item = localStorage.getItem("neodisc30");
     if (item == null) {				
     	if (navigator.userAgent.match(/Android/)) {
 			$.mobile.changePage( "#splashscreen", {} );	
@@ -882,7 +882,7 @@ $(function(){
 			$.mobile.changePage( "#splashscreen", { transition: "none"} );
 			console.log("Non-Android splash");
 		}
-		localStorage.setItem("neodisc21", "true");
+		localStorage.setItem("neodisc30", "true");
 	}
 	else if (item.length === 0) {
 	       //
