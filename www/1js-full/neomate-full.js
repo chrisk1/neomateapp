@@ -1051,9 +1051,9 @@ var ProcessSurvey = function(requesttype) {
         var formData = {
 	        'uuid': checkUUID(),
 	        'surveyemail': surveyemail,
-	        'surveycountry': $("#surveycountry").val(),
-	        'surveyrole': $("#surveyrole").val(),
-	        'surveyexperience': $("#surveyexperience").val(),
+	        'surveycountry': surveycountry,
+	        'surveyrole': surveyrole,
+	        'surveyexperience': surveyexperience,
 	        'surveyfeedback': surveyfeedback,
 	        'surveydevice': devicemodel,
 	        'surveyversion': appversion,
