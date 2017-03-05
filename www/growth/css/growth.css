@@ -43,23 +43,23 @@
 }
 
 /* Fiddling with Mobiscroll box */
-#clinic #select-choice-a-button span {
+#clinic .ui-content #select-choice-a-button span {
 	display: none;
 }
 
-#clinic #select-choice-a_dummy {
+#clinic .ui-content #select-choice-a_dummy {
 	color: #FFF;
 	font-weight: bold;
 	padding: 0 !important;
 }
 
-#clinic .ui-select #select-choice-a-button {
+#clinic .ui-content .ui-select #select-choice-a-button {
 	padding-top: 3px !important;
 	padding-bottom: 4px !important;
 	padding-left: 20px !important;
 }
 
-#clinic .ui-select .ui-input-text {
+#clinic .ui-content .ui-select .ui-input-text {
 	background: transparent !important;
 	border: 0 !important;
 	margin: 0px !important;
@@ -69,14 +69,14 @@
 	color: #999;
 }
 
-#clinic .ui-body-c {
-	border: 0px solid #f2f2f2 !important;
-	background-color: #f2f2f2;
+#clinic .ui-content .ui-body-c {
+	border: 0px solid #CFD8DC !important;
+	background-color: #CFD8DC;
 }
 
-#clinic .ui-input-text {
-    border: 0px solid #f2f2f2 !important;
-    background: #F6F6F6 !important;
+#clinicparams .ui-input-text {
+    border: 0px solid #CFD8DC !important;
+    background: #CFD8DC !important;
     padding: 0.2em 10px !important;
 }
 
@@ -85,7 +85,7 @@
 }
 
 #clinic .dw-persp {
-	margin-left: -10px !important;
+	/*margin-left: -10px !important;*/
 }
 
 #clinic #optionalmeasurements {
@@ -96,15 +96,15 @@
     margin-bottom: 10px;
 }
 
-#clinic .ui-btn-text, #clinic .ui-btn-text .dw-hsel {
+#clinic .ui-content .ui-btn-text, #clinic .ui-btn-text .dw-hsel {
 	position: relative !important;
 }
 
-#clinic #gabox .ui-input-text {
+#clinic .ui-content #gabox .ui-input-text {
 	display: none;
 }
 
-#clinic .ui-btn-active {
+#clinic .ui-content .ui-btn-active {
 	border: 1px solid #457b87;
 	background: #457b87 !important;
 }
@@ -117,5 +117,38 @@
     padding-top: 2px;
     padding-bottom: 2px;
     margin-top: 20px;
+    margin-bottom: 55px;
+}
+
+#clinic .ui-content .ui-btn-up-c {
+	background: #CFD8DC;
+	border: 1px solid #CFD8DC;
+}
+
+#clinic .ui-content .ui-select .ui-btn-icon-right .ui-icon {
+	right: 10px;
+}
+
+#clinic .ui-content .dwcc {
+    border: #CFD8DC 0px dashed;
+}
+
+.ios7 .dwwc {
+    padding: 10px 10px 10px 0px;
+}
+
+#dobwheel .ui-body-c.ui-input-text {
+	padding-left: 0px !important;
+}
+
+#dobwheel div.ui-input-text {
+    padding: 0 0em;
+}
+
+#clinic .ui-content .ui-controlgroup-horizontal .ui-radio .ui-btn-inner {
+    padding: .6em 15px;
+}
+
+#calculatebtn {
     margin-bottom: 55px;
 }

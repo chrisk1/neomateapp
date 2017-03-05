@@ -1932,10 +1932,13 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 
 		<div data-role="content">
 
-		<div style="margin-bottom: 0px; margin-top: 20px; font-size: 16px">Enter date of birth:</div>
+		<div style="margin-bottom: 0px; margin-top: 20px; font-size: 16px"><h3>Corrected Age and Centiles</h3>
+		<p>Enter date of birth:</p></div>
+		<div id="dobwheel">
 		<input id="dob" name="dob" style="display:none" />
+		</div>
 
-		<div class="ui-grid-b">
+		<div class="ui-grid-b" id="clinicparams">
 		<div class="ui-block-a" style="padding-right: 5px">
 			<div data-role="fieldcontain">
 				<label for="name" style="margin-bottom: 0px">Weight:</label>
@@ -2163,7 +2166,6 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 
 <a href="#" data-transition="slide" data-theme="e" data-role="button" id="calculatebtn">Calculate Corrected Age / Centiles</a>
 
-
 			</div>
 	<div data-role="footer" data-id="fixed" data-position="fixed" data-tap-toggle="false">
         <div data-role="navbar">
@@ -2217,7 +2219,7 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 
 	<div class="ui-grid-a" style="margin-top: 15px">
 	<div class="ui-block-b"><a id="modifycentile" data-transition="none" data-direction="reverse" data-rel="back" data-theme="c" data-role="button" style="margin-left: 0px !important">Modify</a></div>
-	<div class="ui-block-b"><a href="#clinic" id="newcentile" data-transition="slide" data-theme="d" data-role="button" style="margin-right: 0px !important">New Chart</a></div>
+	<div class="ui-block-b"><a href="#clinic" id="newcentile" data-transition="none" data-theme="d" data-role="button" style="margin-right: 0px !important">New Chart</a></div>
 	</div>
 
 	<div id="footnotes" style="display:none; margin-top: 15px; margin-bottom: 0px"><b>Expected date of delivery:</b> <span id="babyedd">Awaited</span><br>
@@ -2225,7 +2227,7 @@ Use the following table to insert the ET tube to the optimum length. Always conf
 
 	<div id="growthresultsinfo">
 	<h3>About these results:</h3>
-	<p>Data used in this app have been provided by the Royal College of Paediatrics and Child Health (RCPCH), and are a combination of the Neonatal and Infant Close Monitoring Growth Chart (NICM), the UK WHO 0-4 years growth chart, and the the UK-90 Growth Chart (2-18 years) - full information available at the <a href="http://www.rcpch.ac.uk/growthcharts" target="external">RCPCH</a>. As per the RCPCH growth chart instructions, babies born between 37-42 weeks (i.e. term) are plotted on the 40 week line. The app uses statistical calculation methodology from the US CDC "Percentile Data Files with LMS Vales, Centers for Disease Control and Prevention" - <a href="https://www.cdc.gov/growthcharts/percentile_data_files.htm" target="external">details here</a>.</p>
+	<p>Data used in this app have been provided by the Royal College of Paediatrics and Child Health (RCPCH), and are a combination of the Neonatal and Infant Close Monitoring Growth Chart (NICM), the UK WHO 0-4 years growth chart, and the the UK-90 Growth Chart (2-18 years) - full information available at the <a href="http://www.rcpch.ac.uk/growthcharts" target="external">RCPCH</a>. As per the RCPCH growth chart instructions, babies born at 37-42 weeks (i.e. term) are plotted on the 40 week line. The app uses statistical calculation methodology from the US CDC "Percentile Data Files with LMS Vales, Centers for Disease Control and Prevention" - <a href="https://www.cdc.gov/growthcharts/percentile_data_files.htm" target="external">details here</a>.</p>
 	</div>
 
 	<input id="customdate" data-role="none" style="display:none">
