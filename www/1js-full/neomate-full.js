@@ -668,13 +668,18 @@ function initialisetests() {
 	CalculateApp();
 
 	// Get current time stamp
+
+	function pad(num, size) {
+	    var s = "000000000" + num;
+	    return s.substr(s.length-size);
+	}
 	var currentdate = new Date(); 
-	var datetime = currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
+	var datetime = pad(currentdate.getDate(),2) + "/"
+                + pad((currentdate.getMonth()+1),2)  + "/" 
                 + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
+                + pad(currentdate.getHours(),2) + ":"  
+                + pad(currentdate.getMinutes(),2) + ":" 
+                + pad(currentdate.getSeconds(),2);
 
 	// Report back on the results
 	// output ['pass/fail', # total tests, # failed tests, 'if fail, comments', timestamp]
