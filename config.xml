@@ -2,11 +2,11 @@
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.londonnts.neomate"
-        versionCode="39" 
+        versionCode="40" 
         version   = "3.0.0">
 
 	<gap:config-file platform="ios" parent="CFBundleShortVersionString">
-	<string>20</string>
+	<string>21</string>
 	</gap:config-file>
 
 	<!-- com.incubateltd.neomate Android / com.londonnts.neomate iOS -->
