@@ -867,8 +867,9 @@ $(function(){
    	neomateUUID(); 
 
    	// SUBMIT SURVEY DATA (if not already done)
-	// if (localStorage.getItem("surveysync") == 2 || 1==1) {
-	// ProcessSurvey("delayed");
+	if (localStorage.getItem("surveysync") == 2 || 1==1) {
+		ProcessSurvey("delayed");
+	}
     
 	// SHOW DISCLAIMER IF NOT SHOWN BEFORE
 
@@ -1086,12 +1087,30 @@ var ProcessSurvey = function(requesttype) {
 				surveyfeedback = localStorage.getItem("surveyfeedback");
 			}
 
+	        if(localStorage.getItem("surveycountry") == null || localStorage.getItem("surveycountry") == "") {
+				surveycountry = "unknown";
+			} else {
+				surveycountry = localStorage.getItem("surveycountry");
+			}
+
+	        if(localStorage.getItem("surveyrole") == null || localStorage.getItem("surveyrole") == "") {
+				surveyrole = "unknown";
+			} else {
+				surveyrole = localStorage.getItem("surveyrole");
+			}
+
+	        if(localStorage.getItem("surveyexperience") == null || localStorage.getItem("surveyexperience") == "") {
+				surveyrole = "unknown";
+			} else {
+				surveyrole = localStorage.getItem("surveyexperience");
+			}
+
 			var formData = {
 		        'uuid': checkUUID(),
 		        'surveyemail': surveyemail,
-		        'surveycountry': localStorage.getItem("surveycountry"),
-		        'surveyrole': localStorage.getItem("surveyrole"),
-		        'surveyexperience': localStorage.getItem("surveyexperience"),
+		        'surveycountry': surveycountry,
+		        'surveyrole': surveyrole,
+		        'surveyexperience': surveyexperience,
 		        'surveyfeedback': surveyfeedback,
 		        'surveydevice': devicemodel,
 		        'surveyversion': appversion,
