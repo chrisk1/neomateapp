@@ -338,11 +338,11 @@ body {
 .infobtn {
   height: 20px;
   width: 20px;
-  margin-left: 15px;
+  margin-left: 0px;
   opacity: 0.7;
   vertical-align: middle;
   float: right;
-  padding-left: 0px; /* 15px */
+  padding-left: 20px; /* 15px, but changed to 20 to allow greater click area */
   margin-right: 5px;
   padding-right: 0px; /* 8px */
   /* margin-top: -5px; //Removed to improve alignment 19/5/15

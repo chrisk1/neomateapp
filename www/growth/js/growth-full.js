@@ -641,13 +641,15 @@ function nativePluginErrorHandler (error) {
 $("#clinic").on( "pageshow", function( event ) {
 	$('#main-content').css('margin-top',($(window).height() - $('[data-role=header]').height() - $('[data-role=footer]').height() - $('#main-content').outerHeight())/2);
 
-	var isAndroid = navigator.userAgent.match(/android/i) ? true : false;
-	var isIOS = navigator.userAgent.match(/(ipod|ipad|iphone)/i) ? true : false;
+	// Moved to main script for NeoMate
+	// var isAndroid = navigator.userAgent.match(/android/i) ? true : false;
+	// var isIOS = navigator.userAgent.match(/(ipod|ipad|iphone)/i) ? true : false;
 
-	if(isIOS) {
-	    $(".numericalinput").attr("type", "number");
-	}
-	/* 
+	// if(isIOS) {
+	//     $(".numericalinput").attr("type", "number");
+	// }
+
+	/* THIS WAS REMOVED 
 	if(isAndroid)
 	{
 	    $(.phoneInput).attr("type", "number");

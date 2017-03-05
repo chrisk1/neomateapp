@@ -541,6 +541,8 @@ function highlightWeight() {
 	}
 }
 
+
+
 function nativePluginResultHandler() {
 	console.log("Track success");
 }
@@ -744,7 +746,7 @@ if (1==1) { // this was originally if userAgent = iPhone
 	                animateCollapsibleSet($(this).parent().trigger("expand"));
 
 				// Scroll to top
-					var expandableTop = $(this).parent().offset().top - 48;
+					var expandableTop = $(this).parent().offset().top - 49;
 					console.log("Expandabletop: " + expandableTop);
 					$window = $(window);
 					targetPos = expandableTop - $window.scrollTop() + $(this).parent().height();
@@ -882,6 +884,15 @@ $(function(){
 // Update version information
 	$(".appversioninsert").text(appversion);
 	$(".appdateinsert").text(appdate);
+
+// Set up numerical inputs for iOS
+	var isAndroid = navigator.userAgent.match(/android/i) ? true : false;
+	var isIOS = navigator.userAgent.match(/(ipod|ipad|iphone)/i) ? true : false;
+
+	if(isIOS) {
+	    $(".numericalinput").attr("type", "number");
+	}
+
 
 // Click links within checklist tiles
 	$('ul.checklistulclick li').bind('click', function() {
