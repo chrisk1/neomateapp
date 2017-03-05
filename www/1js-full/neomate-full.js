@@ -302,6 +302,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		}
 		else {
 			setTimeout(function() {
+		    	// Numerical inputs set for iOS
+		    	$(".numericalinput").attr("type", "number");
 	    		navigator.splashscreen.hide();
 			}, 30);
 			window.scrollTo(0, 1);
