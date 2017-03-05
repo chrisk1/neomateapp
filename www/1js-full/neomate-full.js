@@ -1007,6 +1007,7 @@ var ProcessSurvey = function(requesttype) {
 	devicemodel="unknown";
 
 	if (requesttype == 'submit') {
+		console.log("Live submit");
 		// This form has just been submitted, so grab data from the live form
 
 		if($("#surveyemail").val().length === 0) {
@@ -1021,12 +1022,30 @@ var ProcessSurvey = function(requesttype) {
 			surveyfeedback = $("#surveyfeedback").val();
 		}
 
+		if($("#surveycountry").val() == null) {
+			surveycountry = "unknown";
+		} else {
+			surveycountry = $("#surveycountry").val();
+		}
+
+		if($("#surveyrole").val() == null ) {
+			surveyrole = "unknown";
+		} else {
+			surveyrole = $("#surveyrole").val();
+		}
+
+		if($("#surveyexperience").val() == null ) {
+			surveyexperience = "unknown";
+		} else {
+			surveyexperience = $("#surveyexperience").val();
+		}
+
         // Save in local storage for now
         localStorage.setItem("surveyemail", surveyemail);
-        localStorage.setItem("surveycountry", $("#surveycountry").val());
-        localStorage.setItem("surveyrole", $("#surveyrole").val());
-        localStorage.setItem("surveyexperience", $("#surveyexperience").val());
-        localStorage.setItem("surveyfeedback", $("#surveyfeedback").val());
+        localStorage.setItem("surveycountry", surveycountry);
+        localStorage.setItem("surveyrole", surveyrole);
+        localStorage.setItem("surveyexperience", surveyexperience);
+        localStorage.setItem("surveyfeedback", surveyfeedback);
 
 
         var formData = {
@@ -1046,6 +1065,7 @@ var ProcessSurvey = function(requesttype) {
 
     else if (requesttype == 'delayed') {
 		// Try again to send data that failed last time
+		console.log("Delayed submit");
 
 		if (localStorage.getItem("surveysync") == 2 || localStorage.getItem("surveysync") == 1) {
 	        if(localStorage.getItem("surveyemail") == null || localStorage.getItem("surveyemail") == "") {
