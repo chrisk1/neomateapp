@@ -1,3 +1,6 @@
+// Code Copyright 2017 Chris Kelly
+// Please email chris@incubate.co.uk for licensing enquiries.
+
 // ################## START: Infusion database #######################
 infusiondb = [
   {
