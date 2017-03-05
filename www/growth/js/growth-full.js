@@ -647,6 +647,8 @@ $("#clinic").on( "pageshow", function( event ) {
 	if(isIOS) {
 	    $(".numericalinput").attr("type", "number");
 	}
+
+	trackPage("GrowthChart");
 });
 
 // better way of initialising with JM
@@ -694,6 +696,7 @@ $(document).on('pageinit', '#clinic', function () {
 
     $("#clinic #calculatebtn").click(function () {
     	calculatecentile();
+    	trackPage("GrowthChartCalculate");
     });
 
     $("#daterow").click(function () {
