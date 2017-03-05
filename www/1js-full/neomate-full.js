@@ -1012,8 +1012,6 @@ var ProcessSurvey = function(requesttype) {
 	// }
 	var devicemodel = navigator.userAgent;
 
-	devicemodel="unknown";
-
 	if (requesttype == 'submit') {
 		console.log("Live submit");
 		// This form has just been submitted, so grab data from the live form
