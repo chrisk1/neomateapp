@@ -647,6 +647,17 @@ h3.ui-collapsible-heading-collapsed, h3.ui-collapsible-heading-toggle, h3.ui-col
   left: 18px;
 }
 
+#survey .ui-select .ui-btn-icon-right .ui-icon {
+  right: 5px;
+}
+
+div#emaildisclaimer {
+    font-size: 12px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    color: #666666;
+}
+
 /* v2.3 - preparation for migration of dialogs */
 
 .dialogcontent {
