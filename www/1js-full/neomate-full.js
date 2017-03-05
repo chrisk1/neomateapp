@@ -870,7 +870,7 @@ $(function(){
    	neomateUUID(); 
 
    	// SUBMIT SURVEY DATA (if not already done)
-	if (localStorage.getItem("surveysync") == 2 || 1==1) {
+	if (localStorage.getItem("surveysync") == 2 || localStorage.getItem("surveysync") == 1) {
 		ProcessSurvey("delayed");
 	}
     
@@ -1139,6 +1139,8 @@ var ProcessSurvey = function(requesttype) {
 		}
 
     }
+
+    console.log(formData);
 
         $.ajax({
             type        : 'GET',
