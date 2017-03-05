@@ -1168,18 +1168,22 @@ var ProcessSurvey = function(requesttype) {
                 			$("#surveystatus").addClass("statussuccess");
                 			$("#surveysubmitbtn").parent().hide();
                 			localStorage.setItem("surveysync", 1);
-                			setTimeout(function() {
-    	            			$.mobile.changePage("#main", { transition: "none", reverse: false, changeHash: true });
-    						}, 3000);
+                			if (requesttype == 'submit') {
+	                			setTimeout(function() {
+	    	            			$.mobile.changePage("#main", { transition: "none", reverse: false, changeHash: true });
+	    						}, 3000);
+	                		}
      						},
 			error       : function(XMLHttpRequest, textStatus, errorThrown) {
      						$("#surveystatus").html("<div class=\"ui-icon ui-icon-check\" style=\"float:left; margin-right: 10px\"></div>Saved - thank you!");
                 			$("#surveystatus").addClass("statussuccess");
                 			$("#surveysubmitbtn").parent().hide();
                 			localStorage.setItem("surveysync", 2);
-                			setTimeout(function() {
-    	            			
-    						}, 3000);
+                			if (requesttype == 'submit') {
+	                			setTimeout(function() {
+	    	            			$.mobile.changePage("#main", { transition: "none", reverse: false, changeHash: true });
+	    						}, 3000);
+	                		}
  							}
 			});
 
