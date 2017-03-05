@@ -905,6 +905,10 @@ $(function(){
 		}
 	});
 
+	$("#survey").on( "pageshow", function( event ) {
+		$("#surveyform").show();
+	});
+
 
 // Click links within checklist tiles
 	$('ul.checklistulclick li').bind('click', function() {
