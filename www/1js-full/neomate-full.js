@@ -1050,6 +1050,11 @@ var ProcessSurvey = function(requesttype) {
 			surveyexperience = $("#surveyexperience").val();
 		}
 
+		var devicemodel = navigator.userAgent;
+        if(devicemodel == null || devicemodel == "") {
+			devicemodel = "unknown";
+		}		
+
         // Save in local storage for now
         localStorage.setItem("surveyemail", surveyemail);
         localStorage.setItem("surveycountry", surveycountry);
@@ -1103,9 +1108,14 @@ var ProcessSurvey = function(requesttype) {
 			}
 
 	        if(localStorage.getItem("surveyexperience") == null || localStorage.getItem("surveyexperience") == "") {
-				surveyrole = "unknown";
+				surveyexperience = "unknown";
 			} else {
-				surveyrole = localStorage.getItem("surveyexperience");
+				surveyexperience = localStorage.getItem("surveyexperience");
+			}
+
+			var devicemodel = navigator.userAgent;
+	        if(devicemodel == null || devicemodel == "") {
+				devicemodel = "unknown";
 			}
 
 			var formData = {
