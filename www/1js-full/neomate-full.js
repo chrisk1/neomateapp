@@ -890,13 +890,14 @@ $(function(){
 	$(".appversioninsert").text(appversion);
 	$(".appdateinsert").text(appdate);
 
-// Set up numerical inputs for iOS
-	var isAndroid = navigator.userAgent.match(/android/i) ? true : false;
-	var isIOS = navigator.userAgent.match(/(ipod|ipad|iphone)/i) ? true : false;
+	$("#main").on( "pageshow", function( event ) {
+		var isAndroid = navigator.userAgent.match(/android/i) ? true : false;
+		var isIOS = navigator.userAgent.match(/(ipod|ipad|iphone)/i) ? true : false;
 
-	if(isIOS) {
-	    $(".numericalinput").attr("type", "number");
-	}
+		if(isIOS) {
+		    $(".numericalinput").attr("type", "number");
+		}
+	});
 
 
 // Click links within checklist tiles

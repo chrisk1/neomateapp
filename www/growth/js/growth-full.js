@@ -639,29 +639,14 @@ function nativePluginErrorHandler (error) {
 // Centre content after page has loaded and hide splash screen
 
 $("#clinic").on( "pageshow", function( event ) {
-	$('#main-content').css('margin-top',($(window).height() - $('[data-role=header]').height() - $('[data-role=footer]').height() - $('#main-content').outerHeight())/2);
+	// $('#main-content').css('margin-top',($(window).height() - $('[data-role=header]').height() - $('[data-role=footer]').height() - $('#main-content').outerHeight())/2);
 
-	// Moved to main script for NeoMate
-	// var isAndroid = navigator.userAgent.match(/android/i) ? true : false;
-	// var isIOS = navigator.userAgent.match(/(ipod|ipad|iphone)/i) ? true : false;
+	var isAndroid = navigator.userAgent.match(/android/i) ? true : false;
+	var isIOS = navigator.userAgent.match(/(ipod|ipad|iphone)/i) ? true : false;
 
-	// if(isIOS) {
-	//     $(".numericalinput").attr("type", "number");
-	// }
-
-	/* THIS WAS REMOVED 
-	if(isAndroid)
-	{
-	    $(.phoneInput).attr("type", "number");
-	    $(.phoneInput).attr("min", "1000000000");
-	    $(.phoneInput).attr("max", "9999999999");
-	} 
-	*/
-
-// NeoMate modifications
-	// setTimeout(function() {
- //    navigator.splashscreen.hide();
- //    }, 2000);
+	if(isIOS) {
+	    $(".numericalinput").attr("type", "number");
+	}
 });
 
 // better way of initialising with JM
