@@ -6,7 +6,7 @@
         version   = "3.0.1">
 
 	<gap:config-file platform="ios" parent="CFBundleShortVersionString">
-	<string>21</string>
+	<string>22</string>
 	</gap:config-file>
 
 	<!-- com.incubateltd.neomate Android / com.londonnts.neomate iOS -->
@@ -27,7 +27,7 @@
 	<access origin="*" />
 	<allow-navigation href="*" />
 
-	<preference name="phonegap-version" value="cli-6.5.0" />
+	<preference name="phonegap-version" value="cli-7.0.1" />
 	<preference name="orientation" value="portrait" />
 	<preference name="fullscreen" value="true" />
 	<preference name="webviewbounce" value="false" />

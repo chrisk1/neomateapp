@@ -1,0 +1,727 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"app",
+				"appversion"
+			],
+			[
+				"max",
+				"maxconcmsg"
+			],
+			[
+				"output",
+				"outputtext"
+			],
+			[
+				"unit",
+				"unittestcount"
+			],
+			[
+				"unitt",
+				"unittestfailsummary"
+			],
+			[
+				"unittes",
+				"unittestfailcount"
+			],
+			[
+				"unittest",
+				"unittestsummary"
+			],
+			[
+				"unittestfail",
+				"unittestfailsummary"
+			],
+			[
+				"true",
+				"true"
+			],
+			[
+				"sur",
+				"surveysubmitbtn"
+			],
+			[
+				"form",
+				"formData"
+			],
+			[
+				"mean_",
+				"mean_cortex_skeleton_mask"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "config.xml",
+			"settings":
+			{
+				"buffer_size": 5595,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/index.html",
+			"settings":
+			{
+				"buffer_size": 180228,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/1js-full/neomate-full.js",
+			"settings":
+			{
+				"buffer_size": 80204,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/css/neomate.css",
+			"settings":
+			{
+				"buffer_size": 11267,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/growth/css/growth.css",
+			"settings":
+			{
+				"buffer_size": 2828,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/growth/js/growth-full.js",
+			"settings":
+			{
+				"buffer_size": 172447,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/1testing/nts-test.js",
+			"settings":
+			{
+				"buffer_size": 24612,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/css/jquery.mobile.squareui.css",
+			"settings":
+			{
+				"buffer_size": 111634,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "check hashed line\nadd \"change\" to the icon\nexperiment with a different colour background? Maybe a blue?\nshorten clinic page? min-height just for #clinic?\ntop padding to clinic screen a little more / bold \"enter date of birth\". Also needs \"gestation\"\nadd pagetrack - GA to clinic and results page\n",
+			"settings":
+			{
+				"buffer_size": 296,
+				"line_ending": "Unix",
+				"name": "check hashed line"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/growth/js/moment.min.js",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/growth/js/datejs/date-en-GB.js",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/js/underscore-min.js",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/growth/js/mobiscroll/js/mobiscroll.core.js",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/growth/js/datejs/time.js",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/growth/js/readable-range.js",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/growth/js/highcharts-custom.js",
+		"/Users/chris/Dropbox/Websites/apps/growth/index.html",
+		"/Users/chris/Dropbox/Websites/apps/growth/js/growth-full.js",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/growth/css/growth.css",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/css/growth.css",
+		"/Users/chris/Dropbox/Websites/apps/growth/js/mobiscroll/js/mobiscroll.appframework.js",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/js/neomate-preinit.js",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/js/neomate.js",
+		"/Users/chris/GoogleDrive/scripts/dhcp/segmentation2dwi_ck.sh",
+		"/Users/chris/GoogleDrive/client.ovpn",
+		"/Users/chris/Dropbox/CWBK/VPN/Ringcroftclient.ovpn",
+		"/Users/chris/Dropbox/CWBK/VPN/client.ovpn",
+		"/Users/chris/Dropbox/CWBK/VPN/client2.ovpn",
+		"/Users/chris/Dropbox/Documents/Personal/Ringcroftclient.ovpn",
+		"/Users/chris/Google Drive/analysis/MatchingV19_CHIP/cortical_folding/measures/all_measures.csv",
+		"/Users/chris/Google Drive/scripts/dafnis_pipeline_pilot/1ok_Segment_and_Parcell_T2_CSF.m",
+		"/Users/chris/Dropbox/cardiacdata/scripts/diffusion_check.sh",
+		"/Users/chris/Dropbox/cardiacdata/scripts/diffusion_check_batch.sh",
+		"/Volumes/AdobeFireworks-12.0-All-Update/AdobeFireworks-12.0-All-Update/payloads/Setup.xml",
+		"/Volumes/AdobeFireworks-12.0-All-Update/AdobeFireworks-12.0-All-Update/payloads/UpdateManifest.xml",
+		"/Volumes/AdobeFireworks-12.0-All-Update/AdobeFireworks-12.0-All-Update/payloads/AdobeFireworks12-mul-100513000059/AdobeFireworks12-mul-100513000059.boot.xml",
+		"/Users/chris/Downloads/Your product Validation Code(s) .msg",
+		"/Users/chris/Downloads/CS6 Master Collection 6 11-28-2016.log"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"scroll",
+			"silentscro",
+			"changepage",
+			"show",
+			"surveyform",
+			"survey",
+			"devicemodel",
+			"<select id=\"surveyexperience\">",
+			"ProcessSurvey",
+			"ProcessSurve",
+			"ProcessSurvey",
+			"devicemodel",
+			"on(",
+			"show",
+			"calculatebtn",
+			"track",
+			"oxygenation",
+			"pass",
+			"surveycountry",
+			"getitem",
+			"numericalinput",
+			"weight",
+			"highlightWeight",
+			"weight",
+			"ettsize",
+			"ett",
+			"pop",
+			"popett",
+			"kempley",
+			"infobtn",
+			"ettsize",
+			"infobtn",
+			"scroll",
+			"changepage",
+			"clinic",
+			".ui-btn-text",
+			"RCPCH",
+			"alert",
+			"container",
+			"preterm",
+			"stripe",
+			"stripebg",
+			"#clinic #weighthuman",
+			"#clinic #weightval",
+			"val",
+			"$(\"#dob",
+			"$(\"#head",
+			"$(\"#length",
+			"$(\"#weight",
+			"#",
+			"dateicon",
+			"measured on",
+			"#results",
+			"growth charts",
+			"processMessa",
+			"data-icon=\"calc\">NICU Calculator</a></li>",
+			"growth charts",
+			"clinic",
+			"data-icon=\"about",
+			"            <li><a href=\"#main\" class=\"ui-btn-active ui-state-persist\" id=\"home-calc\" data-transition=\"none\" data-iconpos=\"top\" data-icon=\"calc\">NICU Calc</a></li>",
+			"clinic",
+			"\"reference\"",
+			"reference",
+			"NICU",
+			"chris",
+			"ethical guidance",
+			"window.ga",
+			"use the following",
+			"use the folloing",
+			"UUID",
+			"splash",
+			"initialise",
+			"unittest",
+			"reset",
+			"selectmenu(",
+			".val()",
+			"unittest",
+			"surveydevice",
+			"devicemodel",
+			"formdata",
+			"GET\\",
+			"GET",
+			"aws",
+			"process",
+			"survey",
+			"device",
+			"processsurvey",
+			"survey",
+			"UUID",
+			"checkUUID",
+			"ProcessSurve",
+			"survey",
+			"failed",
+			"initialise",
+			"Infusion",
+			"new Infusion",
+			"Infusion",
+			"initialisetests",
+			"3.0",
+			"3.0.0",
+			"chris.kelly",
+			"initialisetests",
+			"unittest",
+			"initialisetes",
+			"initialise",
+			"version 3.0",
+			"calculateapp",
+			"a name",
+			"scroll",
+			"hide",
+			"onDeviceReady",
+			"onready",
+			"device",
+			"initiali",
+			"initialise",
+			"deviceready",
+			"splash",
+			"assert.equal",
+			"fluidsval",
+			"wrong weight",
+			"years",
+			".update",
+			".refresh",
+			"survey",
+			"contact me",
+			".click",
+			"chris kelly",
+			"survey"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"#clinicresults #weighthuman",
+			"#clinicresults #weightval",
+			"$(\"#clinic #dob",
+			"$(\"#clinic #head",
+			"$(\"#clinic #length",
+			"$(\"#clinic #weight",
+			"data-icon=\"calc\">NICU Calc</a></li>",
+			"            <li><a href=\"#main\" class=\"ui-btn-active ui-state-persist\" id=\"home-calc\" data-transition=\"none\" data-iconpos=\"top\" data-icon=\"calc\">NICU Calc</a></li>\n            <li><a href=\"#clinic\" id=\"home-clinic\" data-transition=\"none\" data-iconpos=\"top\" data-icon=\"clinic\">Clinic</a></li>",
+			"unittest",
+			"test7",
+			"&",
+			"=",
+			"",
+			"queryStringParameters.",
+			"test3",
+			"test2",
+			"&",
+			"="
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "config.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5595,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								236,
+								236
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "www/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 180228,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								95330,
+								95330
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 28869.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "www/1js-full/neomate-full.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 80204,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								73627,
+								73627
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 31867.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "www/css/neomate.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11267,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								11267
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "www/growth/css/growth.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2828,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2705,
+								2705
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1927.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "www/growth/js/growth-full.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 172447,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22,
+								22
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "www/1testing/nts-test.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24612,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								168,
+								141
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "www/css/jquery.mobile.squareui.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 111634,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								59602,
+								59602
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 27934.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 296,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								296,
+								296
+							]
+						],
+						"settings":
+						{
+							"auto_name": "check hashed line",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "neomate.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
