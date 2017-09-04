@@ -60,10 +60,6 @@ body {
   user-select:none;
 }
 
-#clinicpagecontent {
-  padding: 25px !important;
-}
-
 .units {
     position:relative;
 	display: block;
