@@ -176,8 +176,8 @@ infusiondb = [
 // ################## START: App functions / setup #######################
 var gramsnotification = '';
 var weighthistory = '';
-var appversion = '3.0.0';
-var appdate = 'March 2017';
+var appversion = '3.0.2';
+var appdate = 'September 2017';
 var devicemodel = '';
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -254,6 +254,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	    window.ga.setUserId(checkUUID());
 
 	  	trackAppLoad();
+
+	  	// hide status bar
+	  	StatusBar.hide();
 
 	  	// Handle External URLs (Mock device.platform property if not available)
 	    if (!window.device) {
