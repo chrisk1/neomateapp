@@ -124,7 +124,8 @@
 	<gap:plugin name="cordova-plugin-splashscreen" source="npm" />
 	<gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
 	<gap:plugin name="cordova-plugin-dialogs" source="npm" />
-	<gap:plugin name="cordova-plugin-google-analytics" source="npm" />
+	<!-- <gap:plugin name="cordova-plugin-google-analytics" source="npm" /> -->
+	<gap:plugin name="flyer299-cordova-plugin-google-analytics" source="npm" />
 	<gap:plugin name="cordova-plugin-globalization" source="npm" />
 	<gap:plugin name="cordova-plugin-apprate" source="npm" />
 	<gap:plugin name="cordova-plugin-device" source="npm" />
