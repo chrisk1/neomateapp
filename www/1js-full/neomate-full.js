@@ -176,7 +176,7 @@ infusiondb = [
 // ################## START: App functions / setup #######################
 var gramsnotification = '';
 var weighthistory = '';
-var appversion = '3.0.2';
+var appversion = '3.1.0';
 var appdate = 'September 2017';
 var devicemodel = '';
 
@@ -617,7 +617,7 @@ function initialisetests() {
 	unittest( $("#adenosine").text(), "150 micrograms IV stat into a large central vein and followed immediately by NaCl 0.9% push.", "Adenosine dose 50mg IV stat - correct" );
 	unittest( $("#insulin").text(), "2 units added to 20 ml 5% dextrose.0.1 ml/hr will deliver 0.01 units/kg/hour, given IV as an infusion. Flush 5 ml through giving set before connecting.", "Insulin infusion details correct" );
 	unittest( $("#benpen").text(), "50 mg IV (BD/TDS depending on age)", "Benzylpenicillin dose 25mg/kg or 50mg/kg" );
-	unittest( $("#gentamicin").text(), "5 mg IV (frequency depending on post menstrual age)Check level before 2nd dose.", "5 mg 36 hourly IV.Check level before 2nd dose." );
+	unittest( $("#gentamicin").text(), "5 mg IV. Check level before 3rd dose.", "5 mg 36 hourly IV. Check level before 3rd dose." );
 	unittest( $("#fluids").text(), "60 ml daily over 24 hours= 2.5 ml/hour infusion", "10% dextrose: 60 ml daily over 24 hours = 2.5 ml/hour infusion" );
 	unittest( $("#vitk").text(), "0.4 mg IM", "Vitamin K: 0.4 mg IM" );
 	$("#fluidsvalue").val("");
@@ -1444,7 +1444,7 @@ PREVIOUS SIZES
 
 		// Antibiotics
 		$("#benpen").html((Math.round((babyweight*50))) + " mg IV (BD/TDS depending on age)") ;
-		$("#gentamicin").html((Math.round((babyweight*5)*10)/10) + " mg IV (frequency depending on post menstrual age)<br>Check level before 2nd dose.");
+		$("#gentamicin").html((Math.round((babyweight*5)*10)/10) + " mg IV. Check level before 3rd dose.");
 		$("#fluids").html((Math.round((babyweight*60)*10)/10) + " ml daily over 24 hours<br>= " + (Math.round((babyweight*60/24)*10)/10) + " ml/hour infusion");
 
 		if (babyweight >= 2.5)
