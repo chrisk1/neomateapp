@@ -4,10 +4,10 @@
         id        = "com.londonnts.neomate"
         version   = "3.1.0"
         android-versionCode="41.1.0"
-        ios-CFBundleVersionstring = "22.1.0" >
+        ios-CFBundleVersionstring = "3.1.0" >
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-	<string>23</string>
+	<string>24</string>
 	</gap:config-file>
 
 	<!-- com.incubateltd.neomate Android / com.londonnts.neomate iOS -->
