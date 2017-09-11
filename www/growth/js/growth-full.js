@@ -490,7 +490,7 @@ function pluralstext(inputnum) {
 	}
 }
 
-// Nice numbers
+// Nice numbers - version 1
 /* Number.prototype.toOrdinal = function() {
     var n = this % 100;
     var suffix = ['th', 'st', 'nd', 'rd', 'th'];
@@ -498,12 +498,26 @@ function pluralstext(inputnum) {
     return this + ord;
 }*/ // Doesn't work with decimals --> rewritten below
 
+// Version 2
+// Number.prototype.toOrdinal = function() {
+//     var n = this % 100;
+//     var suffix = ['th', 'st', 'nd', 'rd', 'th'];
+//     var ord = n < 21 ? (Number(n.toString().slice(-1)) < 4 ? suffix[Number(n.toString().slice(-1))] : suffix[0]) : (Number(n.toString().slice(-1)) % 10 > 4 ? suffix[0] : suffix[Number(n.toString().slice(-1)) % 10]);
+//     return this + ord;
+// };
+
+// Version 3 - accepts decimals with modification
 Number.prototype.toOrdinal = function() {
-    var n = this % 100;
-    var suffix = ['th', 'st', 'nd', 'rd', 'th'];
-    var ord = n < 21 ? (Number(n.toString().slice(-1)) < 4 ? suffix[Number(n.toString().slice(-1))] : suffix[0]) : (Number(n.toString().slice(-1)) % 10 > 4 ? suffix[0] : suffix[Number(n.toString().slice(-1)) % 10]);
-    return this + ord;
-};
+   var n = this;
+   if (n<1 && n>0) {
+   	var s=["th","st","nd","rd"],
+       v=(n*10)%100;
+   }else{
+   	var s=["th","st","nd","rd"],
+       v=n%100;
+   }
+   return n+(s[(v-20)%10]||s[v]||s[0]);
+}
 
 // Z-score calculations
 var Z_MAX = 6;                    // Maximum ±z value
