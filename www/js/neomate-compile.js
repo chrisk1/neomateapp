@@ -255,8 +255,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 	  	trackAppLoad();
 
-	  	// hide status bar
-	  	// StatusBar.hide();
+	  	// show status bar - iPhone X mods
+	  	StatusBar.show();
+	  	StatusBar.backgroundColorByName("black");
+	  	StatusBar.styleBlackTranslucent();
 
 	  	// Handle External URLs (Mock device.platform property if not available)
 	    if (!window.device) {
