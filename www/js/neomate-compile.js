@@ -255,11 +255,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 	  	trackAppLoad();
 
-	  	// show status bar - iPhone X mods
-	  	StatusBar.show();
-	  	StatusBar.backgroundColorByName("black");
-	  	StatusBar.styleBlackTranslucent();
-
 	  	// Handle External URLs (Mock device.platform property if not available)
 	    if (!window.device) {
 	        window.device = { platform: 'Browser' };
@@ -319,6 +314,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
 				$.mobile.resetActivePageHeight();
 			}, 100);
 		}
+
+		// show status bar - iPhone X mods
+	  	StatusBar.show();
+	  	StatusBar.styleBlackTranslucent();
+	  	StatusBar.backgroundColorByName("black");
 
 	}
 
