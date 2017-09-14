@@ -7,7 +7,7 @@
         ios-CFBundleVersionstring = "3.1.0" >
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-	<string>24</string>
+	<string>25</string>
 	</gap:config-file>
 
 	<!-- com.incubateltd.neomate Android / com.londonnts.neomate iOS -->
