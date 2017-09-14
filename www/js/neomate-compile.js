@@ -1884,6 +1884,11 @@ var Infusion = function(drugname, deliverydose, deliveryunits, desiredrate, weig
 		this.advisorymsg = this.advisorymsg + this.minconcmsg; 
 	}
 
+	// 5. Amount added to syringe is zero (edge case, and not really a safety issue, but you never know)
+	if (this.drugtotalmg() == 0) {
+		this.advisoryerror = 1;
+		this.advisorymsg = this.advisorymsg + "Drug to be added is too small. Please check your entry carefully."; 
+	}
 
 
 	this.outputtext = function () {
