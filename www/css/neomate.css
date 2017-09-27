@@ -663,3 +663,11 @@ div#emaildisclaimer {
 .dialogcontent {
   margin-top: -6px; /* prev 55px */
 }
+
+#footnotes {
+  font-size: 13px;
+}
+
+#zscorefootnotes {
+  font-size: 13px;
+}
