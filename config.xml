@@ -6,6 +6,7 @@
         android-packageName="com.incubateltd.neomate"
         version   = "3.1.1"
         android-versionCode="41.1.1"
+        versionCode="26"
         ios-CFBundleVersionstring = "3.1.1" >
         
 
