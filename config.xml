@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.londonnts.neomate"
+        ios-CFBundleIdentifier="com.londonnts.neomate"
+        android-packageName="com.incubateltd.neomate"
         version   = "3.1.1"
         android-versionCode="41.1.1"
         ios-CFBundleVersionstring = "3.1.1" >
+        
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
 	<string>26</string>
