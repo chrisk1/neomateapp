@@ -32,7 +32,7 @@
 
 	<preference name="phonegap-version" value="cli-6.5.0" />
 	<preference name="orientation" value="portrait" />
-	<preference name="fullscreen" value="true" />
+	<preference name="fullscreen" value="false" />
 	<preference name="webviewbounce" value="false" />
 	<preference name="stay-in-webview" value="false" />
 	<preference name="exit-on-suspend" value="false" />
@@ -166,4 +166,5 @@
 	<gap:plugin name="cordova-plugin-apprate" source="npm" />
 	<gap:plugin name="cordova-plugin-device" source="npm" />
 	<gap:plugin name="cordova-plugin-wkwebview-engine" source="npm" />
+    <gap:plugin name="cordova-plugin-keyboard" source="npm" />
 </widget>
