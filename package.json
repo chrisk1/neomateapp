@@ -1,0 +1,19 @@
+{
+  "name": "neomateapp",
+  "version": "3.2.0",
+  "description": "Helps neonatal staff calculate drug doses for babies on NICU in common emergency situations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisk1/neomateapp.git"
+  },
+  "author": "Christopher Kelly / London Neonatal Transfer Service",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/chrisk1/neomateapp/issues"
+  },
+  "homepage": "https://github.com/chrisk1/neomateapp#readme"
+}

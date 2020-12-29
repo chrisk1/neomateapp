@@ -1,0 +1,7 @@
+{
+  "name": "neomateapp",
+  "type": "custom",
+  "integrations": {
+    "cordova": {}
+  }
+}
