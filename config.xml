@@ -126,8 +126,8 @@
         <icon src="res/android/xxxhdpi.png" density="xxxhdpi" />
         <splash src="splash/android/drawable-hdpi/neomate.9.png" density="port-hdpi"/>
         <splash src="splash/android/drawable-mdpi/neomate.9.png" density="port-mdpi"/>
-        <splash src="splash/android/drawable.xhdpi/neomate.9.png" density="port-xhdpi"/>
-        <splash src="splash/android/drawable.xxhdpi/neomate.9.png" density="port-xxhdpi"/>
+        <splash src="splash/android/drawable-xhdpi/neomate.9.png" density="port-xhdpi"/>
+        <splash src="splash/android/drawable-xxhdpi/neomate.9.png" density="port-xxhdpi"/>
     
     </platform>
 
