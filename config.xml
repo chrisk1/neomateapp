@@ -21,12 +21,11 @@
         Helps neonatal staff calculate drug doses for babies on NICU in common emergency situations. 
     </description>
 
-    <author href="http://www.paediatrics.co.uk" email="apps@incubate.co.uk">
+    <author href="http://www.neomate.org" email="apps@incubate.co.uk">
         Christopher Kelly 
     </author>
 
 <!-- Preferences -->
-	<access origin="http://www.paediatrics.co.uk" browserOnly="true" />
     <access origin="*"></access>
 	<allow-navigation href="*" />
 
