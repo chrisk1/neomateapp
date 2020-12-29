@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"hide",
+				"hideKeyboard"
+			],
+			[
 				"app",
 				"appversion"
 			],
@@ -59,7 +63,7 @@
 			"file": "www/index.html",
 			"settings":
 			{
-				"buffer_size": 181134,
+				"buffer_size": 181167,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -68,36 +72,9 @@
 			"file": "config.xml",
 			"settings":
 			{
-				"buffer_size": 7230,
+				"buffer_size": 7294,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/growth/js/growth-compile.js",
-			"settings":
-			{
-				"buffer_size": 183753,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<en-GB>\nFaster and slicker interface. Lots of bug fixes and improvements.\nMajor changes:\n- Added BMI centile calculator.\n- Added head circumference centiles > 2 years old.\n- Graphing is now plotted on a z-score scale (rather than probability), so that centile lines at the extremities are equally spaced out.\n- Now displays both z-scores and centiles for the research people out there.\n- Age is now also displayed in weeks until 1 year of age (to make it easier to plot on Red Book paper growth charts).\n</en-GB>",
-			"settings":
-			{
-				"buffer_size": 512,
-				"line_ending": "Unix",
-				"name": "<en-GB>"
-			}
-		},
-		{
-			"file": "www/1js-full/growth-full.js",
-			"settings":
-			{
-				"buffer_size": 208618,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
 			}
 		},
 		{
@@ -113,7 +90,7 @@
 			"file": "www/1js-full/neomate-full.js",
 			"settings":
 			{
-				"buffer_size": 80901,
+				"buffer_size": 81061,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -122,7 +99,7 @@
 			"file": "www/js/neomate-compile.js",
 			"settings":
 			{
-				"buffer_size": 51959,
+				"buffer_size": 52092,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -173,6 +150,8 @@
 	},
 	"file_history":
 	[
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/growth/js/growth-compile.js",
+		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/1js-full/growth-full.js",
 		"/Users/chris/Dropbox/Websites/apps/growth/www/index.html",
 		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/growth/js/growth-full-3.1.0.js",
 		"/Users/chris/Dropbox/Websites/apps/neomateapp/www/css/jquery.mobile.squareui.css",
@@ -225,6 +204,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			".submit",
+			"babyweight",
+			"weight",
+			"highlightweight",
+			"survey",
+			"3.1",
+			"3.1.2",
 			"container",
 			"init",
 			"3.1",
@@ -345,14 +331,7 @@
 			"data-icon=\"about",
 			"            <li><a href=\"#main\" class=\"ui-btn-active ui-state-persist\" id=\"home-calc\" data-transition=\"none\" data-iconpos=\"top\" data-icon=\"calc\">NICU Calc</a></li>",
 			"clinic",
-			"\"reference\"",
-			"reference",
-			"NICU",
-			"chris",
-			"ethical guidance",
-			"window.ga",
-			"use the following",
-			"use the folloing"
+			"\"reference\""
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -388,7 +367,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -397,15 +376,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 181134,
+						"buffer_size": 181167,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								152402,
-								152402
+								65880,
+								65880
 							]
 						],
 						"settings":
@@ -414,10 +393,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 56238.0,
+						"translation.y": 23989.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -426,15 +405,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7230,
+						"buffer_size": 7294,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								388,
-								388
+								389,
+								389
 							]
 						],
 						"settings":
@@ -447,95 +426,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "www/growth/js/growth-compile.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 183753,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4,
-								4
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 512,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								101,
-								101
-							]
-						],
-						"settings":
-						{
-							"auto_name": "<en-GB>",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "www/1js-full/growth-full.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 208618,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11,
-								11
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 2,
 					"file": "www/1testing/nts-test.js",
 					"semi_transient": false,
 					"settings":
@@ -559,24 +454,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 3,
 					"file": "www/1js-full/neomate-full.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 80901,
+						"buffer_size": 81061,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4933,
-								4933
+								0,
+								81061
 							]
 						],
 						"settings":
@@ -585,42 +480,42 @@
 							"word_wrap": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2700.0,
+						"translation.y": 3592.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 4,
 					"file": "www/js/neomate-compile.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 51959,
+						"buffer_size": 52092,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4579,
-								4579
+								52092,
+								52092
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
-						"translation.x": 1816.0,
-						"translation.y": 53.0,
+						"translation.x": 208.0,
+						"translation.y": 941.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 5,
 					"file": "www/css/neomate.css",
 					"semi_transient": false,
 					"settings":
@@ -643,10 +538,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 10596.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -654,7 +549,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 38.0
+		"height": 25.0
 	},
 	"input":
 	{
