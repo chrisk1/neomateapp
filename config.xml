@@ -144,6 +144,7 @@
             <param name="ios-package" value="CDVStatusBar" onload="true" />
     </feature>
 
+    <plugin name="cordova-android-play-services-gradle-release" source="npm" />
 	<plugin name="cordova-plugin-whitelist" source="npm" />
 	<plugin name="cordova-plugin-splashscreen" source="npm" />
 	<plugin name="cordova-plugin-inappbrowser" source="npm" />
