@@ -127,7 +127,7 @@
     </platform>
 
 	<!-- limit to Android 4.2 onwards -->
-	<preference name="android-minSdkVersion" value="17" />
+	<preference name="android-minSdkVersion" value="22" />
 
 <!-- PLUGINS -->
   	<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
