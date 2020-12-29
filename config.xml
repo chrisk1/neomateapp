@@ -151,4 +151,9 @@
 	<plugin name="cordova-plugin-device" source="npm" />
 	<plugin name="cordova-plugin-wkwebview-engine" source="npm" />
     <plugin name="cordova-plugin-keyboard" source="npm" />
+    <plugin name="cordova-plugin-androidx" source="npm" />
+    <plugin name="cordova-plugin-androidx-adapter" source="npm" />
+
+
+
 </widget>
