@@ -131,10 +131,15 @@
 	<preference name="android-minSdkVersion" value="22" />
 
 <!-- PLUGINS -->
-  	<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
-  	<feature name="CDVWKWebViewEngine">
-        <param name="ios-package" value="CDVWKWebViewEngine" />
-    </feature>
+    <platform name="ios">
+        <preference name="WKWebViewOnly" value="true" />
+
+        <feature name="CDVWKWebViewEngine">
+            <param name="ios-package" value="CDVWKWebViewEngine" />
+        </feature>
+
+        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+    </platform>
 
 	<plugin name="cordova-plugin-statusbar" source="npm" />
 	<feature name="StatusBar">
@@ -150,7 +155,6 @@
 	<plugin name="cordova-plugin-globalization" source="npm" />
 	<plugin name="cordova-plugin-apprate" source="npm" />
 	<plugin name="cordova-plugin-device" source="npm" />
-	<plugin name="cordova-plugin-wkwebview-engine" source="npm" />
     <plugin name="cordova-plugin-keyboard" source="npm" />
     <plugin name="cordova-plugin-androidx" source="npm" />
     <plugin name="cordova-plugin-androidx-adapter" source="npm" />
