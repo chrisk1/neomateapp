@@ -150,7 +150,6 @@
 	<plugin name="cordova-plugin-splashscreen" source="npm" />
 	<plugin name="cordova-plugin-inappbrowser" source="npm" />
 	<plugin name="cordova-plugin-dialogs" source="npm" />
-	<!-- <plugin name="cordova-plugin-google-analytics" source="npm" /> -->
 	<plugin name="flyer299-cordova-plugin-google-analytics" source="npm" />
 	<plugin name="cordova-plugin-globalization" source="npm" />
 	<plugin name="cordova-plugin-apprate" source="npm" />
