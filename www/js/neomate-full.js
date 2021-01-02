@@ -271,7 +271,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	    if (!window.device) {
 	        window.device = { platform: 'Browser' };
 	    }
-    	handleExternalURLs();
+    	// handleExternalURLs();
 
 	  	// Rating for App Store
 	  	AppRate.preferences.storeAppURL.ios = '944319462';
@@ -423,6 +423,10 @@ function checkUUID() {
 	    $.mobile.changePage(targetURL);
 	});
 
+	$('#appstorereviewbox').bind("tap click", function( event, data ){
+		AppRate.promptForRating(true);
+	});
+
 
 	// Allow external links to be clicked in checklists
 	$('.checkbox-link-external').bind("tap click", function( event, data ){
@@ -504,6 +508,11 @@ function checkUUID() {
 	});
 
 	$(document).on('pageshow', '#reference' ,function () {
+		// $.mobile.changePage("#reference");
+		$.mobile.silentScroll(0);
+	});
+
+	$(document).on('pageshow', '#survey' ,function () {
 		// $.mobile.changePage("#reference");
 		$.mobile.silentScroll(0);
 	});
@@ -1315,7 +1324,7 @@ var CalculateApp = function() {
 		}
 
 	// Stop app from completing if 
-		if (babyweight > 7) {
+		if (babyweight > 6) {
 			// console.log(localStorage.getItem("babyweightalert") + ' - ' + babyweight);
 			if (babyweight != localStorage.getItem("babyweightalert")) {
 				showMessage("This app is only valid for babies on NICU. Please check your weight and try again.", highlightWeight, "Oops - please check weight", "Done");
@@ -1365,7 +1374,8 @@ var CalculateApp = function() {
 		if (babyweight >= 1.5 && babyweight < 1.9) { $("#ettlength").text("7.5 cm");}
 		if (babyweight >= 1.9 && babyweight < 2.5) { $("#ettlength").text("8.0 cm");}
 		if (babyweight >= 2.5 && babyweight < 3.2) { $("#ettlength").text("8.5 cm");}
-		if (babyweight >= 3.2) { $("#ettlength").text("9.0 cm");}
+		if (babyweight >= 3.2 && babyweight <= 4.2) { $("#ettlength").text("9.0 cm");}
+		if (babyweight > 4.2) { $("#ettlength").text("Too large");}
 
 /*
 PREVIOUS SIZES
