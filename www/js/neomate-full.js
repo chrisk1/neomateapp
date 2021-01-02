@@ -250,10 +250,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		$.mobile.silentScroll(0);
 	});
 
-	$(".contactchris").click(function(){
-		console.log("Contact link clicked");
-		window.open("mailto:chris.kelly@doctors.org.uk", '_system');
-	});
+	// $(".contactchris").click(function(){
+	//	console.log("Contact link clicked");
+	//	window.open("mailto:chris.kelly@doctors.org.uk", '_system');
+	// });
 
 	function onDeviceReady() {
 		console.log("Device on ready launched");
@@ -271,23 +271,79 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	    if (!window.device) {
 	        window.device = { platform: 'Browser' };
 	    }
-    	// handleExternalURLs();
+    	// handleExternalURLs(); (removed 2 Jan 2021)
 
 	  	// Rating for App Store
-	  	AppRate.preferences.storeAppURL.ios = '944319462';
-		AppRate.preferences.storeAppURL.android = 'market://details?id=com.incubateltd.neomate';
-		AppRate.preferences.openStoreInApp = false;
-		AppRate.preferences.displayAppName = 'NeoMate';
-		AppRate.preferences.usesUntilPrompt = 1;
-		AppRate.preferences.promptAgainForEachNewVersion = true;
+	  	// from https://www.npmjs.com/package/cordova-plugin-apprate
+		AppRate.setPreferences({
+		  openUrl: function(url) {
+		    var safariAvailable = false;
+		 
+		    if (window.SafariViewController) {
+		      SafariViewController.isAvailable(function(available) {
+		        safariAvailable = available;
+		      });
+		    }
+		 
+		    if (!safariAvailable) {
+		       window.open(url, '_blank', 'location=yes');
+		    } else {
+		      SafariViewController.show(
+		        {
+		          url: url,
+		          barColor: "#0000ff", // on iOS 10+ you can change the background color as well
+		          controlTintColor: "#00ffff", // on iOS 10+ you can override the default tintColor
+		          tintColor: "#00ffff", // should be set to same value as controlTintColor and will be a fallback on older ios
+		        },
+		 
+		        // this success handler will be invoked for the lifecycle events 'opened', 'loaded' and 'closed'
+		        function(result) {
+		          console.log(result.event)
+		        },
+		 
+		        function(msg) {
+		          console.log("Error: " + msg);
+		        }
+		      );
+		    }
+		  }
+		});
 
-		var customLocale = {};
-		customLocale.title = "Rate NeoMate";
-		customLocale.message = "If you find NeoMate helpful, would you mind taking a moment to rate it? Thank you for your support!";
-		customLocale.cancelButtonLabel = "No, Thanks";
-		customLocale.laterButtonLabel = "Remind Me Later";
-		customLocale.rateButtonLabel = "Yes";
-		AppRate.preferences.customLocale = customLocale;
+		AppRate.setPreferences({
+		  displayAppName: 'NeoMate',
+		  usesUntilPrompt: 5,
+		  promptAgainForEachNewVersion: false,
+		  reviewType: {
+		    ios: 'AppStoreReview',
+		    android: 'InAppBrowser'
+		  },
+		  storeAppURL: {
+		    ios: '944319462',
+		    android: 'market://details?id=com.incubateltd.neomate',
+		  },
+		  customLocale: {
+		    title: "Would you mind rating NeoMate?",
+		    message: "If you find NeoMate helpful, would you mind taking a moment to rate it? Thank you for your support!",
+		    cancelButtonLabel: "No, Thanks",
+		    laterButtonLabel: "Remind Me Later",
+		    rateButtonLabel: "Rate It Now",
+		    yesButtonLabel: "Yes!",
+		    noButtonLabel: "Not really",
+		    appRatePromptTitle: 'Do you like using NeoMate?',
+		    feedbackPromptTitle: 'Mind giving us some feedback?',
+		  },
+		  callbacks: {
+		    handleNegativeFeedback: function(){
+		      window.open('mailto:chris.kelly@doctors.org.uk', '_system');
+		    },
+		    onRateDialogShow: function(callback){
+		      callback(1) // cause immediate click on 'Rate Now' button
+		    },
+		    onButtonClicked: function(buttonIndex){
+		      console.log("onButtonClicked -> " + buttonIndex);
+		    }
+		  }
+		});
 
 		var countBabyLoad = localStorage.getItem("countBabyLoad");
 
@@ -423,7 +479,7 @@ function checkUUID() {
 	    $.mobile.changePage(targetURL);
 	});
 
-	$('#appstorereviewbox').bind("tap click", function( event, data ){
+	$('#appstorereviewbox').click(function(e){
 		AppRate.promptForRating(true);
 	});
 
@@ -1375,7 +1431,7 @@ var CalculateApp = function() {
 		if (babyweight >= 1.9 && babyweight < 2.5) { $("#ettlength").text("8.0 cm");}
 		if (babyweight >= 2.5 && babyweight < 3.2) { $("#ettlength").text("8.5 cm");}
 		if (babyweight >= 3.2 && babyweight <= 4.2) { $("#ettlength").text("9.0 cm");}
-		if (babyweight > 4.2) { $("#ettlength").text("Too large");}
+		if (babyweight > 4.2) { $("#ettlength").text("N/A");}
 
 /*
 PREVIOUS SIZES
