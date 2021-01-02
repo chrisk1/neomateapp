@@ -11,7 +11,6 @@
     <allow-navigation href="*" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" />
-    <preference name="UIWebViewBounce" value="true" />
     <preference name="stay-in-webview" value="false" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false" />
