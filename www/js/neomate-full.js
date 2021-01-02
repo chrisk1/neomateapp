@@ -484,29 +484,29 @@ function checkUUID() {
 
 	// scroll to top when page showed
 	$(document).on('pageshow', '#clinic' ,function () {
-		$.mobile.changePage("#clinic");
+		// $.mobile.changePage("#clinic");
 		$.mobile.silentScroll(0);
-	}
+	});
 
 	$(document).on('pageshow', '#checklists' ,function () {
-		$.mobile.changePage("#checklists");
+		// $.mobile.changePage("#checklists");
 		$.mobile.silentScroll(0);
-	}
+	});
 
 	$(document).on('pageshow', '#about' ,function () {
-		$.mobile.changePage("#about");
+		// $.mobile.changePage("#about");
 		$.mobile.silentScroll(0);
-	}
+	});
 
 	$(document).on('pageshow', '#main' ,function () {
-		$.mobile.changePage("#main");
+		// $.mobile.changePage("#main");
 		$.mobile.silentScroll(0);
-	}
+	});
 
 	$(document).on('pageshow', '#reference' ,function () {
-		$.mobile.changePage("#reference");
+		// $.mobile.changePage("#reference");
 		$.mobile.silentScroll(0);
-	}
+	});
 
 	// estimate weight when select button clicked
 	$('.estweightlink').click(function() {
