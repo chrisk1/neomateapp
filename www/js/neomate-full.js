@@ -480,6 +480,27 @@ function checkUUID() {
 		$.mobile.changePage( "#weightinfobox");
 	});
 
+	// scroll to top when page showed
+	$(document).on('pageshow', '#clinic' ,function () {
+		$.mobile.silentScroll(0);
+	}
+
+	$(document).on('pageshow', '#checklists' ,function () {
+		$.mobile.silentScroll(0);
+	}
+
+	$(document).on('pageshow', '#about' ,function () {
+		$.mobile.silentScroll(0);
+	}
+
+	$(document).on('pageshow', '#main' ,function () {
+		$.mobile.silentScroll(0);
+	}
+
+	$(document).on('pageshow', '#reference' ,function () {
+		$.mobile.silentScroll(0);
+	}
+
 	// estimate weight when select button clicked
 	$('.estweightlink').click(function() {
 		var estimatedweight = $(this).data('weight');
