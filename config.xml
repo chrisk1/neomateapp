@@ -11,7 +11,7 @@
     <allow-navigation href="*" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" />
-    <preference name="UIWebViewBounce" value="true" />
+    <preference name="webviewbounce" value="false" />
     <preference name="stay-in-webview" value="false" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false" />
@@ -27,7 +27,6 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="mailto:*" />
-    <allow-navigation href="http://localhost:8080/*"/>
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
@@ -69,6 +68,7 @@
 <!--
         <splash src="res/screen/ios/Default@2x~universal~comany.png" />
         <splash src="res/screen/ios/Default@3x~universal~anyany.png" />
+        <!-- <splash src="res/screen/ios/Default@3x~universal~anycom.png" />
         <splash src="res/screen/ios/Default@3x~universal~comany.png" />
 //-->
 
@@ -93,7 +93,6 @@
         </feature>
         <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     </platform>
-
     <plugin name="cordova-plugin-statusbar" source="npm" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
@@ -101,7 +100,6 @@
     <plugin name="cordova-plugin-whitelist" source="npm" />
     <plugin name="cordova-plugin-splashscreen" source="npm" />
     <plugin name="cordova-plugin-inappbrowser" source="npm" />
-    <plugin name="cordova-plugin-ionic-webview" source="npm" />
     <plugin name="cordova-plugin-dialogs" source="npm" />
     <plugin name="flyer299-cordova-plugin-google-analytics" source="npm" />
     <plugin name="cordova-plugin-globalization" source="npm" />
