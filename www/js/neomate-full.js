@@ -479,7 +479,8 @@ function checkUUID() {
 	    $.mobile.changePage(targetURL);
 	});
 
-	$('#appstorereviewbox').click(function(e){
+	$('#appstorereviewbox').click(function(event, data){
+		event.preventDefault();
 		AppRate.promptForRating(true);
 	});
 
@@ -493,6 +494,30 @@ function checkUUID() {
 		window.open(targetURL, "_system");
 	});
 
+	// Scrolling bug https://stackoverflow.com/questions/39692337/div-scrolling-freezes-sometimes-if-i-use-webkit-overflow-scrolling
+	var lastY = 0; // Needed in order to determine direction of scroll.
+	$(".ui-content").on('touchstart', function(event) {
+	    lastY = event.touches[0].clientY;
+	});
+
+	$('.ui-content').on('touchmove', function(event) {
+	    var top = event.touches[0].clientY;
+
+	    // Determine scroll position and direction.
+	    var scrollTop = $(event.currentTarget).scrollTop();
+	    var direction = (lastY - top) < 0 ? "up" : "down";
+
+	    // FIX IT!
+	    if (scrollTop <= 0 && direction == "up") {
+	      // Prevent scrolling up when already at top as this introduces a freeze.
+	      event.preventDefault();
+	    } else if (scrollTop >= (event.currentTarget.scrollHeight - event.currentTarget.outerHeight()) && direction == "down") {
+	      // Prevent scrolling down when already at bottom as this also introduces a freeze.
+	      event.preventDefault();
+	    }
+
+	    lastY = top;
+	});
 
 	// Stop green highlighting of tabs - persistent ui-btn-active
 	// Also while we're here, let's ask the user to rate the app if >20 babies
