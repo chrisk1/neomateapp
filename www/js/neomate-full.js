@@ -1009,21 +1009,21 @@ $(function(){
     
 	// SHOW DISCLAIMER IF NOT SHOWN BEFORE
 
-    var item = localStorage.getItem("neodisc30");
-    if (item == null) {				
-    	if (navigator.userAgent.match(/Android/)) {
-			$.mobile.changePage( "#splashscreen", {} );	
-			console.log("Android splash");
-		}
-		else {
-			$.mobile.changePage( "#splashscreen", { transition: "none"} );
-			console.log("Non-Android splash");
-		}
-		localStorage.setItem("neodisc30", "true");
-	}
-	else if (item.length === 0) {
-	       //
-	}
+//    var item = localStorage.getItem("neodisc30");
+//    if (item == null) {				
+//    	if (navigator.userAgent.match(/Android/)) {
+//			$.mobile.changePage( "#splashscreen", {} );	
+//			console.log("Android splash");
+//		}
+//		else {
+//			$.mobile.changePage( "#splashscreen", { transition: "none"} );
+//			console.log("Non-Android splash");
+//		}
+//		localStorage.setItem("neodisc30", "true");
+//	}
+//	else if (item.length === 0) {
+//	       //
+//	}
 
 // Update version information
 	$(".appversioninsert").text(appversion);
