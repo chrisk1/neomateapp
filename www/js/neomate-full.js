@@ -176,8 +176,8 @@ infusiondb = [
 // ################## START: App functions / setup #######################
 var gramsnotification = '';
 var weighthistory = '';
-var appversion = '3.1.4';
-var appdate = 'May 2018';
+var appversion = '3.2';
+var appdate = 'May 2023';
 var devicemodel = '';
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -1447,7 +1447,7 @@ var CalculateApp = function() {
 		if (babyweight >= 3) { $("#ettsize").text("3.5 - 4.0");}
 
 	// ETT LENGTHS - http://www.resus.org.au/policy/guidelines/section_13/guideline-13-5dec10.pdf
-		if (babyweight < 0.5) { $("#ettlength").text("5.5 cm");}
+		if (babyweight < 0.5) { $("#ettlength").text("<5.5 cm");}
 		if (babyweight >= 0.5 && babyweight < 0.7) { $("#ettlength").text("5.5 cm");}
 		if (babyweight >= 0.7 && babyweight < 0.9) { $("#ettlength").text("6.0 cm");}
 		if (babyweight >= 0.9 && babyweight < 1.1) { $("#ettlength").text("6.5 cm");}
