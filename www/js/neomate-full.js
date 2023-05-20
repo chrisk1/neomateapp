@@ -204,7 +204,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		if(typeof ga !== "undefined"){    
 			window.ga.trackView(pagename);
 		}
-		window.FirebasePlugin.setScreenName(pagename);
+		if(typeof FirebasePlugin !== "undefined"){    
+			window.FirebasePlugin.setScreenName(pagename);
+		}
 	}
 
 	// Function to handle external URLs - from http://stackoverflow.com/questions/17887348/phonegap-open-link-in-browser
@@ -496,10 +498,37 @@ function checkUUID() {
 	});
 
 	// Scrolling bug https://stackoverflow.com/questions/39692337/div-scrolling-freezes-sometimes-if-i-use-webkit-overflow-scrolling
-	var lastY = 0; // Needed in order to determine direction of scroll.
-	$(".ui-content").on('touchstart', function(event) {
+	// var lastY = 0; // Needed in order to determine direction of scroll.
+	//$(".ui-content").on('touchstart', function(event) {
+	//    lastY = event.touches[0].clientY;
+	// });
+
+	var lastY = 0;
+	var targetElt = document.querySelector(".ui-content");
+
+	targetElt.addEventListener('touchstart', function(event) {
 	    lastY = event.touches[0].clientY;
 	});
+
+	targetElt.addEventListener('touchmove', function(event) {
+	    var top = event.touches[0].clientY;
+
+	    var scrollTop = event.currentTarget.scrollTop;
+	    var maxScrollTop = event.currentTarget.scrollHeight -
+	        $(event.currentTarget).outerHeight();
+	    var direction = lastY - top < 0 ? 'up' : 'down';
+
+	    if (
+	        event.cancelable && (
+	            (scrollTop <= 0 && direction === 'up') ||
+	            (scrollTop >= maxScrollTop && direction === 'down')
+	        )
+	    )
+	      event.preventDefault();
+
+	    lastY = top;
+	});
+
 
 	$('.ui-content').on('touchmove', function(event) {
 	    var top = event.touches[0].clientY;
