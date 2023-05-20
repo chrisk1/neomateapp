@@ -741,7 +741,7 @@ function initialisetests() {
 	unittest( $("#phenytoinloading").text(), "18 mg given IV over 30 min(needs close ECG monitoring)", "Phenytoin loading dose 18 mg to be given over 30 min (needs close ECG monitoring)" );
 	unittest( $("#diazepam").text(), "300 micrograms(given IV over 5 min)", "Diazepam bolus 300 micrograms (IV injection over 5 min)" );
 	unittest( $("#midazolaminfusion").text(), "15 mg added to 50 ml 0.9% NaCl or 5% dextrose.0.1 ml/hr will deliver 30 micrograms/kg/hour.", "Midazolam infusion 15 mg added to 50 ml 0.9% NaCl or 5% dextrose. 0.1 ml/hr will deliver 30 micrograms/kg/hour." );
-	unittest( $("#adrenalineemergency").text(), "0.2 ml/kg= 0.2 ml IV stat.Flush with 0.9% sodium chloride.", "Adrenaline dose 0.2 ml - correct" );
+	unittest( $("#adrenalineemergency").text(), "0.2 ml IV stat.Flush with 0.9% sodium chloride.", "Adrenaline dose 0.2 ml - correct" );
 	unittest( $("#dextrosebolus").text(), "2.5 ml over 20-30 minutes, via UVC or IV.", "Dextrose 2.5 ml over 20-30 mins - correct" );
 	unittest( $("#sodiumbicarb").text(), "2 ml (=1 mmol) of sodium bicarbonate 4.2% for use during emergency resuscitation, given via UVC", "Sodium bicarbonate emergency drug dose - correct" );
 	unittest( $("#adenosine").text(), "150 micrograms IV stat into a large central vein and followed immediately by NaCl 0.9% push.", "Adenosine dose 50mg IV stat - correct" );
@@ -1125,8 +1125,8 @@ $('.ui-content').on('click', '.ui-icon-delete', function(e){
 		$("#tipotassium").val("0").slider("refresh");
 		// $('input:radio[name="tisodium"]').filter('[value="0"]').parent().find("label[for].ui-btn").click();
 		// $('input:radio[name="tipotassium"]').filter('[value="0"]').parent().find("label[for].ui-btn").click();
-		$("input[type='radio']").attr("checked",true).checkboxradio("refresh");
-		$("input[type='radio']").attr("checked",false).checkboxradio("refresh");
+		// $("input[type='radio']").attr("checked",true).checkboxradio("refresh"); // error on click X
+		// $("input[type='radio']").attr("checked",false).checkboxradio("refresh"); // error on click X
 		babyCounter(); //add one to the baby counter
 		$("input[type='checkbox']").prop("checked",false).checkboxradio().checkboxradio("refresh"); // clear tick boxes
 		$("#main").find(".maintitle-weight").text("");
@@ -1556,7 +1556,7 @@ PREVIOUS SIZES
 			var fcorrection = 0.5;
 		}
 
-		$("#adrenalineemergency").html("0.2 ml/kg<br>= " + adrenalinedose1 + " ml IV stat." + adrenalinemsg + "<br>Flush with 0.9% sodium chloride.<br><br>");
+		$("#adrenalineemergency").html(adrenalinedose1 + " ml IV stat." + adrenalinemsg + "<br>Flush with 0.9% sodium chloride.<br><br>");
 		$("#sodiumbicarb").html((Math.round((babyweight*2)*10)/10) + " ml (=" + (Math.round((babyweight*2/2)*10)/10) + " mmol) of sodium bicarbonate <span class=\"highlightdrug\">4.2%</span> for use during emergency resuscitation, given via UVC");
 		$("#sodiumbicarbhalfcorrection").html("<a href=\"#halfcorrection\" data-transition=\"none\" data-corners=\"false\" style=\"text-decoration: none; color: rgb(52, 73, 94)\">Base deficit (mmol/L) x " + fcorrection + " x [" + (Math.round((babyweight)*10)/10) +" kg (weight)]. Only <b>half</b> the base deficit should be corrected initially by slow IV infusion (dilute sodium bicarbonate 4.2% with equal parts water and give over 30 minutes).</a>");
 		$("#dextrosebolus").text((Math.round((babyweight*2.5)*10)/10) + " ml over 20-30 minutes, via UVC or IV.") ;
