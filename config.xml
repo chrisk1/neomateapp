@@ -103,6 +103,7 @@
     <plugin name="cordova-plugin-ionic-webview" source="npm" />
     <plugin name="cordova-plugin-dialogs" source="npm" />
     <plugin name="flyer299-cordova-plugin-google-analytics" source="npm" />
+    <plugin name="cordova-plugin-firebase" source="npm" />
     <plugin name="cordova-plugin-globalization" source="npm" />
     <plugin name="cordova-plugin-apprate" source="npm" />
     <plugin name="cordova-plugin-device" source="npm" />

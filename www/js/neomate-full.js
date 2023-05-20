@@ -204,6 +204,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		if(typeof ga !== "undefined"){    
 			window.ga.trackView(pagename);
 		}
+		window.FirebasePlugin.setScreenName(pagename);
 	}
 
 	// Function to handle external URLs - from http://stackoverflow.com/questions/17887348/phonegap-open-link-in-browser
