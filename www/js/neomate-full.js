@@ -969,6 +969,8 @@ $(".infusionheader").css("background-color", "#CE6563");
 	  $( "#weightinfobox" ).dialog( "close" );
 	});
 
+$("#babyweight").focus(); // see if this fixes page stick
+
 // ################## END: App initialising #######################
 
 $(function(){
