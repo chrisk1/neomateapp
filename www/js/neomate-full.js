@@ -220,6 +220,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	        $(document).on('click', 'a[href^="http"]', function (e) {
 	            var url = $(this).attr('href');
 	            window.open(url, '_system');
+	            console.log(url);
 	            e.preventDefault();
 	        });
 	    }
@@ -376,7 +377,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		    	// Numerical inputs set for iOS
 		    	$(".numericalinput").attr("type", "number");
 	    		navigator.splashscreen.hide();
-			}, 30);
+			}, 1000);
 			window.scrollTo(0, 1);
 			setTimeout(function() {
 				$.mobile.resetActivePageHeight();
@@ -492,6 +493,7 @@ function checkUUID() {
 	    // $(this).find('a:first').preventDefault();
 	    var targetURL = $(this).find('a:first').attr('href');
 		window.open(targetURL, "_system");
+		console.log(targetURL);
 	});
 
 	// Scrolling bug https://stackoverflow.com/questions/39692337/div-scrolling-freezes-sometimes-if-i-use-webkit-overflow-scrolling
