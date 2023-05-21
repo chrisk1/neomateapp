@@ -505,7 +505,7 @@ function checkUUID() {
 		      console.log("ui-content triggered")
 	      clearTimeout(scrollTimer);
 	      scrollTimer = setTimeout(() => {
-	        this.scrollTop = Math.max(1, Math.min(this.scrollTop, this.scrollHeight - this.clientHeight - 1));
+	      	$(window).scrollTop($(window).scrollTop()-1);
 	        console.log("Scroll timer triggered")
 	      }, 300);
 	});
