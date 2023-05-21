@@ -505,6 +505,7 @@ function checkUUID() {
 
 	targetElt.addEventListener('touchstart', function(event) {
 	    lastY = event.touches[0].clientY;
+	    console.log("Touched 0");
 	});
 
 	targetElt.addEventListener('touchmove', function(event) {
@@ -524,6 +525,7 @@ function checkUUID() {
 	      event.preventDefault();
 
 	    lastY = top;
+			console.log("Touched " + lastY);
 	});
 
 
