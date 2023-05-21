@@ -264,7 +264,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 	   	// GAP Analytics set up (on ready)
 	    console.log('initializeGAplugin');
-	    window.ga.startTrackerWithId('G-1S2ETX426Z', 5);
+	    window.ga.startTrackerWithId('377330199', 5);
 	    window.ga.setAppVersion(appversion);
 	    window.ga.setUserId(checkUUID());
 
