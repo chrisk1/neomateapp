@@ -368,7 +368,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		if (navigator.userAgent.match(/Android/)) {
 			setTimeout(function() {
     			navigator.splashscreen.hide();
-			}, 30);
+    			$("#babyweight").focus(); // see if this fixes page stick
+			}, 500);
 			window.scrollTo(0, 1);
 			setTimeout(function() {
 				$.mobile.resetActivePageHeight();
@@ -379,6 +380,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		    	// Numerical inputs set for iOS
 		    	$(".numericalinput").attr("type", "number");
 	    		navigator.splashscreen.hide();
+	    		$("#babyweight").focus(); // see if this fixes page stick
 			}, 500);
 			window.scrollTo(0, 1);
 			setTimeout(function() {
@@ -981,8 +983,6 @@ $(function(){
 //    $("#footernote").css("height", $(window).height()-226);
 //    console.log($(window).height());
 
-	$("#babyweight").focus(); // see if this fixes page stick
-
     // SET APP LOAD COUNTER
     var countAppLoad = localStorage.getItem("countAppLoad");
     if (countAppLoad == null) {
@@ -1056,7 +1056,7 @@ $(function(){
 		var targetURL = $(this).attr("href");
 		window.open(targetURL, "_system");
 	});
-	
+
 
 	$(function(){ $('[data-role=header],[data-role=footer]').fixedtoolbar({ tapToggle:false }); });
 

@@ -341,13 +341,26 @@ var Growthchart = function(Baby, datetodayinput, weight, length, hc, chartoverri
 
 	// NB this section also means that the chart plots a baby on the 40th week if 37-42 weeks gestation.
 	// This is by design, as per RCPCH growth charts.
+
+	// Previously Baby.gestationweek() >= 37. Adjusted in v2.3.1 to give exact measurement in newborn period.
 	if(Baby.gestationweek() >= 37 || this.ageyears() > 2) { 
+		console.log(">=37  or >2")
 		var gcageyears = this.ageyears();
-		console.log(gcageyears);
+		console.log("gcageyears: " + gcageyears);
 		var gcageyearstext = Math.round(this.ageyears()*100)/100 + " year" + pluralstext(Math.round(this.ageyears()*100)/100);
 	}
+
 	else if (Baby.gestationweek() < 37) { 
+		console.log("<37")
 		var gcageyears = Number(this.ageyears() - ((40 - Baby.gestationweek())/52)) + (Number(Baby.gestationday()) / 365);
+		console.log("gcageyears: " + gcageyears);
+		var gcageyearstext = (Math.round(gcageyears*100)/100) + " year" + pluralstext(Math.round(gcageyears*100)/100) + " (corrected)";
+	}
+
+	if (Baby.gestationweek() >= 37 && Baby.gestationweek() <= 42) {
+		console.log("Adjust to avoid rounding 37-42 to 40")
+		var gcageyears = Number(this.ageyears() - ((40 - Baby.gestationweek())/52)) + (Number(Baby.gestationday()) / 365);
+		console.log("gcageyears: " + gcageyears);
 		var gcageyearstext = (Math.round(gcageyears*100)/100) + " year" + pluralstext(Math.round(gcageyears*100)/100) + " (corrected)";
 	}
 
