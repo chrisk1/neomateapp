@@ -969,7 +969,6 @@ $(".infusionheader").css("background-color", "#CE6563");
 	  $( "#weightinfobox" ).dialog( "close" );
 	});
 
-$("#babyweight").focus(); // see if this fixes page stick
 
 // ################## END: App initialising #######################
 
@@ -977,6 +976,8 @@ $(function(){
 
 //    $("#footernote").css("height", $(window).height()-226);
 //    console.log($(window).height());
+
+	$("#babyweight").focus(); // see if this fixes page stick
 
     // SET APP LOAD COUNTER
     var countAppLoad = localStorage.getItem("countAppLoad");
@@ -1433,7 +1434,7 @@ var CalculateApp = function() {
 		$("#fentanylbolus").html((Math.round(babyweight*5)) + " micrograms by slow IV push<br>(preferred drug for intubation)") ;
 		$("#morphinebolus").html((Math.round(babyweight*100)) + " micrograms by slow IV push<br>(nb onset of action approx 5 mins; peak action at 15 - 30 mins)") ;
 		$("#suxbolus").text((Math.round((babyweight*2))) + " mg by slow IV push") ;
-		$("#atropinebolus").text((Math.round((babyweight*20))) + " micrograms by slow IV push");
+		$("#atropinebolus").text((Math.round((babyweight*10))) + " micrograms by slow IV push");
 		$("#curosurf").html("<b>First dose: </b>" + (Math.round(babyweight*200)) + " mg,<br><b>Second dose: </b>" + (Math.round(babyweight*100)) + " mg (if indicated)<br>Give via ET tube.<br>Practical note: use whole vial closest to calculated dose.");
 		if (babyweight < 1) { $("#ettsize").text("2.5");}
 		if (babyweight >= 1 && babyweight < 2) { $("#ettsize").text("3.0");}
