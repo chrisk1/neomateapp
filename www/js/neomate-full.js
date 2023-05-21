@@ -207,27 +207,27 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	}
 
 	// Function to handle external URLs - from http://stackoverflow.com/questions/17887348/phonegap-open-link-in-browser
-	function handleExternalURLs() {
+//	function handleExternalURLs() {
 	    // Handle click events for all external URLs
-	    if (device.platform.toUpperCase() === 'ANDROID') {
-	        $(document).on('click', 'a[href^="http"]', function (e) {
-	            var url = $(this).attr('href');
-	            navigator.app.loadUrl(url, { openExternal: true });
-	            e.preventDefault();
-	        });
-	    }
-	    else if (device.platform.toUpperCase() === 'IOS') {
-	        $(document).on('click', 'a[href^="http"]', function (e) {
-	            var url = $(this).attr('href');
-	            window.open(url, '_system');
-	            console.log(url);
-	            e.preventDefault();
-	        });
-	    }
-	    else {
-	        // Leave standard behaviour
-	    }
-	}
+//	    if (device.platform.toUpperCase() === 'ANDROID') {
+//	        $(document).on('click', 'a[href^="http"]', function (e) {
+//	            var url = $(this).attr('href');
+//	            navigator.app.loadUrl(url, { openExternal: true });
+//	            e.preventDefault();
+//	        });
+//	    }
+//	    else if (device.platform.toUpperCase() === 'IOS') {
+//	        $(document).on('click', 'a[href^="http"]', function (e) {
+//	            var url = $(this).attr('href');
+//	            window.open(url, '_system');
+//	            console.log(url);
+//	            e.preventDefault();
+//	        });
+//	    }
+//	    else {
+//	        // Leave standard behaviour
+//	    }
+//	}
 
 	$("#surveyform").submit(function() {
 		Keyboard.hide();
@@ -260,6 +260,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		console.log("Device on ready launched");
 		// Fastclick initialisation
 		FastClick.attach(document.body);
+		window.open = cordova.InAppBrowser.open;
+
 	   	// GAP Analytics set up (on ready)
 	    console.log('initializeGAplugin');
 	    window.ga.startTrackerWithId('G-1S2ETX426Z', 5);
@@ -377,7 +379,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		    	// Numerical inputs set for iOS
 		    	$(".numericalinput").attr("type", "number");
 	    		navigator.splashscreen.hide();
-			}, 1000);
+			}, 500);
 			window.scrollTo(0, 1);
 			setTimeout(function() {
 				$.mobile.resetActivePageHeight();
@@ -486,15 +488,15 @@ function checkUUID() {
 	});
 
 
-	// Allow external links to be clicked in checklists
-	$('.checkbox-link-external').bind("tap click", function( event, data ){
-	    event.stopPropagation();
-	    event.preventDefault();
-	    // $(this).find('a:first').preventDefault();
-	    var targetURL = $(this).find('a:first').attr('href');
-		window.open(targetURL, "_system");
-		console.log(targetURL);
-	});
+	// Allow external links to be clicked in checklists - removed 21 May 2023 v2.3
+//	$('.checkbox-link-external').bind("tap click", function( event, data ){
+//	    event.stopPropagation();
+//	    event.preventDefault();
+//	    // $(this).find('a:first').preventDefault();
+//	    var targetURL = $(this).find('a:first').attr('href');
+//		window.open(targetURL, "_system");
+//		console.log(targetURL);
+//	});
 
 	// Scrolling bug https://stackoverflow.com/questions/39692337/div-scrolling-freezes-sometimes-if-i-use-webkit-overflow-scrolling
 	// var lastY = 0; // Needed in order to determine direction of scroll.
