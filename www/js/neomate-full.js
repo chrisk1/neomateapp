@@ -500,53 +500,16 @@ function checkUUID() {
 	//    lastY = event.touches[0].clientY;
 	// });
 
-	var lastY = 0;
-	var targetElt = document.querySelector(".ui-content");
-
-	targetElt.addEventListener('touchstart', function(event) {
-	    lastY = event.touches[0].clientY;
-	    console.log("Touched 0");
+	var scrollTimer;
+	$(document).on('touchmove',function(e){
+		      console.log("ui-content triggered")
+	      clearTimeout(scrollTimer);
+	      scrollTimer = setTimeout(() => {
+	        this.scrollTop = Math.max(1, Math.min(this.scrollTop, this.scrollHeight - this.clientHeight - 1));
+	        console.log("Scroll timer triggered")
+	      }, 300);
 	});
 
-	targetElt.addEventListener('touchmove', function(event) {
-	    var top = event.touches[0].clientY;
-
-	    var scrollTop = event.currentTarget.scrollTop;
-	    var maxScrollTop = event.currentTarget.scrollHeight -
-	        $(event.currentTarget).outerHeight();
-	    var direction = lastY - top < 0 ? 'up' : 'down';
-
-	    if (
-	        event.cancelable && (
-	            (scrollTop <= 0 && direction === 'up') ||
-	            (scrollTop >= maxScrollTop && direction === 'down')
-	        )
-	    )
-	      event.preventDefault();
-
-	    lastY = top;
-			console.log("Touched " + lastY);
-	});
-
-
-	$('.ui-content').on('touchmove', function(event) {
-	    var top = event.touches[0].clientY;
-
-	    // Determine scroll position and direction.
-	    var scrollTop = $(event.currentTarget).scrollTop();
-	    var direction = (lastY - top) < 0 ? "up" : "down";
-
-	    // FIX IT!
-	    if (scrollTop <= 0 && direction == "up") {
-	      // Prevent scrolling up when already at top as this introduces a freeze.
-	      event.preventDefault();
-	    } else if (scrollTop >= (event.currentTarget.scrollHeight - event.currentTarget.outerHeight()) && direction == "down") {
-	      // Prevent scrolling down when already at bottom as this also introduces a freeze.
-	      event.preventDefault();
-	    }
-
-	    lastY = top;
-	});
 
 	// Stop green highlighting of tabs - persistent ui-btn-active
 	// Also while we're here, let's ask the user to rate the app if >20 babies
