@@ -500,15 +500,15 @@ function checkUUID() {
 	//    lastY = event.touches[0].clientY;
 	// });
 
-	var scrollTimer;
-	$(document).on('touchmove',function(e){
-		      console.log("ui-content triggered")
-	      clearTimeout(scrollTimer);
-	      scrollTimer = setTimeout(() => {
-	      	$(window).scrollTop($(window).scrollTop()-1);
-	        console.log("Scroll timer triggered")
-	      }, 300);
-	});
+//	var scrollTimer;
+//	$(document).on('touchmove',function(e){
+//		      console.log("ui-content triggered")
+//	      clearTimeout(scrollTimer);
+//	      scrollTimer = setTimeout(() => {
+//	      	$(window).scrollTop($(window).scrollTop()-1);
+//	        console.log("Scroll timer triggered")
+//	      }, 300);
+//	});
 
 
 	// Stop green highlighting of tabs - persistent ui-btn-active
