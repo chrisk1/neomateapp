@@ -271,9 +271,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	  	trackAppLoad();
 
 	  	// Handle External URLs (Mock device.platform property if not available)
-	    if (!window.device) {
-	        window.device = { platform: 'Browser' };
-	    }
+//	    if (!window.device) {
+//	        window.device = { platform: 'Browser' };
+//	    }
     	// handleExternalURLs(); (removed 2 Jan 2021)
 
 	  	// Rating for App Store
@@ -1050,13 +1050,13 @@ $(function(){
 	});
 
 	// TO OPEN TAGS CLASSSED AS EXTERNAL IN SAFARI
-	/*
+	
 	$(document).on('click', ".external", function (e) {
 		e.preventDefault();
 		var targetURL = $(this).attr("href");
 		window.open(targetURL, "_system");
 	});
-	*/ // Temporarily removed in favour of handleExternalURLs()
+	
 
 	$(function(){ $('[data-role=header],[data-role=footer]').fixedtoolbar({ tapToggle:false }); });
 
