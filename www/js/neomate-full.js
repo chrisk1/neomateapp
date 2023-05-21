@@ -369,7 +369,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 			setTimeout(function() {
     			navigator.splashscreen.hide();
     			$("#babyweight").focus(); // see if this fixes page stick
-			}, 500);
+			}, 800);
 			window.scrollTo(0, 1);
 			setTimeout(function() {
 				$.mobile.resetActivePageHeight();
@@ -381,7 +381,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		    	$(".numericalinput").attr("type", "number");
 	    		navigator.splashscreen.hide();
 	    		$("#babyweight").focus(); // see if this fixes page stick
-			}, 500);
+			}, 800);
 			window.scrollTo(0, 1);
 			setTimeout(function() {
 				$.mobile.resetActivePageHeight();
