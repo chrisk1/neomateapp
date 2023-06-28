@@ -877,7 +877,7 @@ if (1==1) { // this was originally if userAgent = iPhone
 	            $(this).parent().parent().find(".maintitle-weight").text("");
 
 	            // animate show on collapsible;
-	            if ($("#babyweight").val() >= 400 && $("#babyweight").val() <= 7000)
+	            if ($("#babyweight").val() >= 400 && $("#babyweight").val() <= 6000)
 	            {
  					$(this).find(".maintitle-weight").text("for " + $("#babyweight").val() + "g");
 	            }
@@ -1412,7 +1412,9 @@ var CalculateApp = function() {
 				localStorage.setItem("babyweightalert", babyweight);
 			}
 			console.log("Baby too large");
-			throw "Baby too large";
+			// LPC removed the following throw - throwing an exception prevents the calculations from being cleared
+			// so we end up with inconsistency between weight in header and calculations below
+			//throw "Baby too large";
 			// $("#babyweight").focus();
 			highlightWeight();
 			babyweight = "";
