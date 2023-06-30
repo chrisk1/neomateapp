@@ -2508,43 +2508,84 @@ Use the following table to insert the ET tube to the optimum length. Always conf
   </div>
 </div>
 
+
 <div data-role="page" data-theme="c" id="popadditives">
-  <div data-role="header">
-  <a class="backicon" data-icon="delete">&nbsp;</a>
-    <h2>Additives for Infusion</h2>
-  </div>
-  <div role="main" class="ui-content dialogcontent">
-    <p><b>How to Calculate IV Fluid Additives</b></p>
+	<div data-role="header">
+		<a class="backicon" data-icon="delete">&nbsp;</a>
+		  <h2>Additives for Infusion</h2>
+		</div>
+	<div role="main" class="ui-content dialogcontent">
+		<p><b>How to Calculate IV Fluid Additives</b></p>
 
-    <p>To calculate how much additive to add to a bag/syringe for infusion, use the following simple formula:<br><br></p>
-
-    <span style="font-size: 14px; font-weight: bold;">Amount of additive to add to your bag for IV infusion</span><br>
-		<table><tbody><tr style="background-color: none !important; background: none !important"><td>
-		<div style="float:left; font-size:11px;">=&nbsp;</div></td>
-		 <td> <div style="float:left">
-		    <div style="font-size: 11px; border-bottom:1px solid;text-align:center;">Bag volume (ml) * Desired daily amount (mmol/kg/day)</div>
-		    <div style="font-size:11px;text-align:center;">Fluid infusion rate (ml/kg/day)</div>
-		  </div></td>
-		</tr>
-		</tbody></table><br>
-
-		<span style="font-size: 14px; font-weight: bold;">So for our current baby:</span><br>
-
-		<table><tbody><tr style="background-color: none !important; background: none !important"><td>
-		<div style="float:left; font-size: 11px">Amount of sodium to add =&nbsp;</div></td>
-		 <td> <div style="float:left">
-		    <div style="border-bottom:1px solid;font-size:small;text-align:center;">500ml * <span id="popadditives-naamount">x</span> mmol/kg/day</div>
-		    <div style="font-size:small;text-align:center;"><span id="popadditives-fluidrate">x</span> ml/kg/day</div>
-		  </div></td>
-		</tr>
-		</tbody></table><br>
-		<span style="color: #FCF5F5; font-size: 11px">Amount of sodium to add </span><span style="font-size: 11px"> =&nbsp;</span><span id="popadditives-answer" style="font-size:small; font-weight: bold">x</span> mmol
-		<br><br>
-		<a href="#main" data-role="button" data-rel="back" data-theme="d">Close</a>
-    </div>
+		<p>To calculate how much additive to add to a bag/syringe for infusion, use the following simple formula:<br><br></p>
+	
+		<span style="font-size: 14px; font-weight: bold;">Amount of additive to add to your bag for IV infusion</span><br>
+			<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+			<div style="float:left; font-size:11px;">=&nbsp;</div></td>
+			 <td> <div style="float:left">
+				<div style="font-size: 11px; border-bottom:1px solid;text-align:center;">Bag volume (ml) * Desired daily amount (mmol/kg/day)</div>
+				<div style="font-size:11px;text-align:center;">Fluid infusion rate (ml/kg/day)</div>
+			  </div></td>
+			</tr>
+			</tbody></table><br>
+	
+			<span style="font-size: 14px; font-weight: bold;">So for our current baby:</span><br>
+	
+			<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+			<div style="float:left; font-size: 11px">Amount of sodium to add =&nbsp;</div></td>
+			 <td> <div style="float:left">
+				<div style="border-bottom:1px solid;font-size:small;text-align:center;">500ml * <span id="popadditives-naamount">x</span> mmol/kg/day</div>
+				<div style="font-size:small;text-align:center;"><span id="popadditives-fluidrate">x</span> ml/kg/day</div>
+			  </div></td>
+			</tr>
+			</tbody></table><br>
+			<span style="color: #FCF5F5; font-size: 11px">Amount of sodium to add </span><span style="font-size: 11px"> =&nbsp;</span><span id="popadditives-answer" style="font-size:small; font-weight: bold">x</span> mmol
+			<br><br>
+			<a href="#main" data-role="button" data-rel="back" data-theme="d">Close</a>
+		</div>
+	</div>
   </div>
 </div>
 
+<!-- LPC: there seems to be a namespace conflict around "popadditives" which I just can't track down
+hence changing the name of this div to something silly. -->
+<div data-role="page" data-theme="c" id="plopadditives">
+	<div data-role="header">
+		<a class="backicon" data-icon="delete">&nbsp;</a>
+		  <h2>Additives for Infusion</h2>
+		</div>
+	<div role="main" class="ui-content dialogcontent">
+		<p><b>How to Calculate IV Fluid Additives</b></p>
+
+		<p>To calculate how much additive to add to a bag/syringe for infusion, use the following simple formula:<br><br></p>
+	
+		<span style="font-size: 14px; font-weight: bold;">Amount of additive to add to your bag for IV infusion</span><br>
+			<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+			<div style="float:left; font-size:11px;">=&nbsp;</div></td>
+			 <td> <div style="float:left">
+				<div style="font-size: 11px; border-bottom:1px solid;text-align:center;">Bag volume (ml) * Desired daily amount (mmol/kg/day)</div>
+				<div style="font-size:11px;text-align:center;">Fluid infusion rate (ml/kg/day)</div>
+			  </div></td>
+			</tr>
+			</tbody></table><br>
+	
+			<span style="font-size: 14px; font-weight: bold;">So for our current baby:</span><br>
+	
+			<table><tbody><tr style="background-color: none !important; background: none !important"><td>
+			<div style="float:left; font-size: 11px">Amount of sodium to add =&nbsp;</div></td>
+			 <td> <div style="float:left">
+				<div style="border-bottom:1px solid;font-size:small;text-align:center;">500ml * <span id="plopadditives-naamount">x</span> mmol/kg/day</div>
+				<div style="font-size:small;text-align:center;"><span id="plopadditives-fluidrate">x</span> ml/kg/day</div>
+			  </div></td>
+			</tr>
+			</tbody></table><br>
+			<span style="color: #FCF5F5; font-size: 11px">Amount of sodium to add </span><span style="font-size: 11px"> =&nbsp;</span><span id="plopadditives-answer" style="font-size:small; font-weight: bold">x</span> mmol
+			<br><br>
+			<a href="#main" data-role="button" data-rel="back" data-theme="d">Close</a>
+		</div>
+	</div>
+  </div>
+</div>
 
 <div data-role="page" data-theme="c" id="gir">
   <div data-role="header">
@@ -2582,6 +2623,8 @@ Use the following table to insert the ET tube to the optimum length. Always conf
     </div>
   </div>
 </div>
+
+
 
 <div data-role="page" data-theme="c" id="infusion-detail">
     <div data-role="header" data-id="fixed" data-position="fixed" data-tap-toggle="false" style="text-align: center; padding-top: 8px; padding-bottom: 5px">

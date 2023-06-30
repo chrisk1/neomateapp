@@ -1717,7 +1717,7 @@ PREVIOUS SIZES
 			{
 				varifdexsalinemsg = "";
 			}
-			$("#fluidoutput").html($("#fluidoutput").html() + "<li>" + (Math.round((((tisodium / tifluid) * 500))*10)/10) + " mmol sodium chloride" + varifdexsalinemsg + "<a href=\"#popadditives\" data-transition=\"none\" data-corners=\"false\"><img src=\"images/question50px.png\" class=\"infobtn\" /></a></li>");
+			$("#fluidoutput").html($("#fluidoutput").html() + "<li>" + (Math.round((((tisodium / tifluid) * 500))*10)/10) + " mmol sodium chloride" + varifdexsalinemsg + "<a href=\"#plopadditives\" data-transition=\"none\" data-corners=\"false\"><img src=\"images/question50px.png\" class=\"infobtn\" /></a></li>");
 			endul = "</ul>";
 		}
 
@@ -1767,10 +1767,10 @@ $(document).on('pageshow', '#gir' ,function () {
 	$("#gir-answer").text(Math.round(glucoseinfusion*10)/10);
 });
 
-$(document).on('pageshow', '#popadditives' ,function () {
-	$("#popadditives-naamount").text(tisodium);
-	$("#popadditives-fluidrate").text(tifluid);
-	$("#popadditives-answer").text((Math.round((((tisodium / tifluid) * 500))*10)/10));
+$(document).on('pageshow', '#plopadditives' ,function () {
+	$("#plopadditives-naamount").text(tisodium);
+	$("#plopadditives-fluidrate").text(tifluid);
+	$("#plopadditives-answer").text((Math.round((((tisodium / tifluid) * 500))*10)/10));
 });
 
 
