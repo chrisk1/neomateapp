@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-packageName="com.incubateltd.neomate" android-versionCode="45" id="com.incubateltd.neomate" ios-CFBundleIdentifier="com.londonnts.neomate" ios-CFBundleVersion="3.2.5" version="29" xmlns="http://www.w3.org/ns/widgets">
+<widget android-packageName="com.incubateltd.neomate" android-versionCode="45" id="com.incubateltd.neomate" ios-CFBundleIdentifier="com.londonnts.neomate" ios-CFBundleVersion="3.2.6" version="29" xmlns="http://www.w3.org/ns/widgets">
     <name>NeoMate</name>
     <description>
         Helps neonatal staff calculate drug doses for babies on NICU in common emergency situations. 
