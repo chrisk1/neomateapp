@@ -25,6 +25,7 @@
     <preference name="permissions" value="none" />
     <preference name="android-compileSdkVersion" value="31" />
     <preference name="android-targetSdkVersion" value="31" />
+    <preference name="GradlePluginGoogleServicesEnabled" value="true" />
 
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
