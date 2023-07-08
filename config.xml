@@ -23,6 +23,7 @@
     <preference name="StatusBarStyle" value="blackopaque" />
     <preference name="target-device" value="handset" />
     <preference name="permissions" value="none" />
+    <preference name="android-compileSdkVersion" value="31" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="mailto:*" />
