@@ -1,0 +1,50 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    },
+    "cordova-plugin-google-analytics": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    },
+    "cordova-plugin-apprate": {
+      "PLAY_CORE_VERSION": "1.+",
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    },
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "com.incubateltd.neomate"
+    }
+  }
+}
