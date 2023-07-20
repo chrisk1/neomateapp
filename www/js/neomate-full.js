@@ -177,7 +177,7 @@ infusiondb = [
 var gramsnotification = '';
 var weighthistory = '';
 var appversion = '3.2';
-var appdate = 'May 2023';
+var appdate = 'July 2023';
 var devicemodel = '';
 
 document.addEventListener("deviceready", onDeviceReady, false);
