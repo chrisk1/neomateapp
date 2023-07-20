@@ -31,9 +31,9 @@
     <allow-intent href="mailto:*" />
     <allow-navigation href="http://localhost:8080/*" />
     <platform name="android">
-        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/drawable/ic_spash1.xml" />
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/drawable/ic_splash1.xml" />
     </platform>
-    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/drawable/ic_spash1.xml" />
+    
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
