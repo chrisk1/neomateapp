@@ -31,6 +31,10 @@
     <allow-intent href="mailto:*" />
     <allow-navigation href="http://localhost:8080/*" />
     <platform name="android">
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/drawable/ic_spash1.xml" />
+    </platform>
+    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/drawable/ic_spash1.xml" />
+    <platform name="android">
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
@@ -38,7 +42,7 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <preference name="InAppBrowserStorageEnabled" value="true" />
-    <splash src="splash.png" />
+    
     <platform name="ios">
         <icon height="180" src="res/ios/icon-60@3x.png" width="180" />
         <icon height="60" src="res/ios/icon-60.png" width="60" />
@@ -59,7 +63,7 @@
         <icon height="100" src="res/ios/icon-50@2x.png" width="100" />
         <icon src="res/ios/icon-83.5@2x.png" width="167" />
         <icon height="1024" src="res/ios/icon-1024.png" width="1024" />
-    
+        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
     </platform>
     <platform name="android">
         <resource-file src="google-services.json" target="app/google-services.json" />
@@ -69,9 +73,8 @@
         <icon density="xhdpi" src="res/android/xhdpi.png" />
         <icon density="xxhdpi" src="res/android/xxhdpi.png" />
         <icon density="xxxhdpi" src="res/android/xxxhdpi.png" />
-        
     </platform>
-    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/drawable/ic_spash1.xml" />
+   
     <preference name="android-minSdkVersion" value="22" />
     <platform name="ios">
         <preference name="WKWebViewOnly" value="true" />
