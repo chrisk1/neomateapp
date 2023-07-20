@@ -25,9 +25,6 @@
     "cordova-plugin-google-analytics": {
       "PACKAGE_NAME": "com.incubateltd.neomate"
     },
-    "cordova-plugin-globalization": {
-      "PACKAGE_NAME": "com.incubateltd.neomate"
-    },
     "cordova-plugin-apprate": {
       "PLAY_CORE_VERSION": "1.+",
       "PACKAGE_NAME": "com.incubateltd.neomate"

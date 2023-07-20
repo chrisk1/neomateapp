@@ -23,7 +23,6 @@
     "cordova-plugin-apprate": "^1.7.2",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-dialogs": "^2.0.2",
-    "cordova-plugin-globalization": "^1.11.0",
     "cordova-plugin-inappbrowser": "^5.0.0",
     "cordova-plugin-ionic-webview": "^5.0.0",
     "cordova-plugin-keyboard": "^1.2.0",
@@ -40,7 +39,6 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-dialogs": {},
       "flyer299-cordova-plugin-google-analytics": {},
-      "cordova-plugin-globalization": {},
       "cordova-plugin-apprate": {
         "PLAY_CORE_VERSION": "1.+"
       },
