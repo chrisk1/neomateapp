@@ -69,8 +69,9 @@
         <icon density="xhdpi" src="res/android/xhdpi.png" />
         <icon density="xxhdpi" src="res/android/xxhdpi.png" />
         <icon density="xxxhdpi" src="res/android/xxxhdpi.png" />
-        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/drawable/ic_spash1.xml" />
+        
     </platform>
+    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/drawable/ic_spash1.xml" />
     <preference name="android-minSdkVersion" value="22" />
     <platform name="ios">
         <preference name="WKWebViewOnly" value="true" />
