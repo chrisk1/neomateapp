@@ -65,7 +65,7 @@
     </platform>
     <platform name="android">
         <resource-file src="google-services.json" target="app/google-services.json" />
-        <resource-file src="res/android/colors.xml" target="/app/src/main/res/values/colors.xml" />
+        <resource-file src="res/values/colors.xml" target="/app/src/main/res/values/colors.xml" />
         <icon density="ldpi" background="@color/background" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/ldpi.png" />
         <icon density="mdpi" background="@color/background" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/mdpi.png" />
         <icon density="hdpi" background="@color/background" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/hdpi.png" />
