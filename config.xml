@@ -66,12 +66,12 @@
     <platform name="android">
         <resource-file src="google-services.json" target="app/google-services.json" />
         <resource-file src="res/values/colors.xml" target="app/src/main/res/values/colors.xml" />
-        <icon density="ldpi" background="@color/background" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/ldpi.png" />
-        <icon density="mdpi" background="@color/background" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/mdpi.png" />
-        <icon density="hdpi" background="@color/background" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/hdpi.png" />
-        <icon density="xhdpi" background="@color/background" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/xhdpi.png" />
-        <icon density="xxhdpi" background="@color/background" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/xxhdpi.png" />
-        <icon density="xxxhdpi" background="@color/background" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/xxxhdpi.png" />
+        <icon density="ldpi" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/ldpi.png" />
+        <icon density="mdpi"  foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/mdpi.png" />
+        <icon density="hdpi" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/hdpi.png" />
+        <icon density="xhdpi" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/xhdpi.png" />
+        <icon density="xxhdpi"  foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/xxhdpi.png" />
+        <icon density="xxxhdpi" foreground="res/screen/android/drawable/ic_splash2.xml" src="res/android/xxxhdpi.png" />
     </platform>
     <preference name="android-minSdkVersion" value="22" />
     <platform name="ios">
