@@ -263,10 +263,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		window.open = cordova.InAppBrowser.open;
 
 	   	// GAP Analytics set up (on ready)
-	    console.log('initializeGAplugin');
-	    window.ga.startTrackerWithId('377330199', 5);
-	    window.ga.setAppVersion(appversion);
-	    window.ga.setUserId(checkUUID());
+	    // console.log('initializeGAplugin');
+	    // window.ga.startTrackerWithId('377330199', 5);
+	    // window.ga.setAppVersion(appversion);
+	    // window.ga.setUserId(checkUUID());
 
 	  	trackAppLoad();
 
