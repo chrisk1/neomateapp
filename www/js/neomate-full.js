@@ -190,14 +190,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	}
 
 	function trackMenuOpen(menuname) {
-		console.log("Triggered menu open");
-	        console.log("Track menu open: " + menuname);
-	        
-	    if(typeof ga !== "undefined"){    
-	        // window.ga.trackEvent('Category', 'Action', 'Label', Value)
-	        // window.ga.trackEvent(menuname+"-"+$("#babyweight").val(), 'Click');
-					cordova.plugins.firebase.analytics.logEvent("menuopen", {weight: $("#babyweight").val(), menu: menuname});
-	    }
+    console.log("Track menu open: " + menuname);
+    cordova.plugins.firebase.analytics.logEvent("menuopen", {weight: $("#babyweight").val(), menu: menuname});
 	}
 
 	function trackPage(pagename) {
@@ -363,7 +357,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 			$("#detailedtestinfopanel").html("Time performed: " + unitresults[4] + "<br><b>FAILURE</b> on " + unitresults[2] + " of " + unitresults[1] + " unit tests during app launch.<br><br>Detailed test failure info: <br>" + unitresults[3] + "<br><br>App version: " + appversion + "<br><br>");
 			$.mobile.changePage("#testfailure");
 			// window.ga.trackException(unitresults[2] + "/" + unitresults[1] + " failed. V" + appversion + ". " + unitresults[3], true);
-			trackPage("InitialisationTestFailure")
+			trackPage(unitresults[2] + "/" + unitresults[1] + " failed. V" + appversion + ". " + unitresults[3]);
 		}
 
 		if (navigator.userAgent.match(/Android/)) {
