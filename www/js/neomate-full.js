@@ -195,15 +195,15 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	        
 	    if(typeof ga !== "undefined"){    
 	        // window.ga.trackEvent('Category', 'Action', 'Label', Value)
-	        window.ga.trackEvent(menuname+"-"+$("#babyweight").val(), 'Click');
+	        // window.ga.trackEvent(menuname+"-"+$("#babyweight").val(), 'Click');
+					cordova.plugins.firebase.analytics.logEvent("menuopen", {weight: $("#babyweight").val(), menu: menumame});
 	    }
 	}
 
 	function trackPage(pagename) {
 		console.log("Triggered pageview - " + pagename);
-		if(typeof ga !== "undefined"){    
-			window.ga.trackView(pagename);
-		}
+		cordova.plugins.firebase.analytics.logEvent(pagename, {platform: device.platform});
+		cordova.plugins.firebase.analytics.setCurrentScreen(pagename);
 	}
 
 	// Function to handle external URLs - from http://stackoverflow.com/questions/17887348/phonegap-open-link-in-browser
