@@ -64,6 +64,7 @@
         <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
     </platform>
     <platform name="android">
+        <preference name="ANDROID_FIREBASE_BOM_VERSION" default="30.3.1" />
         <resource-file src="google-services.json" target="app/google-services.json" />
         <icon density="ldpi" background="res/screen/android/drawable/ic_icon_bg.xml" foreground="res/screen/android/drawable/ic_icon_fg.xml" src="res/android/ldpi.png" />
         <icon density="mdpi"  background="res/screen/android/drawable/ic_icon_bg.xml" foreground="res/screen/android/drawable/ic_icon_fg.xml" src="res/android/mdpi.png" />
@@ -74,6 +75,8 @@
     </platform>
     <preference name="android-minSdkVersion" value="22" />
     <platform name="ios">
+        <preference name="IOS_FIREBASE_POD_VERSION" default="9.3.0" />
+        <resource-file src="GoogleService-Info.plist" />
         <preference name="WKWebViewOnly" value="true" />
         <feature name="CDVWKWebViewEngine">
             <param name="ios-package" value="CDVWKWebViewEngine" />
@@ -88,7 +91,7 @@
     <plugin name="cordova-plugin-inappbrowser" source="npm" />
     <plugin name="cordova-plugin-ionic-webview" source="npm" />
     <plugin name="cordova-plugin-dialogs" source="npm" />
-    <plugin name="flyer299-cordova-plugin-google-analytics" source="npm" />
+    <plugin name="cordova-plugin-firebase-analytics" source="npm" />
     <plugin name="cordova-plugin-apprate" source="npm" />
     <plugin name="cordova-plugin-device" source="npm" />
     <plugin name="cordova-plugin-keyboard" source="npm" />
