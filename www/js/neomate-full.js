@@ -196,7 +196,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	    if(typeof ga !== "undefined"){    
 	        // window.ga.trackEvent('Category', 'Action', 'Label', Value)
 	        // window.ga.trackEvent(menuname+"-"+$("#babyweight").val(), 'Click');
-					cordova.plugins.firebase.analytics.logEvent("menuopen", {weight: $("#babyweight").val(), menu: menumame});
+					cordova.plugins.firebase.analytics.logEvent("menuopen", {weight: $("#babyweight").val(), menu: menuname});
 	    }
 	}
 
