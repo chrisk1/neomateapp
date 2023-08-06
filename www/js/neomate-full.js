@@ -362,6 +362,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 			$.mobile.changePage("#testfailure");
 			// window.ga.trackException(unitresults[2] + "/" + unitresults[1] + " failed. V" + appversion + ". " + unitresults[3], true);
 			trackPage(unitresults[2] + "/" + unitresults[1] + " failed. V" + appversion + ". " + unitresults[3]);
+			trackPage("Initiatlisation Failure");
 		}
 
 		if (navigator.userAgent.match(/Android/)) {
