@@ -185,19 +185,23 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // Analytics
 	function trackAppLoad() {
 		console.log("Triggered app load");
-	        trackPage("Start page");
-	        console.log("Track app load");
+    trackPage("Start page");
+    console.log("Track app load");
 	}
 
 	function trackMenuOpen(menuname) {
     console.log("Track menu open: " + menuname);
-    cordova.plugins.firebase.analytics.logEvent("menuopen", {weight: $("#babyweight").val(), menu: menuname});
+    cordova.plugins.firebase.analytics.logEvent("menuopen", {"weight": $("#babyweight").val(), "menu": menuname});
 	}
 
 	function trackPage(pagename) {
 		console.log("Triggered pageview - " + pagename);
-		cordova.plugins.firebase.analytics.logEvent(pagename, {platform: device.platform});
+		cordova.plugins.firebase.analytics.logEvent(pagename);
 		cordova.plugins.firebase.analytics.setCurrentScreen(pagename);
+	}
+
+	function trackCalculate() {
+		cordova.plugins.firebase.analytics.logEvent("calculate", {"weight": $("#babyweight").val()});
 	}
 
 	// Function to handle external URLs - from http://stackoverflow.com/questions/17887348/phonegap-open-link-in-browser
@@ -516,6 +520,7 @@ function checkUUID() {
 	// Also while we're here, let's ask the user to rate the app if >20 babies
 	$("#checklists").on( "pageshow", function(event) {
 		$("#checklists>div>ul>li.ui-btn-active").removeClass("ui-btn-active");
+		trackPage("checklists");
 		
 		// Let's show Rating if Checklists page is showed
 		var countBabyLoad = localStorage.getItem("countBabyLoad");
@@ -531,6 +536,7 @@ function checkUUID() {
 	// Stop green highlighting of tabs - persistent ui-btn-active
 	$("#reference").on( "pageshow", function(event) {
 		$("#reference>div>ul>li.ui-btn-active").removeClass("ui-btn-active");
+		trackPage("reference");
 	});
 
 	// Remove active green bits
@@ -540,6 +546,7 @@ function checkUUID() {
 
 	// Set up existing fields for survey if already entered
 	$("#survey").on( "pageshow", function(event) {
+		trackPage("survey");
 		if (localStorage.getItem("surveyemail") != "unknown") {
 			$("#surveyemail").val(localStorage.getItem("surveyemail"));
 		}
@@ -563,6 +570,7 @@ function checkUUID() {
 	// scroll to top when page showed
 	$(document).on('pageshow', '#clinic' ,function () {
 		// $.mobile.changePage("#clinic");
+		trackPage("clinic");
 		$.mobile.silentScroll(0);
 	});
 
@@ -573,6 +581,7 @@ function checkUUID() {
 
 	$(document).on('pageshow', '#about' ,function () {
 		// $.mobile.changePage("#about");
+		trackPage("about");
 		$.mobile.silentScroll(0);
 	});
 
@@ -1026,6 +1035,7 @@ $(function(){
 	$("#main").on( "pageshow", function( event ) {
 		var isAndroid = navigator.userAgent.match(/android/i) ? true : false;
 		var isIOS = navigator.userAgent.match(/(ipod|ipad|iphone)/i) ? true : false;
+		trackPage("main");
 
 		if(isIOS) {
 		    $(".numericalinput").attr("type", "number");
@@ -1384,6 +1394,7 @@ var OICalc = function() {
 }
 
 var CalculateApp = function() {
+		trackCalculate();
 		var babyweight = $("#babyweight").val()/1000;
 		if (Math.round($("#babyweight").val()) != $("#babyweight").val())
 		{
@@ -1760,12 +1771,14 @@ $(document).on('pageshow', '#gir' ,function () {
 	$("#gir-dexconc").text(tidextrose);
 	$("#gir-weight").text(babyweight);
 	$("#gir-answer").text(Math.round(glucoseinfusion*10)/10);
+	trackPage("gir");
 });
 
 $(document).on('pageshow', '#plopadditives' ,function () {
 	$("#plopadditives-naamount").text(tisodium);
 	$("#plopadditives-fluidrate").text(tifluid);
 	$("#plopadditives-answer").text((Math.round((((tisodium / tifluid) * 500))*10)/10));
+	trackPage("plopadditives");
 });
 
 
