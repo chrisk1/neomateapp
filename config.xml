@@ -31,9 +31,6 @@
     <allow-intent href="mailto:*" />
     <allow-navigation href="http://localhost:8080/*" />
     <platform name="android">
-        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/drawable/ic_splash2.xml" />
-    </platform>
-    <platform name="android">
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
@@ -83,6 +80,7 @@
             <resource-file src="res/android/mipmap-xxhdpi/neomate_round.webp" target="app/src/main/res/mipmap-xxhdpi/neomate_round.webp" />
             <resource-file src="res/android/mipmap-xxxhdpi/neomate.webp" target="app/src/main/res/mipmap-xxxhdpi/neomate.webp" />
             <resource-file src="res/android/mipmap-xxxhdpi/neomate_round.webp" target="app/src/main/res/mipmap-xxxhdpi/neomate_round.webp" />
+            <preference name="SplashScreen" value="res/screen/android/xxxhdpi.9.png" />
         </platform>    
     </widget>
     <preference name="android-minSdkVersion" value="22" />
