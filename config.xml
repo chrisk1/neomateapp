@@ -68,11 +68,11 @@
         <preference name="ANDROID_FIREBASE_BOM_VERSION" default="30.3.1" />
         <resource-file src="google-services.json" target="app/google-services.json" />
     </platform>
+    
     <platform name="android">
-        <resource-file src="res/android/values/neomate_background.xml" target="/app/src/main/res/values/colors.xml" />
-        <icon background="@color/background" density="ldpi" foreground="res/android/mipmap-hdpi/neomate_foreground.png" />
+        <resource-file src="res/android/values/colors.xml" target="/app/src/main/res/values/colors.xml" />
         <icon background="@color/background" density="mdpi" foreground="res/android/mipmap-mdpi/neomate_foreground.png" />
-        <icon background="@color/background" density="hdpi" foreground="res/android/mipmap-xhdpi/neomate_foreground.png" />
+        <icon background="@color/background" density="hdpi" foreground="res/android/mipmap-hdpi/neomate_foreground.png" />
         <icon background="@color/background" density="xhdpi" foreground="res/android/mipmap-xhdpi/neomate_foreground.png" />
         <icon background="@color/background" density="xxhdpi" foreground="res/android/mipmap-xxhdpi/neomate_foreground.png" />
         <icon background="@color/background" density="xxxhdpi" foreground="res/android/mipmap-xxxhdpi/neomate_foreground.png" />
