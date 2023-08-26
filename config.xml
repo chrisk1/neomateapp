@@ -31,7 +31,7 @@
     <allow-intent href="mailto:*" />
     <allow-navigation href="http://localhost:8080/*" />
     <platform name="android">
-        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/drawable/ic_splash2.xml" />
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/splash_icon_240.png" />
         <preference name="AndroidWindowSplashScreenBackground" value="#CC4242" />
     </platform>
     <platform name="android">
