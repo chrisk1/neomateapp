@@ -191,17 +191,17 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 	function trackMenuOpen(menuname) {
     console.log("Track menu open: " + menuname);
-    cordova.plugins.firebase.analytics.logEvent("menuopen", {"weight": $("#babyweight").val(), "menu": menuname});
+    cordova.plugins.firebase.analytics.logEvent("menuopen", {weight: $("#babyweight").val(), menu: menuname});
 	}
 
 	function trackPage(pagename) {
 		console.log("Triggered pageview - " + pagename);
-		cordova.plugins.firebase.analytics.logEvent(pagename);
 		cordova.plugins.firebase.analytics.setCurrentScreen(pagename);
+		cordova.plugins.firebase.analytics.logEvent("page", {page: pagename);
 	}
 
 	function trackCalculate() {
-		cordova.plugins.firebase.analytics.logEvent("calculate", {"weight": $("#babyweight").val()});
+		cordova.plugins.firebase.analytics.logEvent("calculate", {weight: $("#babyweight").val()});
 	}
 
 	// Function to handle external URLs - from http://stackoverflow.com/questions/17887348/phonegap-open-link-in-browser
@@ -362,7 +362,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 			$.mobile.changePage("#testfailure");
 			// window.ga.trackException(unitresults[2] + "/" + unitresults[1] + " failed. V" + appversion + ". " + unitresults[3], true);
 			trackPage(unitresults[2] + "/" + unitresults[1] + " failed. V" + appversion + ". " + unitresults[3]);
-			trackPage("Initiatlisation Failure");
+			trackPage("Initialisation Failure");
 		}
 
 		if (navigator.userAgent.match(/Android/)) {
@@ -1394,9 +1394,17 @@ var OICalc = function() {
 
 }
 
+var lastweight = 0;
+
 var CalculateApp = function() {
-		trackCalculate();
 		var babyweight = $("#babyweight").val()/1000;
+
+		if (babyweight != lastweight) 
+			{
+				trackCalculate();
+				lastweight = babyweight;
+			}
+
 		if (Math.round($("#babyweight").val()) != $("#babyweight").val())
 		{
 			if (gramsnotification == '')
