@@ -73,7 +73,8 @@
         <icon background="@color/background" density="xxhdpi" foreground="res/android/mipmap-xxhdpi/neomate_foreground.png" />
         <icon background="@color/background" density="xxxhdpi" foreground="res/android/mipmap-xxxhdpi/neomate_foreground.png" />
         <preference name="SplashScreen" value="res/screen/android/xxxhdpi.9.png" />
-        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/xxxhdpi.9.png" />
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/splash_icon_240.png" />
+        <preference name="AndroidWindowSplashScreenBackground" value="#CC4242" />
     </platform>
 
     <preference name="android-minSdkVersion" value="22" />
