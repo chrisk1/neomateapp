@@ -64,25 +64,17 @@
         <preference name="ANDROID_FIREBASE_BOM_VERSION" default="30.3.1" />
         <resource-file src="google-services.json" target="app/google-services.json" />
     </platform>
-    <widget xmlns:android="http://schemas.android.com/apk/res/android">
-        <platform name="android">
-            <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-                <application android:icon="@mipmap/neomate" android:roundIcon="@mipmap/neomate_round" />
-            </edit-config>
-            <resource-file src="res/android/values/neomate_background.xml" target="app/src/main/res/drawable/neomate_background.xml" />
-            <resource-file src="res/android/mipmap-hdpi/neomate.webp" target="app/src/main/res/mipmap-hdpi/neomate.webp" />
-            <resource-file src="res/android/mipmap-hdpi/neomate_round.webp" target="app/src/main/res/mipmap-hdpi/neomate_round.webp" />
-            <resource-file src="res/android/mipmap-mdpi/neomate.webp" target="app/src/main/res/mipmap-mdpi/neomate.webp" />
-            <resource-file src="res/android/mipmap-mdpi/neomate_round.webp" target="app/src/main/res/mipmap-mdpi/neomate_round.webp" />
-            <resource-file src="res/android/mipmap-xhdpi/neomate.webp" target="app/src/main/res/mipmap-xhdpi/neomate.webp" />
-            <resource-file src="res/android/mipmap-xhdpi/neomate_round.webp" target="app/src/main/res/mipmap-xhdpi/neomate_round.webp" />
-            <resource-file src="res/android/mipmap-xxhdpi/neomate.webp" target="app/src/main/res/mipmap-xxhdpi/neomate.webp" />
-            <resource-file src="res/android/mipmap-xxhdpi/neomate_round.webp" target="app/src/main/res/mipmap-xxhdpi/neomate_round.webp" />
-            <resource-file src="res/android/mipmap-xxxhdpi/neomate.webp" target="app/src/main/res/mipmap-xxxhdpi/neomate.webp" />
-            <resource-file src="res/android/mipmap-xxxhdpi/neomate_round.webp" target="app/src/main/res/mipmap-xxxhdpi/neomate_round.webp" />
-            <preference name="SplashScreen" value="res/screen/android/xxxhdpi.9.png" />
-        </platform>    
-    </widget>
+    <platform name="android">
+    <resource-file src="res/android/values/neomate_background.xml" target="/app/src/main/res/values/colors.xml" />
+        <icon background="@color/background" density="ldpi" foreground="res/android/mipmap-hdpi/neomate.webp" />
+        <icon background="@color/background" density="mdpi" foreground="res/android/mipmap-mdpi/neomate.webp" />
+        <icon background="@color/background" density="hdpi" foreground="res/android/mipmap-xhdpi/neomate.webp" />
+        <icon background="@color/background" density="xhdpi" foreground="res/android/mipmap-xhdpi/neomate.webp" />
+        <icon background="@color/background" density="xxhdpi" foreground="res/android/mipmap-xxhdpi/neomate.webp" />
+        <icon background="@color/background" density="xxxhdpi" foreground="res/android/mipmap-xxxhdpi/neomate.webp" />
+        <preference name="SplashScreen" value="res/screen/android/xxxhdpi.9.png" />
+    </platform>
+
     <preference name="android-minSdkVersion" value="22" />
     <platform name="ios">
         <preference name="IOS_FIREBASE_POD_VERSION" default="9.3.0" />
