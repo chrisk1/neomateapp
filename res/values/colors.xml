@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<string name="app_name">NeoMate</string>
 <resources>
     <color name="background">#CC4242</color>
     <color name="cdv_splashscreen_background">#CC4242</color>
