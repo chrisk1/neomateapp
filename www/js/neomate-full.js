@@ -197,7 +197,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	function trackPage(pagename) {
 		console.log("Triggered pageview - " + pagename);
 		cordova.plugins.firebase.analytics.setCurrentScreen(pagename);
-		cordova.plugins.firebase.analytics.logEvent("page", {page: pagename);
 	}
 
 	function trackCalculate() {
