@@ -70,13 +70,12 @@
     </platform>
 
     <platform name="android">
-        <resource-file src="res/values/colors.xml" target="app/src/main/res/values/neomate.xml" />
-        <icon background="@color/background" density="ldpi" foreground="res/android/mipmap-mdpi/neomate_round.png" />
-        <icon background="@color/background" density="mdpi" foreground="res/android/mipmap-mdpi/neomate_round.png" />
-        <icon background="@color/background" density="hdpi" foreground="res/android/mipmap-hdpi/neomate_round.png" />
-        <icon background="@color/background" density="xhdpi" foreground="res/android/mipmap-xhdpi/neomate_round.png" />
-        <icon background="@color/background" density="xxhdpi" foreground="res/android/mipmap-xxhdpi/neomate_round.png" />
-        <icon background="@color/background" density="xxxhdpi" foreground="res/android/mipmap-xxxhdpi/neomate_round.png" />
+        <icon background="res/android/neomate_background.png" density="ldpi" foreground="res/android/mipmap-mdpi/neomate_round.png" />
+        <icon background="res/android/neomate_background.png" density="mdpi" foreground="res/android/mipmap-mdpi/neomate_round.png" />
+        <icon background="res/android/neomate_background.png" density="hdpi" foreground="res/android/mipmap-hdpi/neomate_round.png" />
+        <icon background="res/android/neomate_background.png" density="xhdpi" foreground="res/android/mipmap-xhdpi/neomate_round.png" />
+        <icon background="res/android/neomate_background.png" density="xxhdpi" foreground="res/android/mipmap-xxhdpi/neomate_round.png" />
+        <icon background="res/android/neomate_background.png" density="xxxhdpi" foreground="res/android/mipmap-xxxhdpi/neomate_round.png" />
     </platform>
 
     <preference name="android-minSdkVersion" value="22" />
