@@ -1398,12 +1398,6 @@ var lastweight = 0;
 var CalculateApp = function() {
 		var babyweight = $("#babyweight").val()/1000;
 
-		if (babyweight != lastweight) 
-			{
-				trackCalculate();
-				lastweight = babyweight;
-			}
-
 		if (Math.round($("#babyweight").val()) != $("#babyweight").val())
 		{
 			if (gramsnotification == '')
@@ -1433,6 +1427,12 @@ var CalculateApp = function() {
 			highlightWeight();
 			babyweight = "";
 		}
+
+		if (babyweight != lastweight) 
+			{
+				trackCalculate();
+				lastweight = babyweight;
+			}
 
 		var lastExpanded;
 
