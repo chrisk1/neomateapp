@@ -70,7 +70,7 @@
     </platform>
 
     <platform name="android">
-        <resource-file src="res/values/colors.xml" target="app/src/main/res/values/background.xml" />
+        <resource-file src="res/values/colors.xml" target="app/src/main/res/values/neomate.xml" />
         <icon background="@color/background" density="ldpi" foreground="res/android/mipmap-mdpi/neomate_round.png" />
         <icon background="@color/background" density="mdpi" foreground="res/android/mipmap-mdpi/neomate_round.png" />
         <icon background="@color/background" density="hdpi" foreground="res/android/mipmap-hdpi/neomate_round.png" />
