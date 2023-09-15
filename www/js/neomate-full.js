@@ -176,8 +176,8 @@ infusiondb = [
 // ################## START: App functions / setup #######################
 var gramsnotification = '';
 var weighthistory = '';
-var appversion = '3.2';
-var appdate = 'July 2023';
+var appversion = '3.3.0';
+var appdate = '15 September 2023';
 var devicemodel = '';
 
 document.addEventListener("deviceready", onDeviceReady, false);
