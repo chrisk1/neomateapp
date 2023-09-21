@@ -1437,7 +1437,7 @@ var CalculateApp = function() {
 		var lastExpanded;
 
 	// Add weight to title if already expanded and weight added
-		if ($("#babyweight").val() >= 400 && $("#babyweight").val() <= 7000) {
+		if ($("#babyweight").val() >= 400 && $("#babyweight").val() <= 6000) {
 			$("#main").find(".ui-icon-back").parent().find(".maintitle-weight").text("for " + $("#babyweight").val() + "g");
 			// Remove estimate button
 				$("#estimatelabel").hide();
